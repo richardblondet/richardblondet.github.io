@@ -206,7 +206,7 @@ App.config(['$routeProvider', '$locationProvider',
 							}
 						}).error(function(data) {
 							/* console.log(data); */
-							/* console.log("$http Err", data); 
+							/* console.log("$http Err", data); */
 						});
 					};
 				}]
