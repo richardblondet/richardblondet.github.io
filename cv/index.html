@@ -27,13 +27,57 @@
         <link rel="apple-touch-icon" sizes="57x57" href="assets/img/other/apple-icon-57x57.png">
         <link rel="apple-touch-icon" sizes="72x72" href="assets/img/other/apple-icon-72x72.png">
         <link rel="apple-touch-icon" sizes="114x114" href="assets/img/other/apple-icon-144x144.png">
-        
-        
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="../assets/css/bootstrap.css">
+        <style type="text/css">
+            body { background-color: #f9f9f9; }
+            .shadow {
+                border: none;
+                -webkit-box-shadow: 0px 3px 10px rgba(0,0,0,0.1);
+                -moz-box-shadow: 0px 3px 10px rgba(0,0,0,0.1);
+                box-shadow: 0px 3px 10px rgba(0,0,0,0.1);
+            }
+            .shadow:hover {
+                -webkit-box-shadow: 0px 1px 15px rgba(0,0,0,0.1);
+                -moz-box-shadow: 0px 1px 15px rgba(0,0,0,0.1);
+                box-shadow: 0px 1px 15px rgba(0,0,0,0.1);
+            }
+            h2 { color: #444; margin-top: 10px; }
+            .panel {
+                margin-top: 25px;
+            }
+        </style>
     </head>
     
     <!-- Main body tag content goes here
         ============================================= -->
     <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-2">
+                    <a href="/resume/Resume2017-es.pdf">
+                        <div class="panel panel-default shadow">
+                            <div class="panel-body">
+                                <h2 class="text-center text-uppercase">
+                                    Español
+                                </h2>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="/resume/Resume2017.pdf">
+                        <div class="panel panel-default shadow">
+                            <div class="panel-body">
+                                <h2 class="text-center text-uppercase">
+                                    English
+                                </h2>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div> 
         <script type="text/javascript">
             /**
              * Redirect users to my resume
@@ -41,7 +85,7 @@
              * @return {void}
              */
             (function( d ){
-                d.location.href = "/resume/Resume2017.pdf";
+                // d.location.href = "/resume/Resume2017.pdf";
             }( document ))
         </script>
     </body>
