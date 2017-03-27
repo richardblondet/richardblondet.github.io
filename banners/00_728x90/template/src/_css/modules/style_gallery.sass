@@ -1,0 +1,111 @@
+@import "common.sass"
+
+// GALLERY STYLES --------------------------------------------------------------
+
+.mini-slideshow
+	z-index: 11
+
+.tab_gallery
+
+	.prevnext
+
+		$arrow_margin: 2
+		$arrow_size: 42
+		z-index: 90 !important
+		//transform: scale(.8, 1)
+		top: ( $ah - $arrow_size ) / 2
+		
+		svg
+			height: $arrow_size
+			width: $arrow_size / 2
+
+			path
+				fill: #000
+
+
+		&.btn_prev
+			left: $arrow_margin
+
+		&.btn_next
+			right: $arrow_margin
+
+		&.disabled
+			opacity: .3
+
+	$gallery_imageW: 165
+	$gallery_imageH: 90
+	$slidexoff: 25
+
+	.slides
+		width: $aw - $headerW
+		height: $ah
+		top: 0
+		//z-index: 50 !important
+
+		.slide
+			width: $aw - $headerW
+			height: $ah
+			top: 0
+			left: 0
+			z-index: 10
+			background-color: #FFF
+
+			&.slide_left
+				left: ( $aw - $headerW ) * -1
+				
+			&.slide_right
+				left: $aw - $headerW
+
+			&.forcetop
+				z-index: 20
+			
+			img
+				top: 0
+				width: $gallery_imageW
+				height: $gallery_imageH
+				left: $slidexoff
+
+			.slide_infowrapper
+				top: 0
+				width: $aw - ( $gallery_imageW + $headerW + ( $slidexoff * 2 ) )
+				height: $ah
+				overflow: auto
+				margin-left: $gallery_imageW + $slidexoff
+				padding: 0
+				//background-color: rgba(20, 0, 0, 0.5)
+
+				$slidepad: 10
+
+				.text_slide
+					top: 0
+					margin: 5 $slidepad 7 $slidepad
+
+					font-size: 11px
+					text-transform: uppercase
+		
+				.text_title
+					margin: 0 $slidepad 7 $slidepad
+					font-size: 15px
+					font-weight: 700
+		
+				.text_info
+					margin: 0 $slidepad 7 $slidepad
+					padding: 0
+					font-size: 13px
+					line-height: 135%
+					//background-color: yellow
+
+					a
+						text-decoration: none !important
+						color: #004a99
+
+					strong
+						font-weight: bold
+
+				.text_attr
+					margin: 0 $slidepad 20 $slidepad
+					padding: 0
+					color: #000
+					font-size: 10px
+					line-height: 120%
+					

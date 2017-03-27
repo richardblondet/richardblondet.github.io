@@ -1,0 +1,46 @@
+// MIXINS
+
+=setblock($w:null, $h:null, $p: null)
+	display	: block
+	position: $p
+	width	: $w
+	height	: $h
+
+@mixin transition($transition-property, $transition-time, $method)
+	-webkit-transition: $transition-property $transition-time $method
+	-moz-transition: $transition-property $transition-time $method
+	-ms-transition: $transition-property $transition-time $method
+	-o-transition: $transition-property $transition-time $method
+	transition: $transition-property $transition-time $method
+
+// OPTIONAL ICOMOON STUFF
+=icomoon($path: null, $weight: normal, $style: normal)
+	@font-face
+		font-family: 'icomoon'
+		src: url('#{$path}icomoon.eot')
+		src: url('#{$path}icomoon.eot?#iefix') format('embedded-opentype'), url('#{$path}icomoon.woff') format('woff'), url('#{$path}icomoon.ttf') format('truetype'), url('#{$path}icomoon.svg#icomoon') format('svg')
+		font-weight: $weight
+		font-style: $style
+
+	[class^="icon-"], [class*=" icon-"]
+		font-family: 'icomoon'
+		speak: none
+		font-style: normal
+		font-weight: normal
+		font-variant: normal
+		text-transform: none
+		line-height: 1
+
+		-webkit-font-smoothing: antialiased
+		-moz-osx-font-smoothing: grayscale
+
+.btn
+	cursor: pointer
+
+.abs
+	position: absolute
+	display: block
+
+.rel
+	position: relative
+	display: block

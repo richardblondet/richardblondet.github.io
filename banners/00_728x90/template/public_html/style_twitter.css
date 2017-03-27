@@ -1,0 +1,70 @@
+.tab_twitter .prevnext {
+  z-index: 90 !important;
+  top: 24; }
+  .tab_twitter .prevnext svg {
+    height: 42;
+    width: 21; }
+    .tab_twitter .prevnext svg path {
+      fill: #541955; }
+  .tab_twitter .prevnext.btn_prev {
+    left: 2; }
+  .tab_twitter .prevnext.btn_next {
+    right: 2; }
+  .tab_twitter .prevnext.disabled {
+    opacity: 0.3; }
+.tab_twitter .twitter_icon {
+  left: 28; }
+.tab_twitter .wrapper {
+  width: 474;
+  height: 90;
+  left: 27;
+  background-color: #ccc;
+  overflow: hidden;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-top: none;
+  border-bottom: none; }
+  .tab_twitter .wrapper .tweets {
+    top: 0;
+    width: 500%;
+    height: 90;
+    overflow: hidden;
+    left: 38px; }
+    .tab_twitter .wrapper .tweets .tweet {
+      float: left;
+      padding: 10 0 0 0;
+      margin: 0;
+      width: 387;
+      height: 70px !important;
+      overflow: hidden;
+      border-radius: 8px;
+      background-color: #fff;
+      margin: 5; }
+      .tab_twitter .wrapper .tweets .tweet .icon {
+        left: 10px !important; }
+        .tab_twitter .wrapper .tweets .tweet .icon img {
+          width: 25px;
+          height: 25px; }
+      .tab_twitter .wrapper .tweets .tweet .content {
+        margin: 0 5 0 40;
+        font-size: 13px; }
+        .tab_twitter .wrapper .tweets .tweet .content .name {
+          font-weight: bold; }
+        .tab_twitter .wrapper .tweets .tweet .content .handle {
+          color: #999;
+          margin-left: 10px; }
+          .tab_twitter .wrapper .tweets .tweet .content .handle .twh {
+            color: #999;
+            text-decoration: none; }
+        .tab_twitter .wrapper .tweets .tweet .content .date {
+          color: #999;
+          margin-left: 10px; }
+        .tab_twitter .wrapper .tweets .tweet .content .text {
+          display: block;
+          margin-top: 5px; }
+          .tab_twitter .wrapper .tweets .tweet .content .text .twc {
+            text-decoration: none; }
+          .tab_twitter .wrapper .tweets .tweet .content .text .twc-twitter {
+            color: #0092a0; }
+          .tab_twitter .wrapper .tweets .tweet .content .text .twc-url {
+            color: #0092a0; }

@@ -1,0 +1,60 @@
+div {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; }
+
+.container {
+  width: 610px;
+  padding: 5px;
+  border: 1px solid #CCC;
+  border-radius: 8px; }
+  .container img {
+    display: block; }
+  .container .header #logo {
+    float: right;
+    margin-right: 10px; }
+  .container .header p {
+    padding-left: 10px; }
+    .container .header p.legal {
+      font-size: 11px;
+      margin: 5px 0 20px 0; }
+  .container .header .small {
+    font-size: 18px;
+    color: #88aa01;
+    margin: 10px 0 0 0; }
+  .container .header .big {
+    font-size: 24px;
+    color: #88aa01;
+    margin: 0 0 10px 0; }
+  .container .content {
+    font-size: 0.8em;
+    padding-left: 10px;
+    line-height: 120%; }
+    .container .content #advertisement {
+      display: block;
+      float: right;
+      width: 301px;
+      height: 294px;
+      margin-right: 10px; }
+    .container .content p {
+      margin: 10px 0; }
+      .container .content p.header {
+        font-size: 1em;
+        color: #88aa01; }
+      .container .content p.title {
+        font-weight: bold; }
+      .container .content p.text {
+        width: 98%; }
+      .container .content p.half {
+        width: 45% !important; }
+  .container .sources {
+    margin-top: 40px;
+    padding-left: 10px;
+    font-size: 11px; }
+    .container .sources a {
+      text-decoration: none;
+      color: #1f719c; }
+  .container .footer {
+    margin-top: 40px;
+    margin-bottom: 50px;
+    padding-left: 10px;
+    font-size: 11px;
+    line-height: 120%; }

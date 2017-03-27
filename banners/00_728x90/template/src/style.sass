@@ -1,0 +1,173 @@
+@import "../src/_css/includes/reset.sass"
+@import "../src/_css/includes/global.sass"
+@import "../src/_css/modules/common.sass"
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700)
+
+html,
+body
+	font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif
+
+.animate
+	@include transition(all, $td, ease-out)
+
+.lato
+	font-family: Lato, Arial, 'Helvetica Neue', Helvetica, sans-serif
+
+	b
+		font-weight: 700 !important
+	em
+		font-weight: 400italic
+
+sup
+	font-size: 8px
+	vertical-align: super
+
+#loader
+
+	$size: 35
+
+	width: $aw + px
+	height: $ah + px
+	top: -1px
+	left: -1px
+	background-color: rgba(0, 0, 0, 0.4)
+	z-index: 90
+	opacity: 0
+
+	&.active
+		opacity: 1 !important
+
+	svg
+		position: absolute
+		width: $size
+		height: $size
+		top: ( ( $ah - $size ) / 2 ) + px
+		left: ( ( $aw - $size ) / 2 ) + px
+		path
+			fill: #FFF
+
+.border
+	border: 1px solid
+
+#border
+	overflow: hidden
+	width: ($aw - 2) + px
+	height: ($ah - 2) + px
+	padding: 0
+
+#container
+	overflow: hidden
+	width: $aw + px
+	height: $ah + px
+	top: -1px
+	left: -1px
+	opacity: 0
+
+#header,
+#header2
+	width: $headerW
+	height: $ah
+	left: 0
+
+	&.start
+		left: -200px
+
+	.background
+		width: $headerW
+		height: $ah
+
+	.header_cta
+		background-color: rgba(0, 0, 0, 0.4)
+		width: 40px
+		height: 40px
+		top: 0
+		left: 0
+
+$mod_off: 101
+
+#subcontainer
+	width: $aw - $headerW
+	height: $ah
+	left: $headerW
+	background-color: #FFF
+	overflow: hidden
+	
+	&.start
+		left: $aw !important
+
+// MOD -------------------------------------------------------------------------
+
+.mod
+	float: left
+	margin-left: 1px
+	z-index: 30
+	overflow: hidden
+	background-color: #000
+	width: $modulew - 2
+	height: $moduleh - 2
+
+	.wrapper
+		width: $modulew
+		height: $moduleh + $gray_stripe_h
+		left: -1px
+		top: -1px
+		position: relative
+
+		&.active,
+		&.peek.over
+			margin-top: ( $gray_stripe_h * -1 ) + px !important
+
+		.cta_regular
+			top: $moduleh - 1
+			width: 100%
+			height: $gray_stripe_h
+			background-color: #4d4d4d
+			text-align: right
+			z-index: 12
+
+			span
+				font-size: 10px
+				color: #FFF
+				margin-top: 3px
+				margin-right: 4px
+				text-transform: uppercase
+
+		.poster
+			width: $modulew
+			height: $moduleh
+			top: 0
+			left: 0
+			z-index: 10
+
+			&.locator
+				height: $moduleh + 34 !important
+				top: -17px !important
+
+// TABS ------------------------------------------------------------------------
+
+.tab
+	width: $aw - $headerW !important
+	height: $ah !important
+	z-index: 50
+	overflow: hidden
+	margin: 0
+	padding: 0
+	top: 0
+	left: $aw
+	background-color: #fff
+
+	&.active
+		left: 0 !important
+
+	.close_tab
+		width: 20
+		height: 20
+		top: 3 !important
+		right: 3 !important
+		font-size: 18px !important
+		//background-color: rgba(0, 0, 0, 0.5)
+		z-index: 90
+		//text-shadow: 0px 0px 1px #000
+
+.wrapper
+	width: 100%

@@ -1,0 +1,100 @@
+#module .orangeGradient {
+  background-color: #e46917;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fd802d), to(#ce5403));
+  background: -webkit-linear-gradient(top, #fd802d, #ce5403);
+  background: -o-linear-gradient(top, #fd802d, #ce5403); }
+#module .btn_send,
+#module .btn_email {
+  color: #FFF;
+  text-align: center;
+  font-size: 13px; }
+#module .btn_send {
+  margin: 10px auto;
+  border-radius: 4px;
+  width: 80px;
+  padding: 4px 0; }
+#module .btn_email {
+  top: 205px;
+  left: 174px;
+  z-index: 55;
+  border-radius: 6px;
+  width: 106px;
+  padding: 6px 0; }
+#module .emailContainer {
+  width: 100%;
+  height: 282px;
+  top: 0;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 60;
+  visibility: hidden; }
+  #module .emailContainer.active {
+    visibility: visible; }
+  #module .emailContainer .contentbox,
+  #module .emailContainer .dialogbox {
+    width: 92%;
+    height: 92%;
+    top: 9px;
+    left: 9px;
+    background-color: #FFF;
+    border: 2px solid #88aa01;
+    border-radius: 6px; }
+  #module .emailContainer .dialogbox {
+    text-align: center !important;
+    visibility: hidden; }
+    #module .emailContainer .dialogbox.active {
+      visibility: visible; }
+    #module .emailContainer .dialogbox .dialogtext {
+      color: #88aa01;
+      width: 90%;
+      margin: 20px auto;
+      top: 80px; }
+    #module .emailContainer .dialogbox .btn_send {
+      margin: 10px auto;
+      border-radius: 4px;
+      width: 100px;
+      padding: 4px 0;
+      top: 70px; }
+  #module .emailContainer .contentbox .sup {
+    color: red;
+    position: absolute;
+    top: 97px;
+    right: 5px;
+    font-size: 14px; }
+    #module .emailContainer .contentbox .sup.sup2 {
+      top: 130px;
+    }
+  #module .emailContainer .contentbox .text1 {
+    font-size: 12px;
+    line-height: 120%;
+    margin: 20px 12 0 12; }
+  #module .emailContainer .contentbox .text2 {
+    font-size: 10px;
+    line-height: 120%;
+    margin: 10px 12 10px 12;
+    margin-left: 12; }
+    #module .emailContainer .contentbox .text2 sup {
+      color: red;
+      position: relative;
+      top: 5px;
+      font-size: 12px; }
+  #module .emailContainer .contentbox .text3 {
+    font-size: 10px;
+    line-height: 120%;
+    margin: 10px 12 0 12;
+    margin-left: 12px; 
+    width: 200px; }
+    #module .emailContainer .contentbox .text3 a {
+      cursor: pointer;
+      color: #3789b9; }
+  #module .emailContainer .contentbox .field {
+    margin: 4px auto;
+    width: 90%;
+    padding: 5px 0 5px 5px; }
+    #module .emailContainer .contentbox .field.hide {
+      visibility: hidden; }
+    #module .emailContainer .email_truste {
+      position: absolute;
+      right: 18px;
+      bottom: 0px;
+    }

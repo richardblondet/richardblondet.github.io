@@ -1,0 +1,113 @@
+@import "common.sass"
+
+$sideoff: 27
+$arrow_margin: 6px
+$arrowsize: 40
+
+.tab_twitter
+	
+	//.btn
+	//	z-index: 30
+
+	.prevnext
+
+		$arrow_margin: 2
+		$arrow_size: 42
+		z-index: 90 !important
+		//transform: scale(.8, 1)
+		top: ( $ah - $arrow_size ) / 2
+		
+		svg
+			height: $arrow_size
+			width: $arrow_size / 2
+
+			path
+				fill: #541955
+
+
+		&.btn_prev
+			left: $arrow_margin
+
+		&.btn_next
+			right: $arrow_margin
+
+		&.disabled
+			opacity: .3
+
+	.twitter_icon
+		left: $sideoff + 1
+
+	.wrapper
+		width: $aw - $headerW - ( $sideoff * 2 )
+		height: 90
+		left: $sideoff
+		background-color: #ccc
+		overflow: hidden
+		border-left: 1px solid #ccc
+		border-right: 1px solid #ccc
+		border-top: none
+		border-bottom: none
+		
+		$twoff: 137
+
+		$tweetwidth: 387
+		$tweetpadding: 5
+
+
+		.tweets
+			top: 0
+			width: 500%
+			height: 90
+			overflow: hidden
+			left: 38px
+			//background-color: rgba(0, 0, 0, 0.4)
+
+			.tweet
+				float: left
+				padding: 10 0 0 0
+				margin: 0
+				width: $tweetwidth
+				height: 70px !important
+				overflow: hidden
+				border-radius: 8px
+				background-color: #fff
+				margin: $tweetpadding
+
+				.icon
+					left: 10px !important
+					
+					img
+						width: 25px
+						height: 25px
+						
+				.content
+					margin: 0 5 0 40
+					font-size: 13px
+
+					.name
+						font-weight: bold
+
+					.handle
+						color: #999
+						margin-left: 10px
+
+						.twh
+							color: #999
+							text-decoration: none
+
+					.date
+						color: #999
+						margin-left: 10px
+
+					.text
+						display: block
+						margin-top: 5px
+
+						.twc
+							text-decoration: none
+
+						.twc-twitter
+							color: #0092a0
+
+						.twc-url
+							color: #0092a0
