@@ -1,7 +1,7 @@
 # Using MADR Custom Template
 
 - Status: accepted
-- Date: 
+- Date: 01-02-2023 14:52:53
 - Story: https://github.com/richardblondet/richardblondet.github.io/issues/1
 
 
