@@ -8,14 +8,14 @@
 ## Decision Outcome
 
 - **Chosen Option:** Custom Format.
+- **Rules:** 
+  - For our naming convention will be: **[next-number]-[decision-title].md** 
 
 - We have observed the examples found in our research and decided to take the [Decision record template for MADR](https://github.com/joelparkerhenderson/architecture-decision-record/blob/main/templates/decision-record-template-madr/index.md) as example and modify what's needed.
 
-- For our naming convention will be: **[number]-[decision-title].md** 
-
 ### Consequences
 
-- 
+- ✅ Focus efforts for decision making
 
 
 ## Context, Problem Statement and Requirements
