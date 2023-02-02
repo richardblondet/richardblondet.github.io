@@ -6,3 +6,4 @@ For new ADRs, please use template.md as basis. More information on MADR is avail
 
 ### Content
 
+- [0001](0001-using-madr-custom-template.md) – Using madr custom template md
