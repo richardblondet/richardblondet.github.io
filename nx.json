@@ -3,10 +3,9 @@
   "npmScope": "richardblondet.com",
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/nx-cloud",
+      "runner": "nx/tasks-runners/default",
       "options": {
-        "cacheableOperations": [],
-        "accessToken": "MmIyMDc2ODYtOTg3MC00ODkwLThkZTQtYWUyZGM0MDU1OTVjfHJlYWQtd3JpdGU="
+        "cacheableOperations": []
       }
     }
   },
