@@ -1,4 +1,6 @@
 {
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "npmScope": "test-workspace",
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/nx-cloud",
@@ -8,5 +10,26 @@
       }
     }
   },
-  "defaultBase": "master"
+  "defaultBase": "master",
+  "targetDefaults": {
+    "build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ]
+    }
+  },
+  "namedInputs": {
+    "default": [
+      "{projectRoot}/**/*",
+      "sharedGlobals"
+    ],
+    "production": [
+      "default"
+    ],
+    "sharedGlobals": []
+  }
 }
