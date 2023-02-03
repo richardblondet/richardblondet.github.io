@@ -10,3 +10,4 @@ For new ADRs, please use template.md as basis. More information on MADR is avail
 - [0002](0002-branch-naming-strategy.md) – Branch naming strategy
 - [0003](0003-use-github-pages-for-public-html.md) – Use github pages for public html
 - [0004](0004-nx.md) – Nx
+- [0005](0005-using-astro-as-web-framework.md) – Using astro as web framework
