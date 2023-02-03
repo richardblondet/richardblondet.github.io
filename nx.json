@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "npmScope": "test-workspace",
+  "npmScope": "richardblondet.com",
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/nx-cloud",
@@ -9,6 +9,10 @@
         "accessToken": "MmIyMDc2ODYtOTg3MC00ODkwLThkZTQtYWUyZGM0MDU1OTVjfHJlYWQtd3JpdGU="
       }
     }
+  },
+  "workspaceLayout": {
+    "appsDir": "apps",
+    "libsDir": "libs"
   },
   "defaultBase": "master",
   "targetDefaults": {
