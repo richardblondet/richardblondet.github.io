@@ -15,6 +15,14 @@
     "libsDir": "libs"
   },
   "defaultBase": "master",
+  "generators": {
+    "@nrwl/js:library": {
+      "buildable": true
+    },
+    "@nrwl/workspace:library": {
+      "buildable": false
+    }
+  },
   "targetDefaults": {
     "build": {
       "dependsOn": [
