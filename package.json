@@ -1,0 +1,50 @@
+{
+    "name": "richardblondet.github.io",
+    "version": "0.0.1",
+    "description": "Personal Site",
+    "main": "index.js",
+    "directories": {
+        "doc": "docs"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "postinstall": "node ./tools/scripts/patch-nx-cli.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/richardblondet/richardblondet.github.io.git"
+    },
+    "keywords": [
+        "blog",
+        "personal"
+    ],
+    "author": "Richard Blondet <developer@richardblondet.com>",
+    "license": "Artistic-2.0",
+    "bugs": {
+        "url": "https://github.com/richardblondet/richardblondet.github.io/issues"
+    },
+    "homepage": "https://github.com/richardblondet/richardblondet.github.io#readme",
+    "devDependencies": {
+        "@nrwl/cypress": "15.6.3",
+        "@nrwl/eslint-plugin-nx": "15.6.3",
+        "@nrwl/linter": "15.6.3",
+        "@nrwl/nx-cloud": "latest",
+        "@nrwl/workspace": "15.6.3",
+        "@nxtensions/astro": "^3.3.0",
+        "@types/node": "16.11.7",
+        "@typescript-eslint/eslint-plugin": "^5.36.1",
+        "@typescript-eslint/parser": "^5.36.1",
+        "astro": "^2.0.0",
+        "cypress": "^12.2.0",
+        "eslint": "~8.15.0",
+        "eslint-config-prettier": "8.1.0",
+        "eslint-plugin-cypress": "^2.10.3",
+        "nx": "15.6.3",
+        "prettier": "^2.6.2",
+        "typescript": "~4.8.2"
+    },
+    "nx": {
+        "targets": {}
+    },
+    "dependencies": {}
+}
