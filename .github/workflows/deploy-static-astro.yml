@@ -23,7 +23,7 @@ jobs:
       - name: Install, build, and upload your site
         uses: withastro/action@v0
         with:
-            path: public_html # The root location of your Astro project inside the repository. (optional)
+            path: apps/web # The root location of your Astro project inside the repository. (optional)
             node-version: 16.19.0 # The specific version of Node that should be used to build your site. Defaults to 16. (optional)
             # package-manager: yarn # The Node package manager that should be used to install dependencies and build your site. Automatically detected based on your lockfile. (optional)
 
@@ -34,7 +34,7 @@ jobs:
       cname: richardblondet.com
     steps:
       - name: Create CNAME file with domain name
-      - run: echo "$cname" >> CNAME
+      - run: echo "$cname" >> public_html/CNAME
 
   deploy:
     needs: build
