@@ -1,0 +1,12 @@
+body, html {
+	font-family: Source Sans Pro, sans-serif;
+}
+.jumbotron h1 {
+	font-weight: 900;
+}
+
+@media (min-width: 992px) {
+	.jumbotron h1 {
+		font-size: 5em;
+	}	
+}

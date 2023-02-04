@@ -12,7 +12,7 @@
   - directory name: `public_html`
 
 
-- Since we are already using githup for our public site we are keeping it. Tho might just be temporal.
+- Since we are already using github for our public site we are keeping it. Tho might just be temporal.
 
 ### Consequences
 
