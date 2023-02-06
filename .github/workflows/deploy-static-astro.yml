@@ -29,16 +29,18 @@ on:
     branches: [ 'bugfix/github-pages-deploy-workflow' ]
     # pull_request: [ 'bugfix/github-pages-deploy-workflow' ]
     
-env:
-  # env variables for our use case
-  NODEJS_VERSION: 16.19.0
-  BUILD_ARTIFACT_LOCATION: dist/apps/web
-  DESTINATION_PATH: public_html
-  CNAME: richardblondet.com
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      NODEJS_VERSION: 16.19.0
+      BUILD_ARTIFACT_LOCATION: dist/apps/web
+      DESTINATION_PATH: public_html
+      CNAME: richardblondet.com
+      CI_COMMIT_AUTHOR: ${{ github.event.repository.name }} CI Action
+      CI_COMMIT_MESSAGE: "CI: Updated public_html automatically"
+      CI_GIT_USERNAME: richardblondet
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v3
@@ -66,7 +68,7 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           path: "${{ env.DESTINATION_PATH }}/"
-      
+
       - name: Update master public_html with built artifact
         run: |
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
