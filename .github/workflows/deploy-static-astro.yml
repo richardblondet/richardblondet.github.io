@@ -7,7 +7,7 @@ name: Deploy Astro Site To GitHub Pages
 # - create a pages deployment
 # - create an id-token deployment
 permissions:
-  contents: read
+  contents: write
 
 # Workflow Events
 on:
