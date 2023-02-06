@@ -87,7 +87,6 @@ jobs:
       CI_COMMIT_MESSAGE: "CI: Updated public_html automatically"
       CI_GIT_USERNAME: richardblondet
     steps:
-      if: github.event.pull_request.head.repo.full_name == github.repository
       - name: Checkout your repository using git
         uses: actions/checkout@v3
         with:
