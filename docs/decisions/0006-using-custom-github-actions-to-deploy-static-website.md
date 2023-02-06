@@ -16,7 +16,7 @@
     - Upload built artifact to gh-pages
     - Deploy uploaded artifact to github pages
     - Update `public_html` with built artifact
-    - Push `public_html` to master. Commit message: `
+    - Push `public_html` to master. Commit message: `CI: Updated public_html automatically`
 
 ### Consequences
 
@@ -68,3 +68,4 @@
 - https://github.com/actions/deploy-pages
 - https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/How-to-publish-GitHub-Actions-artifacts-example
 - https://stackoverflow.com/questions/59241249/how-to-run-github-actions-workflows-locally
+- https://joht.github.io/johtizen/build/2022/01/20/github-actions-push-into-repository.html
