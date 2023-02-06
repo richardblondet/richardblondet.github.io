@@ -59,10 +59,13 @@ jobs:
       - name: Add domain cname file
         run: echo "$CNAME" >> $BUILD_ARTIFACT_LOCATION/CNAME
 
+      - name: Copy built artifact to public folder
+        run: cp -a "$BUILD_ARTIFACT_LOCATION/." "$DESTINATION_PATH"
+
       - name: Upload built artifat
         uses: actions/upload-pages-artifact@v1
         with:
-          path: "${{ env.BUILD_ARTIFACT_LOCATION }}/"
+          path: "${{ env.DESTINATION_PATH }}/"
   deploy:
     needs: build
     permissions:
@@ -76,12 +79,18 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
-
-#    update:
-#      needs: build
-#      runs-on: ubuntu-latest
-#      env:
-#        CI_COMMIT_AUTHOR: CI Action
-#        CI_COMMIT_MESSAGE: CI Updated public_html automatically
-#      steps:
-#        - name: Updating master branch with built artifact
+  update_master:
+    needs: build
+    runs-on: ubuntu-latest
+    env:
+      CI_COMMIT_AUTHOR: ${{ github.event.repository.name }} CI Action
+      CI_COMMIT_MESSAGE: "CI: Updated public_html automatically"
+      CI_GIT_USERNAME: richardblondet
+    steps:
+      - name: Update master public_html with built artifact
+        run: |
+          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
+          git config --global user.email "${{ env.CI_GIT_USERNAME }}@users.noreply.github.com"
+          git add ${{ env.DESTINATION_PATH }}
+          git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
+          git push origin master
