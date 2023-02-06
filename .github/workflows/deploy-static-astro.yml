@@ -72,6 +72,7 @@ jobs:
           path: "${{ env.DESTINATION_PATH }}/"
 
       - name: Update public_html with built artifact
+        if: github.event_name == 'push'
         run: |
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
           git config --global user.email "${{ env.CI_GIT_USERNAME }}@users.noreply.github.com"
