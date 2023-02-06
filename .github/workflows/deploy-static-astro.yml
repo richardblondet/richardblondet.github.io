@@ -1,92 +1,47 @@
-name: Deploy Astro Site To GitHub Pages
-# description: Adapted workflow for our personal use case using astro with nx
-# author: richardblondet
+name: Deploy to GitHub Pages
 
-# Allow all jobs to: 
-# - read the repo contents 
-# - create a pages deployment
-# - create an id-token deployment
-permissions:
-  contents: write
-
-# Workflow Events
 on:
+  # Trigger the workflow every time you push to the `gh-pages` branch
+  # Using a different branch name? Replace `gh-pages` with your branch’s name
+  push:
+    branches: [ gh-pages ]
   # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
-    # If you run this workflow from a browser you must enter values for the required inputs manually before the workflow will run.
-    inputs:
-      logLevel:
-        description: 'Log level'
-        required: true
-        default: 'warning'
-        type: choice
-        options:
-        - info
-        - warning
-        - debug
-
-  push:
-    branches: [ 'gh-pages' ]
-    # branches: [ 'bugfix/github-pages-deploy-workflow' ]
-    paths-ignore:
-      - 'public_html/**'
-    
+  
+# Allow this job to clone the repo and create a page deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      NODEJS_VERSION: 16.19.0
-      BUILD_ARTIFACT_LOCATION: dist/apps/web
-      DESTINATION_PATH: public_html
-      CNAME: richardblondet.com
-      CI_COMMIT_AUTHOR: ${{ github.event.repository.name }} CI Action
-      CI_COMMIT_MESSAGE: "CI: Updated public_html automatically"
-      CI_GIT_USERNAME: richardblondet
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v3
-
-      - name: Setup node
-        uses: actions/setup-node@v3
+      - name: Install, build, and upload your site
+        uses: withastro/action@v0
         with:
-          node-version: ${{ env.NODEJS_VERSION }}
-          cache: npm
-          cache-dependency-path: package-lock.json
+            path: apps/web # The root location of your Astro project inside the repository. (optional)
+            node-version: 16.19.0 # The specific version of Node that should be used to build your site. Defaults to 16. (optional)
+            # package-manager: yarn # The Node package manager that should be used to install dependencies and build your site. Automatically detected based on your lockfile. (optional)
 
-      - name: Install web dependencies
-        run: npm install
+  add-domain:
+    needs: build
+    runs-on: ubuntu-latest
+    env:
+      cname: richardblondet.com
+    steps:
+      - name: Create CNAME file with domain name
+      - run: echo "$cname" >> public_html/CNAME
 
-      - name: Build web app
-        run: npx nx run web:build
-
-      - name: Add domain cname file
-        run: echo "$CNAME" >> $BUILD_ARTIFACT_LOCATION/CNAME
-
-      - name: Copy built artifact to public folder
-        run: cp -a "$BUILD_ARTIFACT_LOCATION/." "$DESTINATION_PATH"
-
-      - name: Upload built artifat
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: "${{ env.DESTINATION_PATH }}/"
-
-      - name: Update public_html with built artifact
-        run: |
-          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
-          git config --global user.email "${{ env.CI_GIT_USERNAME }}@users.noreply.github.com"
-          git add ${{ env.DESTINATION_PATH }}
-          git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
-          git push
   deploy:
     needs: build
-    permissions:
-      pages: write
-      id-token: write
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
