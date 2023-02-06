@@ -1,6 +1,6 @@
 name: Deploy Astro Site To GitHub Pages
-description: Adapted workflow for our personal use case using astro with nx.
-author: richardblondet
+# description: Adapted workflow for our personal use case using astro with nx
+# author: richardblondet
 
 # Allow all jobs to: 
 # - read the repo contents 
