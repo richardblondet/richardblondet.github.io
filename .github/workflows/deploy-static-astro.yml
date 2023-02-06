@@ -77,7 +77,7 @@ jobs:
           git checkout ${{ github.ref }} -- ${{ env.DESTINATION_PATH }}
           git add ${{ env.DESTINATION_PATH }}
           git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
-          git push origin master
+          git push origin master --force
   deploy:
     needs: build
     permissions:
