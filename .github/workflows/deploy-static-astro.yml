@@ -90,7 +90,7 @@ jobs:
       - name: Checkout your repository using git
         uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.pull_request.head.ref }}
+          ref: master
 
       - name: Update master public_html with built artifact
         run: |
