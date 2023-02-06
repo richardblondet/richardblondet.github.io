@@ -26,8 +26,10 @@ on:
         - debug
 
   push:
+    # branches: [ 'gh-pages' ]
     branches: [ 'bugfix/github-pages-deploy-workflow' ]
-    # pull_request: [ 'bugfix/github-pages-deploy-workflow' ]
+    paths-ignore:
+      - 'public_html/**'
     
 
 jobs:
@@ -69,15 +71,13 @@ jobs:
         with:
           path: "${{ env.DESTINATION_PATH }}/"
 
-      - name: Update master public_html with built artifact
+      - name: Update public_html with built artifact
         run: |
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
           git config --global user.email "${{ env.CI_GIT_USERNAME }}@users.noreply.github.com"
-          git pull && git checkout master
-          git checkout ${{ github.ref }} -- ${{ env.DESTINATION_PATH }}
           git add ${{ env.DESTINATION_PATH }}
           git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
-          git push origin master --force
+          git push
   deploy:
     needs: build
     permissions:
