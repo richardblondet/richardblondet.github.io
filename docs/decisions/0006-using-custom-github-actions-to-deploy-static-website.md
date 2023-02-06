@@ -1,7 +1,7 @@
 # Using Custom GitHub Actions to Deploy Static Website
 
-- Status: pending
-- Date: 
+- Status: accepted
+- Date: 06-02-2023 17:59:30
 - Story: https://github.com/richardblondet/richardblondet.github.io/issues/20
 
 ## Decision Outcome
@@ -71,3 +71,4 @@
 - https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/How-to-publish-GitHub-Actions-artifacts-example
 - https://stackoverflow.com/questions/59241249/how-to-run-github-actions-workflows-locally
 - https://joht.github.io/johtizen/build/2022/01/20/github-actions-push-into-repository.html
+- https://stackoverflow.com/questions/25356810/git-how-to-squash-all-commits-on-branch
