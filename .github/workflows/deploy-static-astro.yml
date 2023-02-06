@@ -73,6 +73,8 @@ jobs:
         run: |
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
           git config --global user.email "${{ env.CI_GIT_USERNAME }}@users.noreply.github.com"
+          git pull && git checkout master
+          git checkout ${{ github.ref }} -- ${{ env.DESTINATION_PATH }}
           git add ${{ env.DESTINATION_PATH }}
           git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
           git push origin master
