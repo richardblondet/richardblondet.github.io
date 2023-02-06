@@ -28,8 +28,8 @@ on:
   push:
     branches: [ 'gh-pages' ]
     # branches: [ 'bugfix/github-pages-deploy-workflow' ]
-  paths-ignore:
-    - 'public_html/**'
+    paths-ignore:
+      - 'public_html/**'
     
 
 jobs:
