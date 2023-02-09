@@ -107,3 +107,6 @@
 - https://docs.astro.build/en/reference/api-reference/#prism-
 - https://docs.astro.build/en/concepts/why-astro/#overview
 - https://docs.astro.build/en/concepts/mpa-vs-spa/
+- https://github.com/nxtensions/nxtensions/tree/main/packages/astro
+- https://docs.astro.build/en/reference/configuration-reference/
+- https://rodneylab.com/astro-turbolinks/
