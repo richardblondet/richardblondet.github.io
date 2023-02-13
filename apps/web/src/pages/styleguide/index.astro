@@ -6,132 +6,57 @@
 */
 
 import StyleGuideLayout from '../../layouts/styleguide.astro';
+import PersonaCard from './PersonaCard.astro';
+import CardPost from './CardPost.astro';
+import CardMedia from './CardMedia.astro';
+import CardThought from './CardThought.astro';
+import CardEvent from './CardEvent.astro';
+
+
 ---
 
 <StyleGuideLayout>
-  <section id="styleguide-heading" class="col-lg-8 mx-auto p-3 py-md-5">
-    <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
-      <a href="/" class="d-flex align-items-center text-dark text-decoration-none text">
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="me-2" viewBox="0 0 118 94" role="img"><title>Bootstrap</title><path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z" fill="currentColor"></path></svg>
-        <span class="fs-4">Styleguide Template</span>
-      </a>
-    </header>
+  <section id="styleguide-heading" class="container">
+    <div class="row">
+      <div class="col-lg-12 py-3 py-lg-5">
+        <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+          <a href="/" class="d-flex align-items-center text-dark text-decoration-none text">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="me-2" viewBox="0 0 118 94" role="img"><title>Bootstrap</title><path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z" fill="currentColor"></path></svg>
+            <span class="fs-4">Styleguide Page</span>
+          </a>
+        </header>
+      </div>
+    </div>
   </section>
   <!-- User Card View -->
   <section>
-      <style>
-        
-      </style>
-    <div class="container">
-      <div class="col-lg-3">
-        <!-- Persona Card -->
-        <style>
-          .card {
-            border-radius: .75rem;
-          }
-        </style>
-        <div class="card overflow-hidden">
-          <!-- Cover image -->
-          <style>
-            .h-50px {
-              height: 55px !important;
-            }
-            .cover-img {
-              background-color: #0070f3;
-            }
-          </style>
-          <div class="h-50px cover-img" style="background-image:url(assets/images/bg/01.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
-            <!-- Card body START -->
-            <div class="card-body pt-0">
-              <!-- Avatar -->
-              <div class="text-center">
-                <style>
-                  .avatar-lg {
-                    height: 4rem;
-                    width: 4rem;
-                  }
-                  .avatar {
-                    height: 4rem;
-                    width: 4rem;
-                    position: relative;
-                    display: inline-block;
-                    -ms-flex-negative: 0 !important;
-                    flex-shrink: 0 !important;
-                    
-                  }
-                  .avatar-img {
-                    width: 100%;
-                    height: 100%;
-                    -o-object-fit: cover;
-                    object-fit: cover;
-                    color: #fff;
-                    border-radius: 0.85rem;
-                    transition: all .2s ease-in-out;
-                  }
-                  .mt-n5 {
-                    margin-top: -3rem !important;
-                  }
-                </style>
-                <div class="avatar avatar-lg mt-n5 mb-3">
-                  <a href="#!"><img class="avatar-img border shadow border-white border-3" src="assets/img/profile-336x336.jpg" alt=""></a>
-                </div>
-              </div>
-              <!-- Info -->
-              <div class="text-center">
-                <style>
-                  h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
-                    margin-top: 0;
-                    margin-bottom: 0.5rem;
-                    /* font-family: "Noto Sans", sans-serif; */
-                    font-weight: 900;
-                    line-height: 1.25;
-                    color: #14191e;
-                  }
-                  h1 > a, h2 > a, h3 > a, h4 > a, h5 > a, h6 > a, .h1 > a, .h2 > a, .h3 > a, .h4 > a, .h5 > a, .h6 > a {
-                    color: #14191e;
-                    text-decoration: none;
-                  }
-                  h5, .h5 {
-                    font-size: 1.171875rem;
-                  }
-                  /* .persona-title {} */
-                  
-                </style>
-                <h5 class="mb-0 persona-title"> <a href="#!">Software Engineer</a> </h5>
-                <small>Persona</small>
-                <p class="mt-3">I'd love to change the world, but they won’t give me the source code.</p>
-                
-
-              </div>
-              <!-- Divider -->
-              <hr>
-              <!-- Persona Tags START -->
-              <div class="text-center">
-                <p class="fw-bold">What I've</p>
-                <p class="">
-                  <a href="#" class="action-link">#coded</a>,
-                  <a href="#" class="action-link">#documented</a>,
-                  <a href="#" class="action-link">#reviewed</a>,
-                  <a href="#" class="action-link">#launched</a>
-                </p>
-              </div>
-              <!-- Persona Tags END -->
-              <!-- Divider -->
-              <hr>
-              <!-- Persona Currently START -->
-              <div class="text-center">
-                <p class="fw-bold">Currently</p>
-                <ul class="d-block list-unstyled">
-                  <li>Open for work</li>
-                  <li>Building personas</li>
-                  <li>Learning astro</li>
-                </ul>
-              </div>
-              <!-- Persona Currently END -->
-            </div>
-            <!-- Card body END -->
+    <div class="container ">
+      <div class="row">
+        <div class="row">
+          <div class="col-lg-3 offset-lg-1 me-md-3">
+            <PersonaCard />
+          </div>
+          <div class="col-lg-7 col-md-6">
+            <section class="d-flex align-items-center mb-5 border-bottom">
+              <h2 class="mb-1">
+                Cards
+              </h2>
+            </section>
+            <section>
+              <CardPost />
+              <CardMedia />
+              <CardThought />
+              <CardEvent />
+            </section>
+            <!-- <section class="d-flex align-items-center mb-5 border-bottom">
+              <h2 class="mb-1">
+                Timelines
+              </h2>
+            </section> -->
+          </div>
         </div>
-      </div>
+
+    </div>
     </div>
   </section>
   <section id="footer-copy" class="col-lg-8 mx-auto p-3 py-md-5">
