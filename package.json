@@ -1,7 +1,7 @@
 {
     "name": "richardblondet.github.io",
     "version": "0.0.1",
-    "description": "Personal Site",
+    "description": "Personas Site",
     "main": "index.js",
     "directories": {
         "doc": "docs"

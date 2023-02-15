@@ -156,4 +156,5 @@
 - https://sandpack.codesandbox.io/https://sandpack.codesandbox.io/
 - https://tailwindui.com/templates
 - https://tailwindui.com/components#product-application-ui
+- https://github.com/jordienr/astro-design-system
 - 
