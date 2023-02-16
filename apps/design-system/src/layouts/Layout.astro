@@ -1,5 +1,6 @@
 ---
 import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 import PageContent from '../components/PageContent.astro';
 import LeftSidebar from '../components/LeftSidebar.astro';
 import RightSidebar from '../components/RightSidebar.astro';
@@ -65,6 +66,7 @@ const currentPage = new URL(Astro.url.pathname, Astro.site);
 				<RightSidebar content={content} />
 			</div>
 		</div>
+        <Footer />
 	</body>
 </html>
 

@@ -1,4 +1,5 @@
 ---
+import Logo from "./Logo.astro";
 import SkipToContent from "./SkipToContent.astro";
 
 const { currentPage } = Astro.props;
@@ -8,11 +9,7 @@ const { currentPage } = Astro.props;
 	<SkipToContent />
 	<nav title="Top Navigation" class="max-w-7xl mx-auto flex justify-between items-center px-4">
 		<div>
-			<a class="text-lg font-medium" href="/">
-				<h1>
-					Persona Design System
-				</h1>
-			</a>
+      <Logo title={"— Design System"} />
 		</div>
 		<div class="flex gap-2">
 		

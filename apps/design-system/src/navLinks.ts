@@ -63,6 +63,10 @@ export default [
   { text: "Guidelines", header: true },
   { text: "Patterns", link: "/guidelines/patterns" },
   { text: "Writing", link: "/guidelines/vocabulary" },
+  /* 
+    - Vocabulary
+  */
+  { text: "Legal", link: "/guidelines/legal" },
     /* 
     - Vocabulary
     - Legal
@@ -71,3 +75,8 @@ export default [
       - GDPR Compliance
     */
 ];
+
+export type Item = { text: string; header?: boolean; link?: string };
+export interface NavLinks {
+  [i: number]: Item
+}
