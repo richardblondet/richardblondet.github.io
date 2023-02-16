@@ -1,14 +1,20 @@
 ---
-const { content, githubEditUrl } = Astro.props;
-const title = content.title;
-// const headers = content.astro.headers;
+const { section, status, title } = Astro.props.content;
 ---
 
-<article id="article" class="content">
-	<section class="main-section">
-		<nav class="block sm:hidden">
-		</nav>
+<article id="content">
+	<section class="meta flex">
+		<span class="segment text-sm uppercase leading-6 font-semibold text-sky-700 dark:text-sky-400">
+			{section}
+		</span>
+		<span class="status inline-flex items-center justify-center px-3 ml-3 text-[12px] text-gray-800 bg-gray-200 rounded-lg dark:bg-gray-700 dark:text-gray-300">
+			{status}
+		</span>
+	</section>
+	<section class="page-heading border-b mb-5">
+		<h1 class="font-extrabold text-2xl text-gray-800 md:text-4xl md:text-[40px] mb-4 mt-4">{title}</h1>
+	</section>
+	<section class="prose lg:prose-xl">
 		<slot />
 	</section>
 </article>
-

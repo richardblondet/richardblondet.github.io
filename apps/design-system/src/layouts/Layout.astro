@@ -10,7 +10,7 @@ export interface Props {
 }
 
 const { content = {}, title } = Astro.props;
-const currentPage = new URL(Astro.url.pathname, Astro.site);
+const currentPage = new URL(Astro.url.pathname, Astro.site).pathname;
 // const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 // console.log("🚀 ~ file: Layout.astro:14 ~ canonicalURL", canonicalURL)
 ---
@@ -46,21 +46,19 @@ const currentPage = new URL(Astro.url.pathname, Astro.site);
     </head>
 
     <body class="bg-slate-100">
-		<div class="sticky top-0 z-10 w-full">
+		<div class="top-0 z-10 w-full">
 			<Header currentPage={currentPage} />
 		</div>
 		<div class="grid grid-cols-12">
-			<div class="col-span-3 sticky top-0 pt-12 h-screen flex">
+			<div class="col-span-3 sticky top-0 h-screen flex">
 				<div class="ml-auto">
 					<LeftSidebar currentPage={currentPage} />
 				</div>
 			</div>
-			<main class="py-4 px-8 pb-32 col-span-6  overflow-auto">
-				<div>
-					<PageContent content={content}>
-						<slot />
-					</PageContent>
-				</div>
+			<main class="p-8 pb-32 col-span-6 overflow-auto">
+                <PageContent content={content}>
+                    <slot />
+                </PageContent>
 			</main>
 			<div class="col-span-3 sticky top-0 h-screen flex">
 				<RightSidebar content={content} />

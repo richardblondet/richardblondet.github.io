@@ -3,8 +3,7 @@ import navLinks from '../navLinks';
 import type { Item } from '../navLinks';
 
 const { currentPage = [] } = Astro.props;
-const currentPageMatch = currentPage.pathname.slice(1);
-console.log("🚀 ~ file: LeftSidebar.astro:7 ~ currentPageMatch", currentPageMatch)
+const currentPageMatch = currentPage.slice(1);
 
 const isCurrentPage = (item: Item) => {
 	if (item.link) {
@@ -37,11 +36,11 @@ const getLinkClasses = (link: Item) => {
 </aside>
 
 <script is:inline>
-	window.addEventListener('DOMContentLoaded', (event) => {
-		var target = document.querySelector('[aria-current="page"]');
-		if (target && target.offsetTop > window.innerHeight - 100) {
-			document.querySelector('.nav-groups').scrollTop = target.offsetTop;
-		}
-	});
+	// window.addEventListener('DOMContentLoaded', (event) => {
+	// 	var target = document.querySelector('[aria-current="page"]');
+	// 	if (target && target.offsetTop > window.innerHeight - 100) {
+	// 		document.querySelector('.nav-groups').scrollTop = target.offsetTop;
+	// 	}
+	// });
 </script>
 
