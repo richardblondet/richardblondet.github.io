@@ -1,0 +1,30 @@
+---
+import SkipToContent from "./SkipToContent.astro";
+
+const { currentPage } = Astro.props;
+---
+
+<header class="p-3 bg-slate-100 bg-opacity-80 backdrop-blur-md border-b text-slate-900">
+	<SkipToContent />
+	<nav title="Top Navigation" class="max-w-7xl mx-auto flex justify-between items-center px-4">
+		<div>
+			<a class="text-lg font-medium" href="/">
+				<h1>
+					Persona Design System
+				</h1>
+			</a>
+		</div>
+		<div class="flex gap-2">
+		
+		<!-- <button onclick="toggleDarkMode()">theme</button> -->
+		</div>
+	</nav>
+</header>
+
+<script is:inline>
+	// function toggleDarkMode() {
+	// 	const body = document.body;
+	// 	body.classList.toggle('dark');
+	// 	console.log('dark mode toggled');
+	// }
+</script>
