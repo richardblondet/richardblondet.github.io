@@ -1,12 +1,31 @@
 ---
-	const { headers } = Astro.props;
+const { headers } = Astro.props;
+const contentTitleClasses = [
+	'mt-4',
+	'text-slate-500',
+	'font-semibold',
+	'mb-4',
+	'text-sm',
+	'leading-6',
+	'dark:text-slate-100'
+];
+const itemClasses = [
+	'text-sm',
+	'font-medium',
+	'text-slate-400',
+	'hover:text-slate-800',
+	'hover:text-slate-900'
+];
 ---
-<ul class="flex flex-col gap-4 mt-24">
-	{ headers.map(({ slug, text }: any) => {
-		return (
-		<li class="text-slate-400 hover:text-slate-800 hover:text-slate-900">
-			#<a href={`#${slug}`}>{text}</a>
-		</li>
-		) 
-	}) }
-</ul>
+<nav class="px-8">
+	<h5 class:list={contentTitleClasses}>Page Contents</h5>	
+	<ul class="flex flex-col gap-2">
+		{ headers.map(({ slug, text }: any) => {
+			return (
+			<li class:list={itemClasses}>
+				<a href={`#${slug}`}>{text}</a>
+			</li>
+			) 
+		}) }
+	</ul>
+</nav>
