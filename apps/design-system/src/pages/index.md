@@ -16,7 +16,7 @@ To show the section on the left side navigation, add it to the navigation config
 
 Example:
 
-```js
+```jsx
 export default = [
   { text: "Foundations", header: true },
   { text: "Overview", link: "/foundations/overview" },
