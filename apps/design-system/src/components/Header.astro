@@ -1,8 +1,6 @@
 ---
 import Logo from "./Logo.astro";
 import SkipToContent from "./SkipToContent.astro";
-
-// const { currentPage } = Astro.props;
 ---
 
 <header class="p-3 bg-slate-100 bg-opacity-80 backdrop-blur-md border-b text-slate-900">
@@ -11,17 +9,6 @@ import SkipToContent from "./SkipToContent.astro";
 		<div>
       <Logo title={"— Design System"} />
 		</div>
-		<div class="flex gap-2">
-		
-		<!-- <button onclick="toggleDarkMode()">theme</button> -->
-		</div>
+		<div class="flex gap-2"><!-- navbar right space for buttons or something --></div>
 	</nav>
 </header>
-
-<script is:inline>
-	// function toggleDarkMode() {
-	// 	const body = document.body;
-	// 	body.classList.toggle('dark');
-	// 	console.log('dark mode toggled');
-	// }
-</script>

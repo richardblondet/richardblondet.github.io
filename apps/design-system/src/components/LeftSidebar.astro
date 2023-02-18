@@ -2,7 +2,7 @@
 import navLinks from '../navLinks';
 import type { Item } from '../navLinks';
 
-const { currentPage = [] } = Astro.props;
+const { currentPage } = Astro.props;
 const currentPageMatch = currentPage.slice(1);
 
 const isCurrentPage = (item: Item) => {
@@ -22,9 +22,8 @@ const getLinkClasses = (link: Item) => {
 	}
 }
 ---
-<aside title="Site Navigation">
-	<!-- <Debug content={navigation} /> -->
-	<nav aria-labelledby="grid-left" class="w-64 p-4 border-r">
+<section class="w-64 p-4 border-r ml-auto">
+	<nav>
 		<ul>
 			{navLinks.map(item => (item.header ? 
 				<h2 class="mt-4 font-semibold text-slate-700">{item.text}</h2> : 
@@ -33,14 +32,4 @@ const getLinkClasses = (link: Item) => {
 				</li>))}
 		</ul>
 	</nav>
-</aside>
-
-<script is:inline>
-	// window.addEventListener('DOMContentLoaded', (event) => {
-	// 	var target = document.querySelector('[aria-current="page"]');
-	// 	if (target && target.offsetTop > window.innerHeight - 100) {
-	// 		document.querySelector('.nav-groups').scrollTop = target.offsetTop;
-	// 	}
-	// });
-</script>
-
+</section>

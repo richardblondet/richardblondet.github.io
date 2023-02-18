@@ -1,8 +1,8 @@
 ---
 title: Persona Design System
 description: Getting started
-section: resources
-status: ready
+section: section
+status: status
 layout: ../layouts/Layout.astro
 ---
 
