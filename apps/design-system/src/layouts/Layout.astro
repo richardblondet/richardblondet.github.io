@@ -20,17 +20,22 @@ const currentPage = new URL(Astro.url.pathname, Astro.site).pathname;
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        
+        <title>{title}</title>
+        
+        <!-- Load assests -->
 
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <!-- Preload Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital@0;1&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700;900&display=swap" rel="stylesheet">
-
         <!-- Scrollable a11y code helper -->
         <script src="/make-scrollable-code-focusable.js" is:inline></script>
 
+        <!-- Include Globals -->
         <!-- This is intentionally inlined to avoid FOUC -->
         <script is:inline>
             const root = document.documentElement;
@@ -41,9 +46,26 @@ const currentPage = new URL(Astro.url.pathname, Astro.site).pathname;
                 root.classList.remove('dark');
             }
         </script>
+        <style is:global>
+            .astro-code {
+                box-shadow: 0 2px 2px rgba(0,0,0,.06);
+            }
+            .component-preview {
+                padding: 4rem;
+                display: flex;
+                gap: 1rem;
+                justify-content: center;
+                align-items: center;
+                background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23F0F0F0' d='M0 0h8v8H0zm8 8h8v8H8z'/%3E%3C/svg%3E");
+                background-repeat: repeat;
+                background-size: 16px 16px;
+                border-radius: 0.75em;
+                border: 1px solid theme("colors.slate.200");
+                box-shadow: 0 2px 2px rgba(0,0,0,.06);
+                resize: both;
+            }
+        </style>
 
-        <meta name="generator" content={Astro.generator} />
-        <title>{title}</title>
     </head>
 
     <body class="bg-slate-100">
