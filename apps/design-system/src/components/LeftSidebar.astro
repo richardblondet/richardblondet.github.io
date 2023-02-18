@@ -22,7 +22,7 @@ const getLinkClasses = (link: Item) => {
 	}
 }
 ---
-<section class="w-64 p-4 border-r ml-auto">
+<section id="sidebar-navigation"  class="overflow-auto w-64 p-4 border-r ml-auto">
 	<nav>
 		<ul>
 			{navLinks.map(item => (item.header ? 
@@ -33,3 +33,19 @@ const getLinkClasses = (link: Item) => {
 		</ul>
 	</nav>
 </section>
+
+<script is:inline>
+	(function(w) {
+		const sidebar = document.getElementById('sidebar-navigation');
+		w.addEventListener('scroll', () => {
+			const isSidebarEqOrGtWindow = sidebar.offsetHeight >= (w.innerHeight - 100) ? true:false;
+			const isWindowScrolled100Px = w.scrollY > 100 ? true:false;
+			if (isSidebarEqOrGtWindow && isWindowScrolled100Px) {
+				sidebar.classList.add("overflow-auto");
+			} else {
+				sidebar.classList.remove("overflow-auto");
+			}
+		});
+	}(window))
+
+</script>

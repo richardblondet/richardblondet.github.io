@@ -82,7 +82,7 @@ const canonicalURL = new URL(url ?? '', Astro.site).pathname;
 			<aside class="col-span-3 sticky top-0 h-screen flex">
                 <LeftSidebar currentPage={currentPage} />
 			</aside>
-			<main class="p-8 pb-32 col-span-6 overflow-auto">
+			<main class="p-8 pb-72 md:pb-32 col-span-6 overflow-auto">
                 <PageContent content={content}>
                     <slot />
                 </PageContent>
