@@ -1,5 +1,26 @@
 ---
 const { section, status, title } = Astro.props.content;
+const proseDefaultClasses = [
+	'prose',
+];
+const proseH1Classes = [
+	'text-2xl',
+	'sm:text-3xl',
+	'font-extrabold',
+	'text-slate-900',
+	'tracking-tight',
+	'dark:text-slate-200'
+];
+const proseCodeClasses = [
+	'bg-red-100',
+	'font-bold'
+];
+const proseContentClases = [
+	...(proseDefaultClasses),
+	...(proseH1Classes.map(cls => `prose-h1:${cls}`)),
+	...(proseCodeClasses.map(cls => `prose-code:${cls}`)) // doesn't appear to be working
+];
+
 ---
 
 <article id="content">
@@ -14,7 +35,7 @@ const { section, status, title } = Astro.props.content;
 	<section class="page-heading border-b mb-5">
 		<h1 class="font-extrabold text-2xl text-gray-800 md:text-4xl md:text-[40px] mb-4 mt-4">{title}</h1>
 	</section>
-	<section class="prose lg:prose-xl">
+	<section class:list={proseContentClases}>
 		<slot />
 	</section>
 </article>
