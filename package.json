@@ -53,5 +53,8 @@
     },
     "nx": {
         "targets": {}
+    },
+    "dependencies": {
+        "@astrojs/mdx": "^0.17.0"
     }
 }
