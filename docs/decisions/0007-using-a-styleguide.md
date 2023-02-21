@@ -1,13 +1,13 @@
 # Using A Style Guide
 
 - Status: accepted
-- Date: 
+- Date: 18-02-2023 02:56:19
 - Story: https://github.com/richardblondet/richardblondet.github.io/issues/38
 
 ## Decision Outcome
 
 - **Chosen Option:** Richard Blondet's Personas Styleguide
-- **Rules:** Our styleguide is comprised with the following content:
+- **Rules:** Create standalone app design system. Our styleguide is comprised with the following content:
   - Foundations:
     - Overview
     - Universal
