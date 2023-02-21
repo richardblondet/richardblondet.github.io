@@ -1,59 +1,40 @@
 ---
 title: Persona Design System
 description: Getting started
-section: section
-status: status
+section: index
+status: wip
 layout: ../layouts/Layout.astro
 ---
 
-This Design System is the easiest is the starting point for visual desicion making. Since Astro is compatible with many frameworks, you can import your components and document them right in the markdown files. 
+Single source of truth for building digital experiences to our Personas. Every design decision, building blocks, tools and guides to enable Personas for the web.
 
-## Getting started
+## Usage
 
-### Adding new sections
-
-To show the section on the left side navigation, add it to the navigation config file at `apps/design-system/src/navLinks.ts`.
-
-Example:
-
-```jsx
-export default = [
-  { text: "Foundations", header: true },
-  { text: "Overview", link: "/foundations/overview" },
-  { text: "Universal", link: "/foundations/universal" },
-  ...
-  { text: "Components", header: true },
-  { text: "Typography", link: "/components/typography" },
-  { text: "Avatar", link: "/components/avatar" },
-  ...
-];
-```
-
-### Adding new pages
-
-To add new pages just create an .astro or markdown file in `src/pages/[section]/page-name.md`.
-
-
-### Adding your components
-
-Astro is great for design systems because it allows you to import components from different frameworks like react, vue or svelte.
-
-To get started check how the `Button` component is used in the `src/pages/components/buttons.md` file.
-
-You can import your component library or create your own and document it easily.
-
-### `.component-preview` utility
-
-There's a class called `.component-preview` that you can use to wrap your component in a grid, and it will look like this:
-
-<div class="component-preview">
-  <button class="text-white bg-blue-500 px-4 py-2 rounded-md">Button Component</button>
+<div class="flex">
+  <div class="bg-white flex w-32 flex-1 flex-col items-center customize-me flex-auto rounded-lg m-4 drop-shadow-md border p-4">
+    <div class="h-24 w-[100%] rounded-lg bg-cover bg-[url('/foundations-undraw.svg')]"></div>
+    <div class="text-center">
+      <a class="block p-4 w-[100%] font-bold no-underline" href="/foundations/overview">Foundations</a>
+    </div>
+  </div>
+  <div class="bg-white flex w-32 flex-1 flex-col items-center customize-me flex-auto rounded-lg m-4 drop-shadow-md border p-4">
+    <div class="h-24 w-[100%] rounded-lg bg-blue-500 "></div>
+    <div class="text-center">
+      <a class="block p-4 w-[100%] font-bold no-underline" href="#/components">Components</a>
+    </div>
+  </div>
+  <div class="bg-white flex w-32 flex-1 flex-col items-center customize-me flex-auto rounded-lg m-4 drop-shadow-md border p-4">
+    <div class="h-24 w-[100%] rounded-lg bg-blue-500 "></div>
+    <div class="text-center">
+      <a class="block p-4 w-[100%] font-bold no-underline" href="#/guidelines">Guidelines</a>
+    </div>
+  </div>
 </div>
 
-```js
-  <Button>Button Component</Button>
-```
 
-### Acknowledgements
 
-Inspired by the work of  **[@jordienr](https://twitter.com/jordienr)** from his [Astro Design System Starter](https://github.com/jordienr/astro-design-system) template. Adapted to support Astro 2.x and react.
+## Motivations
+
+Building a design system was the [decision outcome](https://github.com/richardblondet/richardblondet.github.io/blob/master/docs/decisions/0007-using-a-styleguide.md) as part of the solution to the [styleguide issue](https://github.com/richardblondet/richardblondet.github.io/issues/38) that rised wondering how to approach creating the building blocks to our personas website. 
+
+The need for [ourself](https://www.dictionary.com/browse/ourself) to have a place for all presentational components and/or a documented common visual language to enable our desired digital experience, as well as consistency is what we consider the core reason for creating this project.
