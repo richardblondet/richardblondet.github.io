@@ -8,23 +8,22 @@ layout: ../layouts/Layout.astro
 
 Single source of truth for building digital experiences to our Personas. Every design decision, building blocks, tools and guides to enable Personas for the web.
 
-## Usage
 
-<div class="flex">
-  <div class="bg-white flex w-32 flex-1 flex-col items-center customize-me flex-auto rounded-lg m-4 drop-shadow-md border p-4">
-    <div class="h-24 w-[100%] rounded-lg bg-cover bg-[url('/foundations-undraw.svg')]"></div>
+<div class="flex ">
+  <div class="bg-white flex flex-1 flex-col items-center customize-me flex-auto rounded-lg mr-4 drop-shadow-md border p-4">
+    <div class="h-48 w-[100%] rounded-lg bg-cover bg-center bg-[url('/foundations-undraw.svg')]"></div>
     <div class="text-center">
       <a class="block p-4 w-[100%] font-bold no-underline" href="/foundations/overview">Foundations</a>
     </div>
   </div>
-  <div class="bg-white flex w-32 flex-1 flex-col items-center customize-me flex-auto rounded-lg m-4 drop-shadow-md border p-4">
-    <div class="h-24 w-[100%] rounded-lg bg-blue-500 "></div>
+  <div class="bg-white flex flex-1 flex-col items-center customize-me flex-auto rounded-lg mr-4 drop-shadow-md border p-4">
+    <div class="h-48 w-[100%] rounded-lg bg-blue-500 "></div>
     <div class="text-center">
       <a class="block p-4 w-[100%] font-bold no-underline" href="#/components">Components</a>
     </div>
   </div>
-  <div class="bg-white flex w-32 flex-1 flex-col items-center customize-me flex-auto rounded-lg m-4 drop-shadow-md border p-4">
-    <div class="h-24 w-[100%] rounded-lg bg-blue-500 "></div>
+  <div class="bg-white flex flex-1 flex-col items-center customize-me flex-auto rounded-lg drop-shadow-md border p-4">
+    <div class="h-48 w-[100%] rounded-lg bg-blue-500 "></div>
     <div class="text-center">
       <a class="block p-4 w-[100%] font-bold no-underline" href="#/guidelines">Guidelines</a>
     </div>
