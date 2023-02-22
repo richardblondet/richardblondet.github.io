@@ -1,12 +1,17 @@
 ---
+export interface Props {
+  padding: string;
+}
 
+const { padding = "4em" } = Astro.props;
 ---
-<div class="component-preview">
+<div class="component-preview no-prose">
   <slot />
 </div>
-<style>
+<style define:vars={{ componentPreviewPadding: padding }}>
+  .p-4 {}
   .component-preview {
-      padding: 4rem;
+      padding: var(--componentPreviewPadding);
       display: flex;
       gap: 1rem;
       justify-content: center;

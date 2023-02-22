@@ -1,0 +1,10 @@
+---
+export interface Props {
+  size: number;
+  type: string;
+  src: string;
+};
+
+const { size = 10, type = "rounded", src = "/profile-picture.jpeg" } = Astro.props;
+---
+<img class={`w-${size} h-${size} ${type}`} src={src} alt="Avatar Partial" />

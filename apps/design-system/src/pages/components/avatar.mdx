@@ -1,0 +1,37 @@
+---
+title: Avatar
+description: Avatar components
+section: components
+status: planned
+layout: ../../layouts/Layout.astro
+---
+
+import PreviewComponent from "../../components/PreviewComponent.astro";
+import Avatar from "../../components/partials/Avatar.astro";
+
+## Rounded 
+
+<PreviewComponent padding="1em">
+  <Avatar />
+</PreviewComponent>
+```jsx
+  <Avatar />
+```
+
+## Rounded Full
+
+<PreviewComponent padding="1em">
+  <Avatar type="rounded-full" />
+</PreviewComponent>
+```jsx
+  <Avatar type="rounded-full" />
+```
+
+## Rounded Full
+
+<PreviewComponent padding="1em">
+  <Avatar type="p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500" />
+</PreviewComponent>
+```jsx
+  <Avatar type="p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500" />
+```
