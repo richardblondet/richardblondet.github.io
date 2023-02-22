@@ -1,0 +1,22 @@
+---
+
+---
+<div class="component-preview">
+  <slot />
+</div>
+<style>
+  .component-preview {
+      padding: 4rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+      background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23F0F0F0' d='M0 0h8v8H0zm8 8h8v8H8z'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 16px 16px;
+      border-radius: 0.75em;
+      border: 1px solid theme("colors.slate.200");
+      box-shadow: 0 2px 2px rgba(0,0,0,.06);
+      resize: both;
+  }
+</style>

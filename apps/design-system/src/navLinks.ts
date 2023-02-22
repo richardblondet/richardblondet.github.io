@@ -6,9 +6,11 @@ export default [
 
   { text: "Components", header: true },
   { text: "Typography", link: "/components/typography" },
+  { text: "Links", link: "/components/Links" },
   { text: "Avatar", link: "/components/avatar" },
   { text: "Buttons", link: "/components/buttons" },
   { text: "Cards", link: "/components/cards" },
+  { text: "Dialog", link: "/components/dialog" },
   { text: "Images", link: "/components/images" },
   { text: "Dividers", link: "/components/dividers" },
   { text: "Code", link: "/components/code" },

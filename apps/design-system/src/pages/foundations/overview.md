@@ -2,7 +2,7 @@
 title: Overview
 description: Foundations Persona's Design System
 section: foundations
-status: draft
+status: wip
 layout: ../../layouts/Layout.astro
 ---
 
@@ -21,9 +21,9 @@ Design tokens are a limited set of values that are applied to every component. T
 | | | |  |
 
 
-#### Foregrounds
-
-Foreground elements are text and icons. You can apply color to them by using any of the fg (short for foreground) design tokens.
-
 ### Persona
 
+
+| token name | token key | value | group |
+| --- | --- | --- | --- |
+| | | |  |
