@@ -9,7 +9,6 @@ const { padding = "4em" } = Astro.props;
   <slot />
 </div>
 <style define:vars={{ componentPreviewPadding: padding }}>
-  .p-4 {}
   .component-preview {
       padding: var(--componentPreviewPadding);
       display: flex;
