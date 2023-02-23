@@ -1,10 +1,27 @@
 ---
+import { avatar } from '../../style/sheet';
 export interface Props {
   size: number;
   type: string;
   src: string;
+  withShadow?: boolean;
+  border?: number;
 };
+const { 
+  size = 16, 
+  type = "rounded", 
+  src = "/profile-picture.jpeg", 
+  withShadow,
+  border
+} = Astro.props;
 
-const { size = 10, type = "rounded", src = "/profile-picture.jpeg" } = Astro.props;
+const avatarClassName = avatar({ 
+  type, 
+  withShadow,
+  border,
+  css: {
+  width: `$${size}`,
+  height: `$${size}`,
+}}).className;
 ---
-<img class={`w-${size} h-${size} ${type}`} src={src} alt="Avatar Partial" />
+<img class={avatarClassName} src={src} alt="Avatar Partial" />

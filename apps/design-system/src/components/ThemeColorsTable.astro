@@ -1,0 +1,41 @@
+---
+import { theme } from '../style/theme';
+const { colors } = theme;
+type colorsTypes = typeof colors;
+---
+
+<table class="table-auto">
+  <thead>
+    <tr>
+      <th>Token Key</th>
+      <th>Token Value</th>
+      <th>Preview</th>
+    </tr>
+  </thead>
+  <tbody>
+    {Object.keys(colors).map((tokenKey: string) => (
+      <tr>
+        <td  id={`token-${tokenKey}`}>
+          <code>{tokenKey}</code>
+        </td>
+        <td class="flex">{colors[tokenKey as keyof colorsTypes]}</td>
+        <td>
+          <style set:html={`
+            #token-preview-${tokenKey}.color-preview {
+              background-color: ${colors[tokenKey as keyof colorsTypes]};
+            }
+          `}></style>
+          <div id={`token-preview-${tokenKey}`} class="color-preview"></div>
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+<style>
+  .color-preview {
+    width: 3em;
+    height: 3em;
+    border-radius: 0.85rem;
+    background-color: #b7b0b0;
+  }
+</style>

@@ -1,0 +1,7 @@
+---
+import { theme } from '../style/theme';
+import ThemeKeyValueTable from './ThemeKeyValueTable.astro';
+
+const { fonts } = theme;
+---
+<ThemeKeyValueTable headers={['Font Name Key', 'Value']} keyValObj={fonts} />

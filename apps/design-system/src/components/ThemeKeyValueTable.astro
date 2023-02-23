@@ -1,0 +1,27 @@
+---
+export interface Props {
+  headers: string[];
+  keyValObj: {[iterable:string]: string};
+}
+const { headers = ['Key', 'Values'], keyValObj = {} } = Astro.props;
+---
+
+<table class="table-auto">
+  <thead>
+    <tr>
+      {headers.map((vKey: unknown) => (
+        <th id={`heading-${vKey}`}>{vKey}</th>
+      ))}
+    </tr>
+  </thead>
+  <tbody>
+    {Object.keys(keyValObj).map((vKey: unknown) => (
+      <tr>
+        <td  id={`var-${vKey}`}>
+          <code>${vKey}</code>
+        </td>
+        <td>{keyValObj[vKey as any]}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>

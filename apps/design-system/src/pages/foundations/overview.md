@@ -15,10 +15,30 @@ Design tokens are a limited set of values that are applied to every component. T
 
 ### Universal
 
+#### Brand
+##### Values
+##### Promise
 
-| token name | token key | value | group |
-| --- | --- | --- | --- |
-| | | |  |
+#### Personality
+#### Logos
+#### Typography
+#### Grid Layout
+#### Spacing
+#### Responsive Breakpoints
+#### Supported Platform
+#### Resources
+#### Illustrations
+
+
+| Resource | |
+| --- | --- |
+| [Colors](foundations/universal#colors) | |
+| [Spaces](foundations/universal#spaces) | |
+| [Sizes](foundations/universal#sizes) | |
+| [Font Families](foundations/universal#font-families) | |
+| [Font Sizes](foundations/universal#font-sizes) | |
+| [Border Radius](foundations/universal#border-radius) | |
+| [Z-Index Order](foundations/universal#z-index-order) | |
 
 
 ### Persona
