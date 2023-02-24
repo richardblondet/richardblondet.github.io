@@ -16,3 +16,17 @@ import PersonaCard from "../../components/partials/PersonaCard.astro";
     <PersonaCard />
   </div>
 </PreviewComponent>
+
+### API (desired)
+
+```jsx
+const persona = {
+  name: "Software Engineer",
+  description: "I'd love to change the world, but they won’t give me the source code.",
+  actions: ['coded', 'documented', 'reviewed', 'launched', 'been-recruited'],
+  now: ['Open for work', 'Building personas', 'Learning astro'],
+  theme: []
+};
+
+<PersonaCard persona={persona} />
+```

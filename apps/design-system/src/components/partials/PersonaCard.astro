@@ -18,15 +18,15 @@ export interface Props {
       </a>
     </div>
     <!-- Info -->
-    <div class="text-center">
-      <h5 class="persona-title"><a href="#!">Software Engineer</a></h5>
-      <label>Persona</label>
-      <p class="mt-3 ">I'd love to change the world, but they won’t give me the source code.</p>
+    <div class="persona-profile text-center">
+      <h5 class="persona-name"><a href="#!">Software Engineer</a></h5>
+      <div class="persona-legend">Persona</div>
+      <p class="persona-description">I'd love to change the world, but they won’t give me the source code.</p>
     </div>
     <!-- Divider -->
     <hr>
     <!-- Persona Tags START -->
-    <div class="text-center persona-past">
+    <div class="text-center persona-actions">
       <p class="fw-bold">I've done</p>
       <p class="">
         <a href="#" class="action-link">#coded</a>,
@@ -40,7 +40,7 @@ export interface Props {
     <!-- Divider -->
     <hr>
     <!-- Persona Currently START -->
-    <div class="text-center persona-present">
+    <div class="text-center persona-now">
       <p class="fw-bold">Currently</p>
       <ul class="d-block list-unstyled">
         <li>Open for work</li>
@@ -52,6 +52,16 @@ export interface Props {
     <!-- Card body END -->
 </Card>
 <style>
+  hr {
+    margin: 0 !important;
+  }
+  .persona-legend {
+    text-transform: uppercase;
+    font-size: 70%;
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: #979797;
+  }
   .cover-img {
     height: 55px !important;
     background-color: #0070f3;
@@ -74,7 +84,7 @@ export interface Props {
     justify-content: center;
     margin-top: -5rem !important;
   }
-  .persona-title > a {
+  .persona-name > a {
     font-size: 1.171875rem;
     font-weight: 900;
     line-height: 1.25;
