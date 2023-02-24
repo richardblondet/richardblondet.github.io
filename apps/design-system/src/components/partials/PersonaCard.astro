@@ -1,107 +1,85 @@
 ---
+import { theme } from '../../style/theme';
 import Avatar from '../partials/Avatar.astro';
 import Card from '../partials/Card.astro';
+
+const { colors } = theme;
+export interface Props {
+  topColor: keyof typeof colors;
+}
 ---
 <Card>
   <!-- Cover image -->
-  <div class="h-50px cover-img" style="background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
-    <!-- Card body START -->
-    <div class="card-body pt-0">
-      <!-- Avatar -->
-      <div class="text-center">
-        <div class="avatar avatar-lg mt-n5 mb-3">
-          <a href="#!">
-            <Avatar withShadow border={3} />
-          </a>
-        </div>
-      </div>
-      <!-- Info -->
-      <div class="text-center">
-        <style>
-          
-          /* .persona-title {} */
-          
-        </style>
-        <h5 class="mb-0 persona-title"> <a href="#!">Software Engineer</a> </h5>
-        <small>Persona</small>
-        <p class="mt-3 ">I'd love to change the world, but they won’t give me the source code.</p>
-        
-
-      </div>
-      <!-- Divider -->
-      <hr>
-      <!-- Persona Tags START -->
-      <div class="text-center">
-        <p class="fw-bold">I've done</p>
-        <p class="">
-          <a href="#" class="action-link">#coded</a>,
-          <a href="#" class="action-link">#documented</a>,
-          <a href="#" class="action-link">#reviewed</a>,
-          <a href="#" class="action-link">#launched</a>,
-          <a href="#" class="action-link">#been-recruited</a>
-        </p>
-      </div>
-      <!-- Persona Tags END -->
-      <!-- Divider -->
-      <hr>
-      <!-- Persona Currently START -->
-      <div class="text-center">
-        <p class="fw-bold">Currently</p>
-        <ul class="d-block list-unstyled">
-          <li>Open for work</li>
-          <li>Building personas</li>
-          <li>Learning astro</li>
-        </ul>
-      </div>
-      <!-- Persona Currently END -->
+  <!-- <div class="cover-img"></div> -->
+    <!-- Avatar -->
+    <div class="avatar-container text-center">
+      <a href="#!">
+        <Avatar size={'md'} withShadow={true} border={3} />
+      </a>
     </div>
+    <!-- Info -->
+    <div class="text-center">
+      <h5 class="persona-title"><a href="#!">Software Engineer</a></h5>
+      <label>Persona</label>
+      <p class="mt-3 ">I'd love to change the world, but they won’t give me the source code.</p>
+    </div>
+    <!-- Divider -->
+    <hr>
+    <!-- Persona Tags START -->
+    <div class="text-center persona-past">
+      <p class="fw-bold">I've done</p>
+      <p class="">
+        <a href="#" class="action-link">#coded</a>,
+        <a href="#" class="action-link">#documented</a>,
+        <a href="#" class="action-link">#reviewed</a>,
+        <a href="#" class="action-link">#launched</a>,
+        <a href="#" class="action-link">#been-recruited</a>
+      </p>
+    </div>
+    <!-- Persona Tags END -->
+    <!-- Divider -->
+    <hr>
+    <!-- Persona Currently START -->
+    <div class="text-center persona-present">
+      <p class="fw-bold">Currently</p>
+      <ul class="d-block list-unstyled">
+        <li>Open for work</li>
+        <li>Building personas</li>
+        <li>Learning astro</li>
+      </ul>
+    </div>
+    <!-- Persona Currently END -->
     <!-- Card body END -->
 </Card>
 <style>
-  .h-50px {
-    height: 55px !important;
-  }
   .cover-img {
+    height: 55px !important;
     background-color: #0070f3;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
-  .avatar-lg {
-    height: 4rem;
-    width: 4rem;
+  .fw-bold {
+    font-weight: 700!important;
   }
-  .avatar {
-    height: 4rem;
-    width: 4rem;
-    position: relative;
-    display: inline-block;
-    -ms-flex-negative: 0 !important;
-    flex-shrink: 0 !important;
-    
+  .list-unstyled {
+    padding-left: 0;
+    list-style: none;
   }
-  .avatar-img {
-    width: 100%;
-    height: 100%;
-    -o-object-fit: cover;
-    object-fit: cover;
-    color: #fff;
-    border-radius: 0.85rem;
-    transition: all .2s ease-in-out;
+  .list-unstyled > li {
+    margin: 0;
   }
-  .mt-n5 {
-    margin-top: -3rem !important;
+  .avatar-container {
+    display: flex;
+    justify-content: center;
+    margin-top: -5rem !important;
   }
-  h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-    /* font-family: "Noto Sans", sans-serif; */
+  .persona-title > a {
+    font-size: 1.171875rem;
     font-weight: 900;
     line-height: 1.25;
     color: #14191e;
-  }
-  h1 > a, h2 > a, h3 > a, h4 > a, h5 > a, h6 > a, .h1 > a, .h2 > a, .h3 > a, .h4 > a, .h5 > a, .h6 > a {
-    color: #14191e;
     text-decoration: none;
-  }
-  h5, .h5 {
-    font-size: 1.171875rem;
+    font-family: 'Inter';
   }
 </style>

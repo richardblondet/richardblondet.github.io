@@ -1,4 +1,5 @@
-import { css, getCssText } from "./theme";
+import { css, getCssText } from './theme';
+import type * as Stitches from '@stitches/core';
 
 export default () => (
   <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
@@ -16,11 +17,11 @@ export const button = css({
 
 export const avatar = css({
   objectFit: 'cover',
-  transition: 'all .2s ease-in-outall .2s ease-in-out',
+  transition: 'all .2s ease-in-out',
   variants: {
     type: {
       rounded: {
-        borderRadius: '$md'
+        borderRadius: '$xl'
       },
       full: {
         borderRadius: '$full'
@@ -44,9 +45,25 @@ export const avatar = css({
         borderStyle: 'solid',
         borderWidth: '3px'
       },
+    },
+    size: {
+      sm: {
+        width: '$16',
+        height: '$16'
+      },
+      md: {
+        width: '$24',
+        height: '$24'
+      },
+      lg: {
+        width: '$36',
+        height: '$36'
+      },
     }
   }
 });
+
+export type CssAvatarVariants = Stitches.VariantProps<typeof avatar>;
 
 export const card = css({
   position: 'relative',
@@ -57,9 +74,13 @@ export const card = css({
   backgroundColor: '#fff',
   backgroundClip: 'border-box',
   border: '1px solid rgba(0,0,0,.125)',
-  borderRadius: '.75rem',
-  overflow: 'hidden'
+  borderRadius: '0.85rem',
+  flex: '1 1 auto',
+  padding: '1rem',
+  borderTopWidth: '50px',
 });
+/*
+*/
 
 export const cardCoverImg = css({
   height: '50px',

@@ -1,4 +1,5 @@
 import { createStitches } from '@stitches/core';
+import type * as Stitches from '@stitches/core';
 // import defaultTheme from 'tailwindcss/defaultTheme';
 
 export const theme = {
@@ -297,137 +298,82 @@ export const theme = {
   }
 };
 
-export const { css, getCssText } = createStitches({
-  theme,
-  utils: {
-    p: (value: any) => ({
-      paddingTop: value,
-      paddingBottom: value,
-      paddingLeft: value,
-      paddingRight: value,
-    }),
-    pt: (value: any) => ({
-      paddingTop: value,
-    }),
-    pr: (value: any) => ({
-      paddingRight: value,
-    }),
-    pb: (value: any) => ({
-      paddingBottom: value,
-    }),
-    pl: (value: any) => ({
-      paddingLeft: value,
-    }),
-    px: (value: any) => ({
-      paddingLeft: value,
-      paddingRight: value,
-    }),
-    py: (value: any) => ({
-      paddingTop: value,
-      paddingBottom: value,
-    }),
+export const utils = {
+  p: (value: Stitches.ScaleValue<'space'>) => ({
+    paddingTop: value,
+    paddingBottom: value,
+    paddingLeft: value,
+    paddingRight: value,
+  }),
+  pt: (value: Stitches.ScaleValue<'space'>) => ({
+    paddingTop: value,
+  }),
+  pr: (value: Stitches.ScaleValue<'space'>) => ({
+    paddingRight: value,
+  }),
+  pb: (value: Stitches.ScaleValue<'space'>) => ({
+    paddingBottom: value,
+  }),
+  pl: (value: Stitches.ScaleValue<'space'>) => ({
+    paddingLeft: value,
+  }),
+  px: (value: Stitches.ScaleValue<'space'>) => ({
+    paddingLeft: value,
+    paddingRight: value,
+  }),
+  py: (value: Stitches.ScaleValue<'space'>) => ({
+    paddingTop: value,
+    paddingBottom: value,
+  }),
+  m: (value: Stitches.ScaleValue<'space'>) => ({
+    marginTop: value,
+    marginBottom: value,
+    marginLeft: value,
+    marginRight: value,
+  }),
+  mt: (value: Stitches.ScaleValue<'space'>) => ({
+    marginTop: value,
+  }),
+  mr: (value: Stitches.ScaleValue<'space'>) => ({
+    marginRight: value,
+  }),
+  mb: (value: Stitches.ScaleValue<'space'>) => ({
+    marginBottom: value,
+  }),
+  ml: (value: Stitches.ScaleValue<'space'>) => ({
+    marginLeft: value,
+  }),
+  mx: (value: Stitches.ScaleValue<'space'>) => ({
+    marginLeft: value,
+    marginRight: value,
+  }),
+  my: (value: Stitches.ScaleValue<'space'>) => ({
+    marginTop: value,
+    marginBottom: value,
+  }),
+  linearGradient: (value: Stitches.PropertyValue<'backgroundImage'>) => ({
+    backgroundImage: `linear-gradient(${value})`,
+  }),
+  // A property for applying width/height together
+  size: (value: Stitches.ScaleValue<'sizes'>) => ({
+    width: value,
+    height: value,
+  }),
+  // An abbreviated property for border-radius
+  br: (value: Stitches.PropertyValue<'borderRadius'>) => ({
+    borderRadius: value,
+  }),
+};
 
-    m: (value: any) => ({
-      marginTop: value,
-      marginBottom: value,
-      marginLeft: value,
-      marginRight: value,
-    }),
-    mt: (value: any) => ({
-      marginTop: value,
-    }),
-    mr: (value: any) => ({
-      marginRight: value,
-    }),
-    mb: (value: any) => ({
-      marginBottom: value,
-    }),
-    ml: (value: any) => ({
-      marginLeft: value,
-    }),
-    mx: (value: any) => ({
-      marginLeft: value,
-      marginRight: value,
-    }),
-    my: (value: any) => ({
-      marginTop: value,
-      marginBottom: value,
-    }),
+export const media = {
+  bp1: `@media (min-width: 520px)`,
+  bp2: `@media (min-width: 900px)`,
+  bp3: `@media (min-width: 1200px)`,
+  bp4: `@media (min-width: 1800px)`,
+  motion: `@media (prefers-reduced-motion)`,
+  hover: `@media (hover: hover)`,
+  dark: `@media (prefers-color-scheme: dark)`,
+  light: `@media (prefers-color-scheme: light)`,
+};
 
-    ta: (value: any) => ({ textAlign: value }),
-
-    fd: (value: any) => ({ flexDirection: value }),
-    fw: (value: any) => ({ flexWrap: value }),
-
-    ai: (value: any) => ({ alignItems: value }),
-    ac: (value: any) => ({ alignContent: value }),
-    jc: (value: any) => ({ justifyContent: value }),
-    as: (value: any) => ({ alignSelf: value }),
-    fg: (value: any) => ({ flexGrow: value }),
-    fs: (value: any) => ({ flexShrink: value }),
-    fb: (value: any) => ({ flexBasis: value }),
-
-    bs: (value: any) => ({ boxShadow: value }),
-
-    lh: (value: any) => ({ lineHeight: value }),
-
-    ox: (value: any) => ({ overflowX: value }),
-    oy: (value: any) => ({ overflowY: value }),
-
-    pe: (value: any) => ({ pointerEvents: value }),
-    us: (value: any) => ({ userSelect: value }),
-
-    linearGradient: (value: any) => ({
-      backgroundImage: `linear-gradient(${value})`,
-    }),
-
-    utils: {
-      // Abbreviated margin properties
-      m: (value) => ({
-        margin: value,
-      }),
-      mt: (value) => ({
-        marginTop: value,
-      }),
-      mr: (value) => ({
-        marginRight: value,
-      }),
-      mb: (value) => ({
-        marginBottom: value,
-      }),
-      ml: (value) => ({
-        marginLeft: value,
-      }),
-      mx: (value) => ({
-        marginLeft: value,
-        marginRight: value,
-      }),
-      my: (value) => ({
-        marginTop: value,
-        marginBottom: value,
-      }),
-  
-      // A property for applying width/height together
-      size: (value) => ({
-        width: value,
-        height: value,
-      }),
-  
-  
-      // An abbreviated property for border-radius
-      br: (value) => ({
-        borderRadius: value,
-      })
-    },
-  },
-  media: {
-    bp1: `@media (min-width: 520px)`,
-    bp2: `@media (min-width: 900px)`,
-    bp3: `@media (min-width: 1200px)`,
-    bp4: `@media (min-width: 1800px)`,
-    motion: `@media (prefers-reduced-motion)`,
-    hover: `@media (hover: hover)`,
-    dark: `@media (prefers-color-scheme: dark)`,
-    light: `@media (prefers-color-scheme: light)`,
-  },
-});
+export const { css, getCssText } = createStitches({ theme, utils, media });

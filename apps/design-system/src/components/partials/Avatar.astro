@@ -1,27 +1,27 @@
 ---
-import { avatar } from '../../style/sheet';
+import { avatar, CssAvatarVariants } from '../../style/sheet';
 export interface Props {
-  size: number;
-  type: string;
-  src: string;
-  withShadow?: boolean;
-  border?: number;
+  size?: CssAvatarVariants['size'];
+  type?: CssAvatarVariants['type'];
+  src?: string;
+  withShadow?: CssAvatarVariants['withShadow'];
+  border?: CssAvatarVariants['border'];
+  alt?: string;
 };
 const { 
-  size = 16, 
-  type = "rounded", 
-  src = "/profile-picture.jpeg", 
-  withShadow,
-  border
+  size = 'md', 
+  type = 'rounded', 
+  src  = '/profile-picture.jpeg', 
+  withShadow = false,
+  border = 1,
+  alt = "Avatar Partial"
 } = Astro.props;
 
-const avatarClassName = avatar({ 
+const { className } = avatar({ 
   type, 
   withShadow,
   border,
-  css: {
-  width: `$${size}`,
-  height: `$${size}`,
-}}).className;
+  size,
+});
 ---
-<img class={avatarClassName} src={src} alt="Avatar Partial" />
+<img class={className} src={src} alt={alt} />
