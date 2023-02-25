@@ -1,0 +1,94 @@
+---
+// import { theme } from '../../style/theme';
+import Avatar from '../partials/Avatar.astro';
+import Card from '../partials/Card.astro';
+
+export interface Props {
+  coverImage?: string;
+}
+const { coverImage } = Astro.props;
+---
+<Card tokens={{ cardBorderTopOverride: '1px' }}>
+  <!-- Info -->
+  <div class="persona-profile">
+    <div class="post-heading">
+      <div class="post-action">
+        <a href="#">Action</a> • <a href="#">Another</a> • <a href="#">Test</a>
+      </div>
+      <div class="post-date">
+        Feb 24, 2023
+      </div>
+    </div>
+    <!-- Cover image -->
+    {coverImage ? <a href="#"><div class="cover-img" style={`background-image: url(${coverImage})`}></div></a> : null}
+    <h2 class="post-title">
+      <a href="#!">What is Lorem Ipsum? Where can I get some?</a>
+    </h2>
+      <p class="post-excerpt">
+        <a href="#!">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima illo necessitatibus voluptatum labore laudantium amet, impedit voluptates quo esse molestias quisquam molestiae, quae iste laborum. Quam reiciendis enim perspiciatis unde.
+        </a>
+      </p>
+    </div>
+    <!-- Card body END -->
+</Card>
+<style>
+  hr {
+    margin: 0 !important;
+  }
+  .post-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .post-date {
+    font-size: 70%;
+  }
+  .post-action > a {
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 70%;
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: #979797;
+  }
+  .cover-img {
+    margin-top: 1rem;
+    min-height: 300px !important;
+    background-color: #0070f3;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
+    border-radius: var(--radii-xl);
+    border: solid 1px #e5e7eb;
+  }
+  .fw-bold {
+    font-weight: 700!important;
+  }
+  .list-unstyled {
+    padding-left: 0;
+    list-style: none;
+  }
+  .list-unstyled > li {
+    margin: 0;
+  }
+  .avatar-container {
+    display: flex;
+    justify-content: center;
+    margin-top: -5rem !important;
+  }
+  .post-title {
+    margin: 24px 0;
+    line-height: 1.25;
+  }
+  .post-title > a {
+    font-weight: 900;
+    color: #14191e;
+    text-decoration: none;
+    font-family: 'Inter';
+  }
+  .post-excerpt > a {
+    text-decoration: none;
+  }
+</style>

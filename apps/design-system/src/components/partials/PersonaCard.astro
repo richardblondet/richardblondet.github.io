@@ -3,10 +3,6 @@ import { theme } from '../../style/theme';
 import Avatar from '../partials/Avatar.astro';
 import Card from '../partials/Card.astro';
 
-const { colors } = theme;
-export interface Props {
-  topColor: keyof typeof colors;
-}
 ---
 <Card>
   <!-- Cover image -->
@@ -27,8 +23,8 @@ export interface Props {
     <hr>
     <!-- Persona Tags START -->
     <div class="text-center persona-actions">
-      <p class="fw-bold">I've done</p>
-      <p class="">
+      <p class="fw-bold">See what I've</p>
+      <p>
         <a href="#" class="action-link">#coded</a>,
         <a href="#" class="action-link">#documented</a>,
         <a href="#" class="action-link">#reviewed</a>,

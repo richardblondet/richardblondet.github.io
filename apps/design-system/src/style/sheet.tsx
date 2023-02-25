@@ -77,7 +77,8 @@ export const card = css({
   borderRadius: '0.85rem',
   flex: '1 1 auto',
   padding: '1rem',
-  borderTopWidth: '50px',
+  marginBottom: '1rem',
+  borderTopWidth: 'var(--cardBorderTopOverride, 0px)',
 });
 /*
 */

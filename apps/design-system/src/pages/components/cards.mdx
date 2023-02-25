@@ -8,10 +8,12 @@ layout: ../../layouts/Layout.astro
 
 import PreviewComponent from "../../components/PreviewComponent.astro";
 import PersonaCard from "../../components/partials/PersonaCard.astro";
+import PostCard from "../../components/partials/PostCard.astro";
 
 #### Prompt 
 
 - [ ] organize the internal components styles: mv styles to stylesheet `<PersonaCard />`
+- [ ] organize the internal components styles: mv styles to stylesheet `<PostCard />`
 
 
 ## Persona Card
@@ -37,7 +39,28 @@ const persona = {
 ```
 
 
-
-
 ## Post Card
 
+<PreviewComponent>
+  <div class="no-prose">
+    <PostCard />
+    <PostCard coverImage={"/post-place-holder-cover.jpeg"} />
+  </div>
+</PreviewComponent>
+
+Photo by <a href="https://unsplash.com/@resourcedatabase?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Resource Database</a> on <a href="https://unsplash.com/photos/9CyKnLrDWgM?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+
+
+### Desired API
+
+```jsx
+const post = {
+  title: "What is Lorem Ipsum? Where can I get some?",
+  excerpt: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima illo necessitatibus voluptatum...",
+  coverImage: "/post-place-holder-cover.jpeg",
+  actions: ['coded', 'documented', 'reviewed', 'launched', 'been-recruited'],
+  date: new Date().toDateString(),
+};
+
+<PostCard post={post} />
+```

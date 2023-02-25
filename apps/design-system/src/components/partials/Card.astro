@@ -1,8 +1,17 @@
 ---
 import { card } from '../../style/sheet';
+export interface Props {
+  tokens?: any;
+}
+const { 
+  tokens = {
+    cardBorderTopOverride: '50px'
+  }
+} = Astro.props;
 
 const { className } = card();
 ---
 <div class={className}>
   <slot />
 </div>
+<style define:vars={tokens}></style>
