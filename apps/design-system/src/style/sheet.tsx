@@ -5,16 +5,6 @@ export default () => (
   <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
 );
 
-export const button = css({
-  backgroundColor: 'gainsboro',
-  borderRadius: '9999px',
-  fontSize: '13px',
-  padding: '10px 15px',
-  '&:hover': {
-    backgroundColor: 'lightgray',
-  },
-});
-
 export const avatar = css({
   objectFit: 'cover',
   transition: 'all .2s ease-in-out',
@@ -87,11 +77,4 @@ export const card = css({
   '@xl': {
     marginBottom: '2rem'
   }
-});
-/*
-*/
-
-export const cardCoverImg = css({
-  height: '50px',
-  backgroundColor: '#0070f3'
 });
