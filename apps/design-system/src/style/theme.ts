@@ -370,15 +370,15 @@ export const utils = {
 };
 
 export const media = {
-  'xs': `@media (min-width: 480px)`,
-  'sm': `@media (min-width: 640px)`,
-  'md': `@media (min-width: 768px)`,
-  'lg': `@media (min-width: 1024px)`,
-  'xl': `@media (min-width: 1280px)`,
-  '2xl': `@media (min-width: 1536px)`,
-  'hover': `@media (hover: hover)`,
-  'dark': `@media (prefers-color-scheme: dark)`,
-  'light': `@media (prefers-color-scheme: light)`,
+  'xs': `(min-width: 480px)`,
+  'sm': `(min-width: 640px)`,
+  'md': `(min-width: 768px)`,
+  'lg': `(min-width: 1024px)`,
+  'xl': `(min-width: 1280px)`,
+  '2xl': `(min-width: 1536px)`,
+  'hover': `(hover: hover)`,
+  'dark': `(prefers-color-scheme: dark)`,
+  'light': `(prefers-color-scheme: light)`,
 };
 
 export const { css, getCssText } = createStitches({ theme, utils, media });
