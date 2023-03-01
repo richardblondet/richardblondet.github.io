@@ -1,13 +1,13 @@
 ---
 import { theme } from '../style/theme';
 export interface Props {
-  padding: string;
-  noProse: boolean;
+  padding?: string;
+  noProse?: boolean;
 }
 
 const { padding = "4em", noProse = false } = Astro.props;
 ---
-<div class={`component-preview ${noProse ? 'no-prose': ''}`}>
+<div class={`component-preview ${noProse ? 'not-prose': ''}`}>
   <slot />
 </div>
 <style define:vars={{ componentPreviewPadding: padding, colorCanvas: theme.colors['gray100'] }}>

@@ -5,6 +5,7 @@ export default [
   { text: "Persona", link: "/foundations/persona" },
 
   { text: "Components", header: true },
+  { text: "Container", link: "/components/container" },
   { text: "Typography", link: "/components/typography" },
   { text: "Links", link: "/components/Links" },
   { text: "Avatar", link: "/components/avatar" },

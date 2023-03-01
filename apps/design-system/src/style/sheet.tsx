@@ -18,6 +18,7 @@ export const button = css({
 export const avatar = css({
   objectFit: 'cover',
   transition: 'all .2s ease-in-out',
+  borderColor: '#959ba7',
   variants: {
     type: {
       rounded: {
@@ -47,6 +48,10 @@ export const avatar = css({
       },
     },
     size: {
+      xs: {
+        width: '$12',
+        height: '$12'
+      },
       sm: {
         width: '$16',
         height: '$16'
@@ -73,12 +78,12 @@ export const card = css({
   wordWrap: 'break-word',
   backgroundColor: '#fff',
   backgroundClip: 'border-box',
-  border: '1px solid rgba(0,0,0,.125)',
-  borderRadius: '0.85rem',
   flex: '1 1 auto',
   padding: '1rem',
   marginBottom: '1rem',
-  borderTopWidth: 'var(--cardBorderTopOverride, 0px)',
+  borderWidth: '1px',
+  borderTopWidth: 'var(--cardBorderTopOverride, 1px)',
+  borderRadius: '$lg',
 });
 /*
 */
