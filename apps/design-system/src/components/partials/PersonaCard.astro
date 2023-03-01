@@ -1,5 +1,4 @@
 ---
-import { media } from '../../style/theme';
 import Avatar from '../partials/Avatar.astro';
 import Card from '../partials/Card.astro';
 const categories = [
@@ -9,10 +8,8 @@ const categories = [
   'launched',
   'been-recruited',
 ];
-type MediaType = typeof media;
-type MediaKey = keyof MediaType;
 
-const breakpoints = media['sm'].replace("@media ", "");
+
 
 ---
 <Card>

@@ -84,6 +84,9 @@ export const card = css({
   borderWidth: '1px',
   borderTopWidth: 'var(--cardBorderTopOverride, 1px)',
   borderRadius: '$lg',
+  '@xl': {
+    marginBottom: '2rem'
+  }
 });
 /*
 */
