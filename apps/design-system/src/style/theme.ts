@@ -1,6 +1,8 @@
 import { createStitches } from '@stitches/core';
 import type * as Stitches from '@stitches/core';
 // import defaultTheme from 'tailwindcss/defaultTheme';
+// https://github.com/cristicretu/stitches-tailwind/blob/main/stitches.config.ts
+// console.log("🚀 ~ file: theme.ts:4 ~ defaultTheme:", defaultTheme);
 
 export const theme = {
   colors: {
@@ -281,7 +283,9 @@ export const theme = {
     xl9: '8rem',
   },
   radii: {
+    none: '0px',
     sm: '0.125rem',
+    base: '0.25rem',
     md: '0.375rem',
     lg: '0.5rem',
     xl: '0.85rem',
@@ -366,14 +370,15 @@ export const utils = {
 };
 
 export const media = {
-  bp1: `@media (min-width: 520px)`,
-  bp2: `@media (min-width: 900px)`,
-  bp3: `@media (min-width: 1200px)`,
-  bp4: `@media (min-width: 1800px)`,
-  motion: `@media (prefers-reduced-motion)`,
-  hover: `@media (hover: hover)`,
-  dark: `@media (prefers-color-scheme: dark)`,
-  light: `@media (prefers-color-scheme: light)`,
+  'xs': `@media (min-width: 480px)`,
+  'sm': `@media (min-width: 640px)`,
+  'md': `@media (min-width: 768px)`,
+  'lg': `@media (min-width: 1024px)`,
+  'xl': `@media (min-width: 1280px)`,
+  '2xl': `@media (min-width: 1536px)`,
+  'hover': `@media (hover: hover)`,
+  'dark': `@media (prefers-color-scheme: dark)`,
+  'light': `@media (prefers-color-scheme: light)`,
 };
 
 export const { css, getCssText } = createStitches({ theme, utils, media });

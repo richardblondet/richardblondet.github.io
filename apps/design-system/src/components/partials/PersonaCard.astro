@@ -1,7 +1,18 @@
 ---
-import { theme } from '../../style/theme';
+import { media } from '../../style/theme';
 import Avatar from '../partials/Avatar.astro';
 import Card from '../partials/Card.astro';
+const categories = [
+  'coded',
+  'documented',
+  'reviewed',
+  'launched',
+  'been-recruited',
+];
+type MediaType = typeof media;
+type MediaKey = keyof MediaType;
+
+const breakpoints = media['sm'].replace("@media ", "");
 
 ---
 <Card>
@@ -10,29 +21,15 @@ import Card from '../partials/Card.astro';
     <!-- Avatar -->
     <div class="avatar-container text-center">
       <a href="#!">
-        <Avatar size={'md'} withShadow={true} border={3} />
+        <Avatar size={'md'} border={3} />
       </a>
     </div>
     <!-- Info -->
     <div class="persona-profile text-center">
-      <h5 class="persona-name"><a href="#!">Software Engineer</a></h5>
+      <h5 class="persona-name text-slate-900 font-medium"><a href="#!">Software Engineer</a></h5>
       <div class="persona-legend">Persona</div>
       <p class="persona-description">I'd love to change the world, but they won’t give me the source code.</p>
     </div>
-    <!-- Divider -->
-    <hr>
-    <!-- Persona Tags START -->
-    <div class="text-center persona-actions">
-      <p class="fw-bold">See what I've</p>
-      <p>
-        <a href="#" class="action-link">#coded</a>,
-        <a href="#" class="action-link">#documented</a>,
-        <a href="#" class="action-link">#reviewed</a>,
-        <a href="#" class="action-link">#launched</a>,
-        <a href="#" class="action-link">#been-recruited</a>
-      </p>
-    </div>
-    <!-- Persona Tags END -->
     <!-- Divider -->
     <hr>
     <!-- Persona Currently START -->
@@ -45,9 +42,29 @@ import Card from '../partials/Card.astro';
       </ul>
     </div>
     <!-- Persona Currently END -->
+    <!-- Divider -->
+    <hr>
+    <!-- Persona Tags START -->
+    <div class="text-center persona-actions">
+      <!-- <p class="fw-bold">See what I've</p> -->
+      { categories.map(cat => (
+        <span class="inline-block bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-gray-700 dark:text-gray-300">
+          <a href="#" class="action-link ">#{cat}</a>
+        </span>
+        ))}
+    </div>
+    <!-- Persona Tags END -->
+
     <!-- Card body END -->
 </Card>
 <style>
+  p {
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
+  }
+  .list-unstyled {
+    margin-bottom: 1.25em;
+  }
   hr {
     margin: 0 !important;
   }
@@ -75,17 +92,40 @@ import Card from '../partials/Card.astro';
   .list-unstyled > li {
     margin: 0;
   }
+  .persona-actions {
+    margin: 1.25em 0;
+  }
+  .persona-actions a {
+    text-decoration: none;
+  }
   .avatar-container {
     display: flex;
     justify-content: center;
-    margin-top: -5rem !important;
+    /* margin-top: -5.5rem!important; */
+  }
+  .avatar-container img {
+    margin: 0 !important;
+  }
+  .avatar-container > a {
+    margin-top: 2em;
+    margin-bottom: 2em;
   }
   .persona-name > a {
     font-size: 1.171875rem;
-    font-weight: 900;
+    font-weight: 500;
     line-height: 1.25;
     color: #14191e;
     text-decoration: none;
     font-family: 'Inter';
   }
+</style>
+<style>
+    .some-div {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      --tw-bg-opacity: 1;
+      background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+
+    }
 </style>
