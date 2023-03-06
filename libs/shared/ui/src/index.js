@@ -9,7 +9,8 @@ export {
   CssAvatarVariants,
   card,
   PersonaCard,
-  PostCard,
+  PostCard, 
+  PostLists,
 } from './lib/stylesheet.tsx';
 export {
   theme,

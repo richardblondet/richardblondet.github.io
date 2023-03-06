@@ -1,5 +1,5 @@
 ---
-title: Container
+title: Containers
 description: Container components
 section: components
 status: wip
@@ -7,15 +7,39 @@ layout: ../../layouts/Layout.astro
 ---
 
 import PreviewComponent from "../../components/PreviewComponent.astro";
-import Container from '../../components/partials/Container.astro';
 
+## Root Layout
 
-The default container component is responsive.
+Main layout structure.
 
-### Layout
+```tsx
+import { 
+  RootContainer, 
+  Aside, 
+  Main, 
+  Container 
+} from '@richardblondet.com/ui';
 
-<div class="not-prose">
-  <PreviewComponent padding={'0'}>
-    <iframe src="/playground" frameborder="0" width="100%" height="500px"></iframe>
-  </PreviewComponent>
-</div>
+<RootContainer>
+  <Aside>
+    Sidebar
+  </Aside>
+  <Main>
+    Content
+  </Main>
+</RootContainer>
+```
+
+## Post List
+
+Applies the correct wrapper width and margins for Posts listing.
+
+```tsx
+import { 
+  PostList
+} from '@richardblondet.com/ui';
+
+const posts = getPosts('some-source'); 
+
+<PostList posts={posts} />
+```

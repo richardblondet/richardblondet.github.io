@@ -4,25 +4,18 @@
 * a type of template file consisting of font and layout settings 
 * to give a standardized look to documents.
 */
-import { RootContainer, PersonaCard, PostCard, Container, Aside, Main } from '@richardblondet.com/ui';
+import { RootContainer, PersonaCard, PostCard, PostLists, Aside, Main } from '@richardblondet.com/ui';
 import StyleGuideLayout from '../../layouts/styleguide.astro';
 
+const posts = [{}, {coverImage: "/post-place-holder-cover.jpeg"}, {}];
 ---
 <StyleGuideLayout>
   <RootContainer>
     <Aside>
       <PersonaCard />
     </Aside>
-      <Main>
-        <Container css={{
-          '@sm': {
-            maxWidth: '$lg',
-            margin: 'auto'
-          }}}>
-        <PostCard />
-        <PostCard coverImage="/post-place-holder-cover.jpeg" />
-        <PostCard />
-      </Container>
+    <Main>
+      <PostLists posts={posts} />
     </Main>
   </RootContainer>
 </StyleGuideLayout>

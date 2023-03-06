@@ -297,7 +297,7 @@ export const PersonaCard = (props: PersonaCardProps) => {
       </Div>
     </>
   );
-}
+};
 
 export interface PostCardProps {
   title?: string;
@@ -401,5 +401,17 @@ export const PostCard = (props: PostCardProps) => {
       </Div>
     </>
   );
-}
+};
 
+export const PostLists = (props: { posts: PostCardProps[] }) => {
+  const { posts } = props;
+  return (
+    <Container css={{
+      '@sm': {
+        maxWidth: '$lg',
+        margin: 'auto'
+      }}}>
+        {posts.map(post => <PostCard {...post} />)}
+      </Container>
+  )
+};
