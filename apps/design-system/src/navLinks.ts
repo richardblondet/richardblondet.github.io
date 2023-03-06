@@ -7,7 +7,6 @@ export default [
   { text: "Components", header: true },
   { text: "Container", link: "/components/container" },
   { text: "Typography", link: "/components/typography" },
-  { text: "Links", link: "/components/Links" },
   { text: "Avatar", link: "/components/avatar" },
   { text: "Buttons", link: "/components/buttons" },
   { text: "Cards", link: "/components/cards" },
