@@ -6,7 +6,7 @@ import PageContent from "../components/PageContent.astro";
 import LeftSidebar from "../components/LeftSidebar.astro";
 import RightSidebar from "../components/RightSidebar.astro";
 
-import Stylesheet from "../style/sheet";
+import { StyleSheet } from '@richardblondet.com/ui';
 
 // https://docs.astro.build/en/core-concepts/layouts/#markdownmdx-layouts
 // when switching to mdx use MDXLayoutProps
@@ -72,14 +72,14 @@ const canonicalURL = new URL(url ?? '', Astro.site).pathname;
             }
         </style>
         
-        <Stylesheet />
+        <StyleSheet />
 
 
     </head>
 
     <body class="bg-slate-100">
 		<div class="top-0 z-10 w-full">
-			<Header currentPage={currentPage} />
+			<Header />
 		</div>
 		<div class="grid grid-cols-12">
 			<aside class="col-span-3 sticky top-0 h-screen flex">

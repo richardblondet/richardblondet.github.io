@@ -1,6 +1,7 @@
 ---
-/* Styleguide Display Layout */
 import { StyleSheet } from '@richardblondet.com/ui';
+import { RootContainer, PostCard, Aside, Main, PersonaCard, Container } from '@richardblondet.com/ui';
+
 ---
 
 <!DOCTYPE html>
@@ -13,7 +14,7 @@ import { StyleSheet } from '@richardblondet.com/ui';
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
         <meta name="generator" content={Astro.generator} />
-        <title>richardblondet.com ~ Styleguide</title>
+        <title>Template richardblondet.com </title>
 
         
         <!-- CSS Base Stylesheets -->
@@ -30,6 +31,22 @@ import { StyleSheet } from '@richardblondet.com/ui';
     </head>
 
     <body style={'background-color: var(--colors-twslate100)'}>
-      <slot />
+      <RootContainer>
+        <Aside>
+          <PersonaCard />
+        </Aside>
+        <Main>
+          <Container css={{
+            '@md': {
+              maxWidthScreen: 'sm',
+              margin: 'auto'
+            }
+          }}>
+            <PostCard />
+            <PostCard />
+            <PostCard />
+          </Container>
+        </Main>
+      </RootContainer>
     </body>
 </html>

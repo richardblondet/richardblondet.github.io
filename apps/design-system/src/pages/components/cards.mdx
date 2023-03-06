@@ -7,13 +7,12 @@ layout: ../../layouts/Layout.astro
 ---
 
 import PreviewComponent from "../../components/PreviewComponent.astro";
-import PersonaCard from "../../components/partials/PersonaCard.astro";
-import PostCard from "../../components/partials/PostCard.astro";
+import { PersonaCard, PostCard } from '@richardblondet.com/ui';
 
 #### Prompt 
 
-- [ ] organize the internal components styles: mv styles to stylesheet `<PersonaCard />`
-- [ ] organize the internal components styles: mv styles to stylesheet `<PostCard />`
+- [x] organize the internal components styles: mv styles to stylesheet `<PersonaCard />`
+- [x] organize the internal components styles: mv styles to stylesheet `<PostCard />`
 
 
 ## Persona Card
@@ -24,18 +23,33 @@ import PostCard from "../../components/partials/PostCard.astro";
   </div>
 </PreviewComponent>
 
-### Desired API
+### Interface 
+
+```ts
+export interface PersonaCardProps {
+  name?: string;
+  avatarSrc?: string;
+  description?: string;
+  actions?: string[];
+  now?: string[];
+  theme?: string[];
+}
+
+```
+
+### Usage
 
 ```jsx
-const persona = {
-  name: "Software Engineer",
-  description: "I'd love to change the world, but they won’t give me the source code.",
-  actions: ['coded', 'documented', 'reviewed', 'launched', 'been-recruited'],
-  now: ['Open for work', 'Building personas', 'Learning astro'],
-  theme: []
+const persona = const {
+  name = 'Software Developer',
+  avatarImage  = '/profile-picture.jpeg',
+  description = "I'd love to change the world, but they won't give me the source code.",
+  actions = ['#hashtag', '#hashtag', '#hashtag', '#hashtag', '#hashtag'],
+  now = [ '🧳 open for work', '🛠 building personas', '👓 learning astro'],
+  theme = []
 };
 
-<PersonaCard persona={persona} />
+<PersonaCard {...persona} />
 ```
 
 
@@ -50,8 +64,20 @@ const persona = {
 
 Photo by <a href="https://unsplash.com/@resourcedatabase?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Resource Database</a> on <a href="https://unsplash.com/photos/9CyKnLrDWgM?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 
+### Interface
 
-### Desired API
+```ts
+export interface PostCardProps {
+  title?: string;
+  tags?: string[];
+  excerpt?: string;
+  coverImage?: string;
+  actions?: string;
+  date?: string;
+}
+```
+
+### Usage
 
 ```jsx
 const post = {
@@ -62,5 +88,5 @@ const post = {
   date: new Date().toDateString(),
 };
 
-<PostCard post={post} />
+<PostCard {...post} />
 ```
