@@ -167,7 +167,7 @@ export const PersonaCard = (props: PersonaCardProps) => {
   } = props;
   return (
     <>
-      <Div id="persona-card" css={{
+      <Div className="persona-card" css={{
         ...flex,
         flexDirection: 'column',
         backgroundColor: '$white',
@@ -287,9 +287,6 @@ export const PersonaCard = (props: PersonaCardProps) => {
             borderBottomRightRadius: '$md'
           }
         }}>
-          {/* <span className="inline-block mr-2 px-2.5 py-0.5 rounded-full dark:bg-gray-700 dark:text-gray-300">
-              <a href="#" className="action-link ">{hashtag}</a>
-            </span> */}
           {actions.map((hashtag) => (
             <Pill>
               <a href="#">{hashtag}</a>
@@ -330,7 +327,7 @@ export const PostCard = (props: PostCardProps) => {
         b: 'base',
         borderLeft: 'none',
         borderRight: 'none',
-        '@md': {
+        '@sm': {
           b: 'base',
           borderRadius: '$lg',
         },
@@ -402,7 +399,6 @@ export const PostCard = (props: PostCardProps) => {
             </p>
           </Div>
       </Div>
-
     </>
   );
 }
