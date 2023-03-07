@@ -11,10 +11,142 @@ export default () => {
   return (
     <style id="stylesheet" data-generator="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
   );
-}
+};
+
 export const flex = {
   display: 'flex'
 };
+
+export const textStylesMap = {
+  h1: {
+    fontSize: '$xl4',
+    lineHeight: '$10',
+    fontWeight: '$bold',
+    marginBottom: '$4',
+  },
+  h2: {
+    fontSize: '$xl3',
+    lineHeight: '$10',
+    fontWeight: '$bold',
+    marginBottom: '$4',
+  },
+  h3: {
+    fontSize: '$xl2',
+    lineHeight: '$8',
+    fontWeight: '$semibold',
+    marginBottom: '$4',
+  },
+  h4: {
+    fontSize: '$xl',
+    lineHeight: '$7',
+    fontWeight: '$semibold',
+    marginBottom: '$4',
+  },
+  h5: {
+    fontSize: '$lg',
+    lineHeight: '$6',
+    fontWeight: '$semibold',
+    marginBottom: '$4',
+  },
+  h6: {
+    fontSize: '$base',
+    lineHeight: '$4',
+    fontWeight: '$semibold',
+    marginBottom: '$4',
+  },
+  '.lead': {
+    fontSize: '$xl',
+    lineHeight: '$5',
+    fontWeight: '$normal',
+    marginBottom: '$4',
+  },
+  p: {
+    fontSize: '$base',
+    lineHeight: '$7',
+    fontWeight: '$normal',
+    marginBottom: '$4',
+    color: '$twgray600',
+  },
+  small: {
+    fontSize: '$sm',
+    lineHeight: '1.25rem',
+    fontWeight: '$normal',
+    marginBottom: '$4',
+  },
+  blockquote: {
+    tabSize: 4,
+    fontSize: '$base',
+    lineHeight: '$7',
+    borderWidth: 0,
+    borderStyle: 'solid',
+    borderColor: '$twgray200',
+    margin: 0,
+    fontWeight: '$medium',
+    fontStyle: 'italic',
+    color: '$twgray900',
+    borderLeftWidth: '$4',
+    borderLeftColor: '$twgray200',
+    marginTop: '$6',
+    marginBottom: '$6',
+    paddingLeft: '$5',
+  },
+  ul: {
+    listStyleType: 'disc',
+    paddingLeft: '$5',
+    marginBottom: '$4',
+  },
+  ol: {
+    listStyleType: 'auto',
+    paddingLeft: '$5',
+    marginBottom: '$4',
+  },
+  li: {
+    lineHeight: '$7'
+  },
+  dl: {
+    marginBottom: '$4'
+  },
+  dt: {
+    fontWeight: '$semibold',
+    textDecoration: 'underline'
+  },
+  dd: {
+    marginBottom: '$4',
+    opacity: '0.89',
+  }
+};
+
+// is this ugly?
+export const textStyles = css({
+  fontFamily: '$sans',
+  color: '$twgray700',
+  ['& h1']: textStylesMap['h1'],
+  ['& h2']: textStylesMap['h2'],
+  ['& h3']: textStylesMap['h3'],
+  ['& h4']: textStylesMap['h4'],
+  ['& h5']: textStylesMap['h5'],
+  ['& h6']: textStylesMap['h6'],
+  ['& .lead']: textStylesMap['.lead'],
+  ['& p']: textStylesMap['p'],
+  ['& small']: textStylesMap['small'],
+  ['& blockquote']: textStylesMap['blockquote'],
+  ['& ul']: textStylesMap['ul'],
+  ['& ul ul']: {
+    listStyleType: 'circle',
+    marginTop: '$1',
+    marginBottom: '$0'
+  },
+  ['& ol']: textStylesMap['ol'],
+  ['& ol ol']: {
+    listStyleType: 'lower-alpha',
+  },
+  ['& .list-none, & .list-none ul, & .list-none ol']: {
+    listStyleType: 'none'
+  },
+  ['& dl']: textStylesMap['dl'],
+  ['& dt']: textStylesMap['dt'],
+  ['& dd']: textStylesMap['dd'],
+});
 
 export const Div = styled('div', {});
 
@@ -154,7 +286,7 @@ export interface PersonaCardProps {
   actions?: string[];
   now?: string[];
   theme?: string[];
-}
+};
 
 export const PersonaCard = (props: PersonaCardProps) => {
   const {
@@ -306,7 +438,7 @@ export interface PostCardProps {
   coverImage?: string;
   actions?: string;
   date?: string;
-}
+};
 
 export const PostCard = (props: PostCardProps) => {
   const {
@@ -380,17 +512,13 @@ export const PostCard = (props: PostCardProps) => {
           }}>
             <a href="#!">
               <Div as="h3" className="post-title" css={{
-                fontSize: '$xl',
-                fontWeight: '$bold',
-                textDecoration: 'none',
-                fontFamily: '$sans',
-                lineHeight: '1.25',
-                mb: '$4',
-                '@sm': {
-                  fontWeight: '$black',
-                  fontSize: '$xl2',
-                },
-              }}>
+                  ...textStylesMap.h3,
+                  mb: '$4',
+                  '@sm': {
+                    fontWeight: '$black',
+                    fontSize: '$xl2',
+                  },
+                }}>
                 {title}
               </Div>
             </a>

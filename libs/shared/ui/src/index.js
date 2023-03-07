@@ -11,6 +11,7 @@ export {
   PersonaCard,
   PostCard, 
   PostLists,
+  textStyles,
 } from './lib/stylesheet.tsx';
 export {
   theme,
