@@ -5,6 +5,7 @@ export {
   Container,
   Aside,
   Main,
+  Avatar, 
   avatar, 
   CssAvatarVariants,
   card,

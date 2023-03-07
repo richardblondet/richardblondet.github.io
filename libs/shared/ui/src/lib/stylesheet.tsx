@@ -258,6 +258,13 @@ export const avatar = css({
   }
 });
 
+export const Avatar = styled('img', avatar, {
+  defaultVariants: {
+    size: 'xs',
+    type: 'rounded',
+  }
+});
+
 export type CssAvatarVariants = Stitches.VariantProps<typeof avatar>;
 
 export const card = css({
@@ -342,10 +349,7 @@ export const PersonaCard = (props: PersonaCardProps) => {
                 mr: '$4'
               }
             }}>
-              <img className={avatar({
-                size: 'xs', 
-                type: 'rounded',
-              })} src={avatarImage} alt={`${name} Avatar`} />
+              <Avatar size="xs" type="rounded" src={avatarImage} alt={`${name} Avatar`} />
             </Div>
             <Div css={{
               ...flex,

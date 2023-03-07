@@ -2,36 +2,22 @@
 title: Avatar
 description: Avatar components
 section: components
-status: planned
+status: ready
 layout: ../../layouts/Layout.astro
 ---
 
 import PreviewComponent from "../../components/PreviewComponent.astro";
-import Avatar from "../../components/partials/Avatar.astro";
+import { Avatar } from "@richardblondet.com/ui";
+export const avatarImage = "/profile-picture.jpeg";
 
-## Rounded 
 
-<PreviewComponent padding="1em">
-  <Avatar />
+<PreviewComponent padding="1em" flexDir="row">
+  <Avatar src={avatarImage} />
+  <Avatar src={avatarImage} type="full" />
+  <Avatar src={avatarImage} withShadow border={1} />
 </PreviewComponent>
 ```jsx
-  <Avatar />
-```
-
-## Rounded Full
-
-<PreviewComponent padding="1em">
-  <Avatar type="full" />
-</PreviewComponent>
-```jsx
-  <Avatar type="full" />
-```
-
-## With Shadow Bordered
-
-<PreviewComponent padding="1em">
-  <Avatar withShadow border={3} />
-</PreviewComponent>
-```jsx
-  <Avatar withShadow border={3} />
+  <Avatar src={avatarImage} />
+  <Avatar src={avatarImage} type="full" />
+  <Avatar src={avatarImage} withShadow border={1} />
 ```
