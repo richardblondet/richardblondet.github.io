@@ -10,6 +10,7 @@ import {
   zIndices,
   fontWeights,
   borderWidths,
+  lineHeights,
 } from './tokens';
 // https://github.com/cristicretu/stitches-tailwind/blob/main/stitches.config.ts
 
@@ -33,6 +34,7 @@ export const theme = {
   zIndices,
   fontWeights,
   borderWidths,
+  lineHeights,
 };
 
 export const utils = {
