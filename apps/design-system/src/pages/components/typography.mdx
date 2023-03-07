@@ -2,159 +2,203 @@
 title: Typography
 description: Components for types
 section: components
-status: planned
+status: wip
 layout: ../../layouts/Layout.astro
 ---
 
-import PreviewComponent from "../../components/PreviewComponent.astro";
+import PreviewComponent from '../../components/PreviewComponent.astro';
+import { textStyles } from '@richardblondet.com/ui';
 
-## Heading 1
+## Style Class
 
-<PreviewComponent>
+This class will apply text styles to astro markdown content.
+
+```jsx
+import { textStyles } from '@richardblondet.com/ui';
+
+{/* or textStyles.className */}
+<div class={textStyles.toString()}>[...]</div>
+```
+
+## Headings
+
+<PreviewComponent noProse flexDir="row">
+  <div class={textStyles.toString()}>
+    <h1>H1</h1>
+    <h2>H2</h2>
+    <h3>H3</h3>
+    <h4>H4</h4>
+    <h5>H5</h5>
+    <h6>H6</h6>
+  </div>
+  
+</PreviewComponent>
+```jsx
+<div class={textStyles.toString()}>
   <h1>H1</h1>
-</PreviewComponent>
-```jsx
-  <h1>H1</h1>
-```
-## Heading 2
-
-<PreviewComponent>
   <h2>H2</h2>
-</PreviewComponent>
-```jsx
-  <h2>H2</h2>
-```
-## Heading 3
-
-<PreviewComponent>
   <h3>H3</h3>
-</PreviewComponent>
-```jsx
-  <h3>H3</h3>
-```
-## Heading 4
-
-<PreviewComponent>
   <h4>H4</h4>
-</PreviewComponent>
-```jsx
-  <h4>H4</h4>
-```
-## Heading 5
-
-<PreviewComponent>
   <h5>H5</h5>
-</PreviewComponent>
-```jsx
-  <h5>H5</h5>
-```
-## Heading 6
-
-<PreviewComponent>
   <h6>H6</h6>
-</PreviewComponent>
-```jsx
-  <h6>H6</h6>
+</div>
 ```
 
 ## Paragraph
 
-<PreviewComponent>
-  <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum labore perspiciatis doloribus minus dolores, sunt non placeat commodi deserunt ab asperiores dicta exercitationem illo laborum veniam quasi ex nobis voluptas. </p>
+<PreviewComponent noProse>
+  <div class={textStyles.toString()}>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum labore perspiciatis doloribus minus dolores, sunt non placeat commodi deserunt ab asperiores dicta exercitationem illo laborum veniam quasi ex nobis voluptas.</p>
+  </div>
 </PreviewComponent>
 ```jsx
-  <p> Lorem ipsum dolor sit amet, consectetur... </p>
+<div class={textStyles.toString()}>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum labore perspiciatis doloribus minus dolores, sunt non placeat commodi deserunt ab asperiores dicta exercitationem illo laborum veniam quasi ex nobis voluptas.</p>
+</div>
 ```
 
-## Lead/intro
+## Lead/Intro `.lead`
 
-<PreviewComponent>
-  <p>Lead</p>
+<PreviewComponent noProse>
+<div class={textStyles.toString()}>
+  <p class="lead">Build the web you want</p>
+</div>
 </PreviewComponent>
 ```jsx
-  <p>Lead</p>
+<div class={textStyles.toString()}>
+  <p class="lead">Build the web you want</p>
+</div>
 ```
 
 ## Blockquote
 
-<PreviewComponent>
-  <blockquote>
-    A blockquote component
-  </blockquote>
+<PreviewComponent noProse>
+  <div class={textStyles.toString()}>
+    <blockquote>
+      A blockquote component
+    </blockquote>
+  </div>
 </PreviewComponent>
 ```jsx
+<div class={textStyles.toString()}>
   <blockquote>
     A blockquote component
   </blockquote>
+</div>
 ```
 
 ## Unordered list
 
-<PreviewComponent>
-  <ul class="list-disc">
-    <li>List item</li>
-    <li>List item</li>
-    <li>List item</li>
-  </ul>
+<PreviewComponent noProse>
+  <div class={textStyles.toString()}>
+    <ul>
+      <li>List item</li>
+      <li>List item</li>
+      <li>
+        List item
+        <ul>
+          <li>Nested item</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
 </PreviewComponent>
 ```jsx
-  <ul class="list-disc">
+<div class={textStyles.toString()}>
+  <ul>
     <li>List item</li>
     <li>List item</li>
-    <li>List item</li>
+    <li>
+      List item
+      <ul>
+        <li>Nested item</li>
+      </ul>
+    </li>
   </ul>
+</div>
 ```
 
 ## Unstyled list
 
-<PreviewComponent>
+<PreviewComponent noProse>
+<div class={textStyles.toString()}>
   <ul class="list-none">
     <li>List item</li>
     <li>List item</li>
-    <li>List item</li>
+    <li>
+      List item
+      <ul>
+        <li>Nested item</li>
+      </ul>
+    </li>
   </ul>
+</div>
 </PreviewComponent>
 ```jsx
+<div class={textStyles.toString()}>
   <ul class="list-none">
     <li>List item</li>
     <li>List item</li>
-    <li>List item</li>
+    <li>
+      List item
+      <ul>
+        <li>Nested item</li>
+      </ul>
+    </li>
   </ul>
+</div>
 ```
 
 ## Ordered list
 
-<PreviewComponent>
-<ol>
-    <li>List item</li>
-    <li>List item</li>
-    <li>List item</li>
-  </ol>
-</PreviewComponent>
-```jsx
+<PreviewComponent noProse>
+<div class={textStyles.toString()}>
   <ol>
     <li>List item</li>
     <li>List item</li>
-    <li>List item</li>
+    <li>
+      List item
+      <ol>
+        <li>Nested item</li>
+      </ol>
+    </li>
   </ol>
+</div>
+</PreviewComponent>
+```jsx
+<div class={textStyles.toString()}>
+  <ol>
+    <li>List item</li>
+    <li>List item</li>
+    <li>
+      List item
+      <ol>
+        <li>Nested item</li>
+      </ol>
+    </li>
+  </ol>
+</div>
 ```
 
 ## Dictionary/Definition
 
 <PreviewComponent>
-
+<div class={textStyles.toString()}>
+  <dl>
+    <dt>Carl Jungs Persona</dt>
+    <dd>Persona is the public image of someone.</dd>
+    <dt>The Self</dt>
+    <dd>The Self is the archetype of the psychical totality or the wholeness. It is not identical with the ego but placed itself somehow above or in other words in the midst between ego-counsciousness and unconscious.</dd>
+  </dl>
+</div>
 </PreviewComponent>
 ```jsx
-  
+<div class={textStyles.toString()}>
+  <dl>
+    <dt>Carl Jungs Persona</dt>
+    <dd>Persona is the public image of someone.</dd>
+    <dt>The Self</dt>
+    <dd>The Self is the archetype of the psychical totality or the wholeness. It is not identical with the ego but placed itself somehow above or in other words in the midst between ego-counsciousness and unconscious.</dd>
+  </dl>
+</div>
 ```
-
-
-## Truncated text
-
-<PreviewComponent>
-  <p class="truncate text-ellipsis">The longest word in any of the major English language dictionaries is pneumonoultramicroscopicsilicovolcanoconiosis, a word that refers to a lung disease contracted from the inhalation of very fine silica particles, specifically from a volcano; medically, it is the same as silicosis.</p>
-</PreviewComponent>
-```jsx
-  <p class="truncate text-ellipsis">The longest word in any of the major English language dictionaries is pneumonoultramicroscopicsilicovolcanoconiosis, a word that refers to a lung disease contracted from the inhalation of very fine silica particles, specifically from a volcano; medically, it is the same as silicosis.</p>
-```
-

@@ -1,0 +1,86 @@
+---
+/**
+* Styleguide: 
+* a type of template file consisting of font and layout settings 
+* to give a standardized look to documents.
+*/
+import { Container, textStyles } from '@richardblondet.com/ui';
+import StyleGuideLayout from '../../layouts/styleguide.astro';
+
+---
+<StyleGuideLayout>
+  <Container css={{
+    padding: '$8',
+    maxWidth: '$lg',
+    margin: 'auto'
+  }}>
+    <div class={textStyles.toString()}>
+      <h1>H1</h1>
+
+      <h2>H2</h2>
+    
+      <h3>H3</h3>
+    
+      <h4>H4</h4>
+    
+      <h5>H5</h5>
+    
+      <h6>H6</h6>
+    
+      <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum labore perspiciatis doloribus minus dolores, sunt non placeat commodi deserunt ab asperiores dicta exercitationem illo laborum veniam quasi ex nobis voluptas. </p>
+      
+      <p class="lead">Build The Web You Want</p>
+      
+      <blockquote>
+        <p>A blockquote component</p>
+      </blockquote>
+      
+      <p> The Ul list: </p>
+      
+      <ul>
+        <li>List item</li>
+        <li>List item</li>
+        <li>List item
+          <ul>
+            <li>Nested item</li>
+          </ul>
+        </li>
+      </ul>
+
+      <p> The Ul.list-none list: </p>
+
+      <ul class="list-none">
+        <li>List item</li>
+        <li>List item</li>
+        <li>List item
+          <ul>
+            <li>Nested item</li>
+          </ul>
+        </li>
+      </ul>
+
+      <p> The ol list: </p>
+
+      <ol>
+        <li>List item</li>
+        <li>List item</li>
+        <li>List item
+          <ol>
+            <li>Nested item</li>
+          </ol>
+        </li>
+      </ol>
+
+      <p> Definition / Dictionary list: </p>
+
+      <dl>
+        <dt>Carl Jungs Persona</dt>
+        <dd>Persona is the public image of someone.</dd>
+        <dt>The Self</dt>
+        <dd>The Self is the archetype of the psychical totality or the wholeness. It is not identical with the ego but placed itself somehow above or in other words in the midst between ego-counsciousness and unconscious.</dd>
+      </dl>
+
+      <p>A last paragraph with a <strong>strong</strong> sense of tag.</p>
+    </div>
+  </Container>
+</StyleGuideLayout>
