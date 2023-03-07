@@ -113,6 +113,10 @@ export const textStylesMap = {
   dd: {
     marginBottom: '$4',
     opacity: '0.89',
+  },
+  a: {
+    color: '$twslate600',
+    fontWeight: '$semibold',
   }
 };
 
@@ -146,6 +150,7 @@ export const textStyles = css({
   ['& dl']: textStylesMap['dl'],
   ['& dt']: textStylesMap['dt'],
   ['& dd']: textStylesMap['dd'],
+  ['& a']: textStylesMap['a']
 });
 
 export const Div = styled('div', {});
@@ -263,6 +268,16 @@ export const Avatar = styled('img', avatar, {
     size: 'xs',
     type: 'rounded',
   }
+});
+
+export const Button = styled('button', {
+  backgroundColor: '$twslate600',
+  borderRadius: '$full',
+  fontSize: '$sm',
+  border: '0',
+  color: '$white',
+  px: '$3',
+  py: '$1'
 });
 
 export type CssAvatarVariants = Stitches.VariantProps<typeof avatar>;

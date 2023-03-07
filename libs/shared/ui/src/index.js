@@ -13,6 +13,7 @@ export {
   PostCard, 
   PostLists,
   textStyles,
+  Button,
 } from './lib/stylesheet.tsx';
 export {
   theme,

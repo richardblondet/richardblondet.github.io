@@ -7,15 +7,25 @@ layout: ../../layouts/Layout.astro
 ---
 
 import PreviewComponent from '../../components/PreviewComponent.astro';
+import { Button, textStyles } from '@richardblondet.com/ui';
 
 ## Button
 
-TBD
+<PreviewComponent noProse>
+  <Button>Contact Me</Button>
+</PreviewComponent>
+```jsx
+import { Button, textStyles } from '@richardblondet.com/ui';
+
+<Button>Contact Me</Button>
+```
 
 ## Link
 
-<PreviewComponent>
+<PreviewComponent noProse>
+<div class={textStyles.toString()}>
   <a href="#">Link</a>
+</div>
 </PreviewComponent>
 ```jsx
 <a href="#">Link</a>
