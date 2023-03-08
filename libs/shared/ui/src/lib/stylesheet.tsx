@@ -453,6 +453,7 @@ export const PersonaCard = (props: PersonaCardProps) => {
     </>
   );
 };
+
 export interface PostCardProps {
   title?: string;
   tags?: string[];
