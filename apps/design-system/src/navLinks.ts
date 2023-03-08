@@ -8,7 +8,7 @@ export default [
   { text: "Container", link: "/components/container" },
   { text: "Typography", link: "/components/typography" },
   { text: "Avatar", link: "/components/avatar" },
-  { text: "Buttons", link: "/components/buttons" },
+  { text: "Buttons", link: "/cjomponents/buttons" },
   { text: "Cards", link: "/components/cards" },
   // { text: "Dialog", link: "/components/dialog" },
   // { text: "Images", link: "/components/images" },
