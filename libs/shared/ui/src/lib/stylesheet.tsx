@@ -425,13 +425,16 @@ export const PersonaCard = (props: PersonaCardProps) => {
         {/* <!-- Hashtags --> */}
         <Div css={{
           ...flex,
-          flexWrap: 'wrap',
-          justifyContent: 'center',
+          flexWrap: 'nowrap',
+          justifyContent: 'left',
+          overflow: 'auto',
           gap: '$2',
           padding: '$4',
           by: 'base',
           '@sm': {
+            flexWrap: 'wrap',
             textAlign: 'center',
+            justifyContent: 'center',
           },
           '@lg': {
             borderBottomLeftRadius: '$md',
