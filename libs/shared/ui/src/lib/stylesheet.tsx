@@ -108,7 +108,7 @@ export const textStylesMap = {
   },
   dt: {
     fontWeight: '$semibold',
-    textDecoration: 'underline'
+    textDecoration: 'underline',
   },
   dd: {
     marginBottom: '$4',
@@ -117,6 +117,7 @@ export const textStylesMap = {
   a: {
     color: '$twslate600',
     fontWeight: '$semibold',
+    textDecoration: 'underline',
   }
 };
 
@@ -452,7 +453,6 @@ export const PersonaCard = (props: PersonaCardProps) => {
     </>
   );
 };
-
 export interface PostCardProps {
   title?: string;
   tags?: string[];
