@@ -4,7 +4,7 @@
 * a type of template file consisting of font and layout settings 
 * to give a standardized look to documents.
 */
-import { RootContainer, PersonaCard, PostLists, Aside, Main } from '@richardblondet.com/ui';
+import { RootContainer, PersonaCard, ProfileCard, PostLists, Aside, Main } from '@richardblondet.com/ui';
 import StyleGuideLayout from '../../layouts/styleguide.astro';
 
 const posts = [{}, {coverImage: "/post-place-holder-cover.jpeg"}, {}];
@@ -12,6 +12,7 @@ const posts = [{}, {coverImage: "/post-place-holder-cover.jpeg"}, {}];
 <StyleGuideLayout>
   <RootContainer>
     <Aside>
+      <ProfileCard />
       <PersonaCard />
     </Aside>
     <Main>

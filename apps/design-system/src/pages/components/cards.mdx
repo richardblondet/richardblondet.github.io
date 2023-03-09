@@ -7,7 +7,7 @@ layout: ../../layouts/Layout.astro
 ---
 
 import PreviewComponent from "../../components/PreviewComponent.astro";
-import { PersonaCard, PostCard } from '@richardblondet.com/ui';
+import { PersonaCard, PostCard, ProfileCard } from '@richardblondet.com/ui';
 
 
 ## Persona Card
@@ -47,6 +47,11 @@ const persona = const {
 <PersonaCard {...persona} />
 ```
 
+## Profile Card
+
+<PreviewComponent noProse>
+    <ProfileCard />
+</PreviewComponent>
 
 ## Post Card
 

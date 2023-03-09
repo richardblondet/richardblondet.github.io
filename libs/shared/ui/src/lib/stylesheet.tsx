@@ -305,6 +305,7 @@ export const card = css({
 export interface PersonaCardProps {
   name?: string;
   avatarImage?: string;
+  bannerImage?: string;
   description?: string;
   actions?: string[];
   now?: string[];
@@ -566,3 +567,178 @@ export const PostLists = (props: { posts: PostCardProps[] }) => {
       </Container>
   )
 };
+type PersonaType = {
+  name: string;
+  avatarImage?: string;
+  bannerImage?: string;
+  description?: string;
+  actions?: string[];
+  now?: string[];
+}
+type PersonaMapType = {
+  [slug: string]: PersonaType;
+};
+export interface ProfileCardProps {
+  birthname: string;
+  personas?: PersonaMapType;
+  selectedPersonaSlug?: keyof PersonaMapType;
+};
+
+const PersonaExample: PersonaMapType = {
+  'software-developer': {
+    name: 'Softare Developer',
+    avatarImage: '/profile-picture.jpeg',
+    description: 'I\'d love to change the world, but they won\'t give me the source code.',
+    actions: ['#hashtag', '#hashtag', '#hashtag', '#hashtag', '#hashtag'],
+    now: [ '🧳 open for work', '🛠 building personas', '👓 learning astro'],
+    bannerImage: 'http://localhost:3000/banner-image.jpeg',
+  },
+  'blogger': {
+    name: 'Web Logger',
+    avatarImage: '/profile-picture.jpeg',
+    description: 'I\'m summarizing and recording the progress of my life journey in the context of this project related to this project ',
+    actions: ['#hashtag', '#hashtag', '#hashtag', '#hashtag', '#hashtag'],
+    now: ['🛠 building personas'],
+    bannerImage: 'http://localhost:3000/banner-image.jpeg',
+  },
+};
+
+export const ProfileCard = (props: ProfileCardProps) => {
+  const { 
+    birthname = 'Richard Blondet',
+    personas = PersonaExample,
+    selectedPersonaSlug = 'software-developer', 
+  } = props;
+
+  const personaList = Object.keys(personas || {});
+
+  const {
+    bannerImage,
+    avatarImage,
+    name,
+    actions,
+    now,
+    description,
+  } = personas[selectedPersonaSlug];
+
+  return (
+    <>
+      <Div className="persona-card" css={{
+        ...flex,
+        flexDirection: 'column',
+        backgroundColor: '$white',
+        overflow: 'hidden',
+        mb: `$4`,
+        '@lg': {
+          b: 'base',
+          borderRadius: '$lg',
+          width: '$72',
+          margin: 'auto',
+          mb: '$4',
+        }
+      }}>
+        <Div css={{
+          ...flex,
+          maxWidth: '$full',
+          alignContent: 'center',
+          backgroundImage: `url(${bannerImage})`,
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+          height: '$16',
+        }} />
+        <Div css={{
+          maxWidth: '$lg',
+          '@sm': {
+            width: '$lg',
+            margin: '0 auto',
+          },
+          '@lg': {
+            maxWidth: '$xl',
+            width: '$full'
+          }
+        }}>
+          {/* Avatar and cta */}
+          <Div css={{
+            ...flex,
+            justifyContent: 'space-between',
+            alignItems: 'end',
+            px: '$4',
+            mt: '-2rem',
+            '@sm': {
+              // margin: '0 auto'
+            },
+            '@lg': {
+              // padding: '$4'
+            }
+          }}>
+            <Div as={'div'} css={{
+              '@lg': {
+                ...flex,
+                mr: '$4'
+              }
+            }}>
+              <Avatar 
+                size="sm" 
+                type="full" 
+                src={avatarImage} 
+                alt={`${name} Avatar`} 
+                border={2}
+                css={{
+                  borderColor: '$twslate100',
+                }}
+              />
+            </Div>
+            <Div css={{
+              ...flex,
+              flexDirection: 'column'
+            }}>
+              {/* <Button css={{
+                color: '$twslate800',
+                backgroundColor: '$white',
+                borderWidth: '$base',
+                borderStyle: 'solid',
+                borderColor: '$gray400',
+                fontWeight: '$semibold',
+                borderRadius: '$md',
+                height: 'fit-content',
+              }}>Contact me</Button> */}
+            
+            </Div>
+          </Div>
+          {/* Name */}
+          <Div css={{
+            ...flex,
+            p: '$4',
+            flexDirection: 'column'
+          }}>
+            <Div css={{
+                color: '$twslate900',
+                fontWeight: '$semibold'
+              }}>
+                {birthname}
+            </Div>
+          </Div>
+        </Div>
+        
+        {/* <!-- Static Details --> */}
+        <Div css={{
+          padding: '$4',
+          m: '0',
+          pt: '0',
+          '@sm': {
+            maxWidth: '$lg',
+            margin: '0 auto',
+            textAlign: 'left',
+          }, 
+          '@lg': {
+            m: '0'
+          }
+        }}>
+          <p>
+            🇩🇴 Dominican, born on 22 feb of 1992. INT-J. Pisces.
+          </p>
+        </Div>
+      </Div>
+    </>
+  );
+}

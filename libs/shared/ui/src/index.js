@@ -14,6 +14,7 @@ export {
   PostLists,
   textStyles,
   Button,
+  ProfileCard,
 } from './lib/stylesheet.tsx';
 export {
   theme,
