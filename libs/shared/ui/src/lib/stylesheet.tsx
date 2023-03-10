@@ -718,27 +718,28 @@ export const ProfileCard = (props: ProfileCardProps) => {
                 {birthname}
             </Div>
           </Div>
+
+          {/* <!-- Static Info Details --> */}
+          <Div css={{
+            padding: '$4',
+            m: '0',
+            pt: '0',
+            '@sm': {
+              maxWidth: '$lg',
+              margin: '0 auto',
+              textAlign: 'left',
+            }, 
+            '@lg': {
+              m: '0'
+            }
+          }}>
+            <p>
+              🇩🇴 Dominican, born on 22 feb of 1992. INT-J. Pisces.
+            </p>
+          </Div>
         </Div>
-        
-        {/* <!-- Static Details --> */}
-        <Div css={{
-          padding: '$4',
-          m: '0',
-          pt: '0',
-          '@sm': {
-            maxWidth: '$lg',
-            margin: '0 auto',
-            textAlign: 'left',
-          }, 
-          '@lg': {
-            m: '0'
-          }
-        }}>
-          <p>
-            🇩🇴 Dominican, born on 22 feb of 1992. INT-J. Pisces.
-          </p>
-        </Div>
-      </Div>
+        {/* END of profile information */}
+      </Div> 
     </>
   );
 }
