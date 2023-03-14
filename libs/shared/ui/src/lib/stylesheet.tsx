@@ -574,43 +574,72 @@ type PersonaType = {
   description?: string;
   actions?: string[];
   now?: string[];
+  slug?: string;
 }
-type PersonaMapType = {
+export type PersonaMapType = {
   [slug: string]: PersonaType;
 };
 export interface ProfileCardProps {
-  birthname: string;
-  personas?: PersonaMapType;
-  selectedPersonaSlug?: keyof PersonaMapType;
-};
-
-const PersonaExample: PersonaMapType = {
-  'software-developer': {
-    name: 'Softare Developer',
-    avatarImage: '/profile-picture.jpeg',
-    description: 'I\'d love to change the world, but they won\'t give me the source code.',
-    actions: ['#hashtag', '#hashtag', '#hashtag', '#hashtag', '#hashtag'],
-    now: [ '🧳 open for work', '🛠 building personas', '👓 learning astro'],
-    bannerImage: 'http://localhost:3000/banner-image.jpeg',
-  },
-  'blogger': {
-    name: 'Web Logger',
-    avatarImage: '/profile-picture.jpeg',
-    description: 'I\'m summarizing and recording the progress of my life journey in the context of this project related to this project ',
-    actions: ['#hashtag', '#hashtag', '#hashtag', '#hashtag', '#hashtag'],
-    now: ['🛠 building personas'],
-    bannerImage: 'http://localhost:3000/banner-image.jpeg',
-  },
+  personasList: PersonaType[];
+  selectedPersona: string;
+  onPersonaItemClick?: (persona?: string) => void;
 };
 
 export const ProfileCard = (props: ProfileCardProps) => {
+  const birthname = 'Richard O. Blondet';
+
   const { 
-    birthname = 'Richard Blondet',
-    personas = PersonaExample,
-    selectedPersonaSlug = 'software-developer', 
+    personasList = [],
+    selectedPersona = '',
+    onPersonaItemClick = () => void 0,
   } = props;
 
-  const personaList = Object.keys(personas || {});
+  const personaListItems = personasList.map((persona) => (
+    <div key={persona.slug} className="button-persona" 
+      onClick={() => onPersonaItemClick(persona.slug)}>
+      <Div as={'button'} 
+        css={{
+        cursor: 'pointer',
+        '&:hover': {
+          textDecoration: 'underline',
+        },
+        ...(persona.slug === selectedPersona ? {
+          fontWeight: '$semibold',
+          cursor: 'initial',
+          '&:hover': {
+            textDecoration: 'none',
+          },
+        } : {})
+      }}>
+        {persona.name}
+      </Div>
+    </div>
+  ));
+
+  const personaItemsCommaSeparated = personaListItems.reduce<JSX.Element[]>(
+    (acc, item, index) => {
+      if (index === 0) {
+        // Add the first item to the accumulator without a separator
+        return [item];
+      } else {
+        // Add the separator and the current item to the accumulator
+        return [
+          ...acc, 
+          <Div key={`separator-${index}`} css={{ mr: '$1' }}>, </Div>, 
+          item
+        ];
+      }
+    },
+    []
+  );
+
+  const displayingPersona = personasList.find(
+    persona => persona.slug === selectedPersona
+  );
+
+  if (!displayingPersona) {
+    return <Div>No selected Persona</Div>;
+  }
 
   const {
     bannerImage,
@@ -619,7 +648,8 @@ export const ProfileCard = (props: ProfileCardProps) => {
     actions,
     now,
     description,
-  } = personas[selectedPersonaSlug];
+  } = displayingPersona;
+
 
   return (
     <>
@@ -717,29 +747,83 @@ export const ProfileCard = (props: ProfileCardProps) => {
               }}>
                 {birthname}
             </Div>
+            <Div css={{
+                ...flex,
+                flexWrap: 'wrap',
+                color: '$twslate500',
+                fontWeight: '$medium',
+              }}>
+                {personaItemsCommaSeparated}
+              </Div>
           </Div>
-
-          {/* <!-- Static Info Details --> */}
+          {/*  */}
+          {/* <!-- Persona Details --> */}
+            <Div css={{
+              padding: '$4',
+              '@sm': {
+                maxWidth: '$lg',
+                margin: '0 auto'
+              }, 
+              '@lg': {
+                pt: '0'
+              }
+            }}>
+              <p>{description}</p>
+              <Div css={{
+                mt: '$4'
+              }}><strong>Currently: </strong></Div>
+              <ul className="list-unstyled">
+                {now?.map((now, i) => (
+                  <li key={i}><a href="#">{now}</a></li>
+                ))}
+              </ul>
+            </Div>
+            {/* <!-- END Persona Details --> */}
+            {/* <!-- Static Info Details --> */}
+            <Div css={{
+              padding: '$4',
+              m: '0',
+              pt: '0',
+              '@sm': {
+                maxWidth: '$lg',
+                margin: '0 auto',
+                textAlign: 'left',
+              }, 
+              '@lg': {
+                m: '0'
+              }}}>
+              <p>
+                🇩🇴 Dominican, born on 22 feb of 1992. INT-J. Pisces.
+              </p>
+            </Div>
+          </Div>
+          {/* <!-- Hashtags --> */}
           <Div css={{
+            ...flex,
+            flexWrap: 'nowrap',
+            justifyContent: 'left',
+            overflow: 'auto',
+            gap: '$2',
             padding: '$4',
-            m: '0',
-            pt: '0',
+            by: 'base',
             '@sm': {
-              maxWidth: '$lg',
-              margin: '0 auto',
-              textAlign: 'left',
-            }, 
+              flexWrap: 'wrap',
+              textAlign: 'center',
+              justifyContent: 'center',
+            },
             '@lg': {
-              m: '0'
+              borderBottomLeftRadius: '$md',
+              borderBottomRightRadius: '$md'
             }
           }}>
-            <p>
-              🇩🇴 Dominican, born on 22 feb of 1992. INT-J. Pisces.
-            </p>
+            {actions?.map((hashtag, i) => (
+              <Pill key={i}>
+                <a href="#">{hashtag}</a>
+              </Pill>
+            ))}
           </Div>
-        </Div>
-        {/* END of profile information */}
+          {/* <!-- END Hashtags --> */}
       </Div> 
     </>
   );
-}
+};
