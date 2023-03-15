@@ -1,7 +1,7 @@
 import { css, getCssText, styled, globalCss } from './theme';
 import type * as Stitches from '@stitches/core';
 import globalStyles from './globalStyles';
-
+import { CakeIcon, MapPinIcon } from '@heroicons/react/24/outline';
 
 const applyAlobalStyle = globalCss(globalStyles);
 
@@ -460,8 +460,8 @@ export interface PostCardProps {
   tags?: string[];
   excerpt?: string;
   coverImage?: string;
-  actions?: string;
   date?: string;
+  slug?: string;
 };
 
 export const PostCard = (props: PostCardProps) => {
@@ -469,8 +469,8 @@ export const PostCard = (props: PostCardProps) => {
     title = "What is Lorem Ipsum? Where can I get some?",
     tags = ['Action', 'Another', 'Test'],
     excerpt = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima illo necessitatibus voluptatum...",
+    slug = "",
     coverImage = "",
-    actions = ['coded', 'documented', 'reviewed', 'launched', 'been-recruited'],
     date = new Date().toDateString(),
   } = props;
   return (
@@ -515,7 +515,7 @@ export const PostCard = (props: PostCardProps) => {
           </Div>
           {/* <!-- Cover image --> */}
           {coverImage ? 
-            <a href="#">
+            <a href={`#${slug}`}>
               <Div className="cover-img" css={{
                  marginBottom: '$4',
                  mx: '$4',
@@ -534,7 +534,7 @@ export const PostCard = (props: PostCardProps) => {
             padding: '$4',
             paddingTop: '$0',
           }}>
-            <a href="#!">
+            <a href={`#${slug}`}>
               <Div as="h3" className="post-title" css={{
                   ...textStylesMap.h3,
                   mb: '$4',
@@ -546,9 +546,11 @@ export const PostCard = (props: PostCardProps) => {
                 {title}
               </Div>
             </a>
-            <p className="post-excerpt">
+            <Div as="p" css={{
+              color: '$twslate600'
+            }}>
               {excerpt}
-            </p>
+            </Div>
           </Div>
       </Div>
     </>
@@ -580,10 +582,15 @@ export type PersonaMapType = {
   [slug: string]: PersonaType;
 };
 export interface ProfileCardProps {
-  personasList: PersonaType[];
-  selectedPersona: string;
+  personasList?: PersonaType[];
+  selectedPersona?: string;
   onPersonaItemClick?: (persona?: string) => void;
 };
+
+const smallIcon = css({ 
+  width: '$4',
+  height: '$4',
+});
 
 export const ProfileCard = (props: ProfileCardProps) => {
   const birthname = 'Richard O. Blondet';
@@ -594,46 +601,64 @@ export const ProfileCard = (props: ProfileCardProps) => {
     onPersonaItemClick = () => void 0,
   } = props;
 
+  const staticContent = [
+    <>
+      <span>
+        <MapPinIcon className={smallIcon.toString()} />
+      </span>
+      <span>Santo Domingo</span>
+    </>,
+    <>
+      <span>
+        <CakeIcon className={smallIcon.toString()} />
+      </span>
+      <span>22 Feb</span>
+    </>
+  ];
+
   const personaListItems = personasList.map((persona) => (
     <div key={persona.slug} className="button-persona" 
       onClick={() => onPersonaItemClick(persona.slug)}>
       <Div as={'button'} 
         css={{
-        cursor: 'pointer',
-        '&:hover': {
-          textDecoration: 'underline',
-        },
-        ...(persona.slug === selectedPersona ? {
-          fontWeight: '$semibold',
-          cursor: 'initial',
+          // button
+          backgroundColor: '$white',
+          borderRadius: '$lg',
+          fontSize: '$xs',
+          b: 'base',
+          borderColor: persona.slug === selectedPersona ? '$blue800' : 'inherit',
+          color: '$twslate600',
+          px: '$3',
+          py: '$1',
+          // button
+          ...flex,
+          alignItems: 'center',
+          gap: '$2',
+          cursor: 'pointer',
           '&:hover': {
-            textDecoration: 'none',
+            textDecoration: 'underline',
           },
-        } : {})
+          ...(persona.slug === selectedPersona ? {
+            fontWeight: '$semibold',
+            cursor: 'initial',
+            '&:hover': {
+              textDecoration: 'none',
+            },
+          } : {})
       }}>
+          <Div as="span" css={{
+            width: '$2',
+            height: '$2',
+            borderRadius: '$full',
+            backgroundColor: persona.slug === selectedPersona ? '$blue800' : '$twslate300',
+            display: 'inline-block',
+          }} />
         {persona.name}
       </Div>
     </div>
   ));
 
-  const personaItemsCommaSeparated = personaListItems.reduce<JSX.Element[]>(
-    (acc, item, index) => {
-      if (index === 0) {
-        // Add the first item to the accumulator without a separator
-        return [item];
-      } else {
-        // Add the separator and the current item to the accumulator
-        return [
-          ...acc, 
-          <Div key={`separator-${index}`} css={{ mr: '$1' }}>, </Div>, 
-          item
-        ];
-      }
-    },
-    []
-  );
-
-  const displayingPersona = personasList.find(
+  const displayingPersona: PersonaType | undefined = personasList.find(
     persona => persona.slug === selectedPersona
   );
 
@@ -649,7 +674,6 @@ export const ProfileCard = (props: ProfileCardProps) => {
     now,
     description,
   } = displayingPersona;
-
 
   return (
     <>
@@ -694,14 +718,8 @@ export const ProfileCard = (props: ProfileCardProps) => {
             alignItems: 'end',
             px: '$4',
             mt: '-2rem',
-            '@sm': {
-              // margin: '0 auto'
-            },
-            '@lg': {
-              // padding: '$4'
-            }
           }}>
-            <Div as={'div'} css={{
+            <Div css={{
               '@lg': {
                 ...flex,
                 mr: '$4'
@@ -721,21 +739,9 @@ export const ProfileCard = (props: ProfileCardProps) => {
             <Div css={{
               ...flex,
               flexDirection: 'column'
-            }}>
-              {/* <Button css={{
-                color: '$twslate800',
-                backgroundColor: '$white',
-                borderWidth: '$base',
-                borderStyle: 'solid',
-                borderColor: '$gray400',
-                fontWeight: '$semibold',
-                borderRadius: '$md',
-                height: 'fit-content',
-              }}>Contact me</Button> */}
-            
-            </Div>
+            }}>{/* Button */}</Div>
           </Div>
-          {/* Name */}
+          {/* Full Name */}
           <Div css={{
             ...flex,
             p: '$4',
@@ -752,49 +758,30 @@ export const ProfileCard = (props: ProfileCardProps) => {
                 flexWrap: 'wrap',
                 color: '$twslate500',
                 fontWeight: '$medium',
+                fontSize: '$sm',
+                alignItems: 'center',
+                gap: '0 $2'
               }}>
-                {personaItemsCommaSeparated}
-              </Div>
-          </Div>
-          {/*  */}
-          {/* <!-- Persona Details --> */}
-            <Div css={{
-              padding: '$4',
-              '@sm': {
-                maxWidth: '$lg',
-                margin: '0 auto'
-              }, 
-              '@lg': {
-                pt: '0'
-              }
-            }}>
-              <p>{description}</p>
-              <Div css={{
-                mt: '$4'
-              }}><strong>Currently: </strong></Div>
-              <ul className="list-unstyled">
-                {now?.map((now, i) => (
-                  <li key={i}><a href="#">{now}</a></li>
+                {staticContent.map((content, index) => (
+                  <Div key={index} css={{ ...flex, alignItems: 'center', gap: '$1' }}>
+                    {content}
+                  </Div>
                 ))}
-              </ul>
-            </Div>
-            {/* <!-- END Persona Details --> */}
-            {/* <!-- Static Info Details --> */}
-            <Div css={{
-              padding: '$4',
-              m: '0',
-              pt: '0',
-              '@sm': {
-                maxWidth: '$lg',
-                margin: '0 auto',
-                textAlign: 'left',
-              }, 
-              '@lg': {
-                m: '0'
-              }}}>
-              <p>
-                🇩🇴 Dominican, born on 22 feb of 1992. INT-J. Pisces.
-              </p>
+              </Div>
+              <Div css={{
+              ...flex,
+                flexWrap: 'wrap',
+                paddingTop: '$4',
+                gap: '0 $2',
+                '@lg': {
+                  gap: '$2'
+                }
+              }}>
+                {personaListItems}
+              </Div>
+              <Div css={{ paddingTop: '$4', color: '$twslate600' }}>
+                <p>{description}</p>
+              </Div>
             </Div>
           </Div>
           {/* <!-- Hashtags --> */}
@@ -827,3 +814,5 @@ export const ProfileCard = (props: ProfileCardProps) => {
     </>
   );
 };
+
+export const CardRefactor = () => {}

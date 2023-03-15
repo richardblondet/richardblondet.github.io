@@ -28,6 +28,7 @@
         "@astrojs/mdx": "^0.17.0",
         "@astrojs/react": "^2.0.2",
         "@astrojs/tailwind": "^3.0.1",
+        "@heroicons/react": "^2.0.16",
         "@nrwl/cypress": "15.6.3",
         "@nrwl/eslint-plugin-nx": "15.6.3",
         "@nrwl/jest": "^15.6.3",
