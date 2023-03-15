@@ -1,0 +1,7 @@
+---
+import { theme } from '@richardblondet.com/ui';
+import ThemeKeyValueTable from './ThemeKeyValueTable.astro';
+
+const { space } = theme;
+---
+<ThemeKeyValueTable headers={['Theme Variable', 'Value']} keyValObj={space} />

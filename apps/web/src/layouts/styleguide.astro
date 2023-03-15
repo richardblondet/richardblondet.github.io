@@ -1,0 +1,35 @@
+---
+/* Styleguide Display Layout */
+import { StyleSheet } from '@richardblondet.com/ui';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <meta name="generator" content={Astro.generator} />
+        <title>richardblondet.com ~ Styleguide</title>
+
+        
+        <!-- CSS Base Stylesheets -->
+        <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital@0;1&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700;900&display=swap" rel="stylesheet" />
+        
+        <!-- Ui Styles -->
+        <StyleSheet />
+
+    </head>
+
+    <body style={'background-color: var(--colors-twslate100)'}>
+      <slot />
+    </body>
+</html>

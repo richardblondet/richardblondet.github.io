@@ -1,0 +1,92 @@
+---
+title: Cards
+description: Cards components
+section: components
+status: ready
+layout: ../../layouts/Layout.astro
+---
+
+import PreviewComponent from "../../components/PreviewComponent.astro";
+import { PersonaCard, PostCard, ProfileCard } from '@richardblondet.com/ui';
+
+
+## Persona Card
+
+<PreviewComponent>
+  <div class="not-prose" style="max-width: 18rem;">
+    <PersonaCard />
+  </div>
+</PreviewComponent>
+
+### Interface 
+
+```ts
+export interface PersonaCardProps {
+  name?: string;
+  avatarSrc?: string;
+  description?: string;
+  actions?: string[];
+  now?: string[];
+  theme?: string[];
+}
+
+```
+
+### Usage
+
+```jsx
+const persona = const {
+  name = 'Software Developer',
+  avatarImage  = '/profile-picture.jpeg',
+  description = "I'd love to change the world, but they won't give me the source code.",
+  actions = ['#hashtag', '#hashtag', '#hashtag', '#hashtag', '#hashtag'],
+  now = [ '🧳 open for work', '🛠 building personas', '👓 learning astro'],
+  theme = []
+};
+
+<PersonaCard {...persona} />
+```
+
+## Profile Card
+
+<PreviewComponent noProse>
+    <ProfileCard />
+</PreviewComponent>
+
+## Post Card
+
+<PreviewComponent>
+  <div class="not-prose">
+    <PostCard />
+    <PostCard coverImage={"/post-place-holder-cover.jpeg"} />
+  </div>
+</PreviewComponent>
+
+Photo by <a href="https://unsplash.com/@resourcedatabase?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Resource Database</a> on <a href="https://unsplash.com/photos/9CyKnLrDWgM?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+
+### Interface
+
+```ts
+export interface PostCardProps {
+  title?: string;
+  tags?: string[];
+  excerpt?: string;
+  coverImage?: string;
+  actions?: string;
+  date?: string;
+}
+```
+
+### Usage
+
+```jsx
+const post = {
+  title: "What is Lorem Ipsum? Where can I get some?",
+  excerpt: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima illo necessitatibus voluptatum...",
+  coverImage: "/post-place-holder-cover.jpeg",
+  actions: ['coded', 'documented', 'reviewed', 'launched', 'been-recruited'],
+  date: new Date().toDateString(),
+};
+
+<PostCard {...post} />
+```

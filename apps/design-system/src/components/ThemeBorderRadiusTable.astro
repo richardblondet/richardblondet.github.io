@@ -1,0 +1,7 @@
+---
+import { theme } from '@richardblondet.com/ui';
+import ThemeKeyValueTable from './ThemeKeyValueTable.astro';
+
+const { radii } = theme;
+---
+<ThemeKeyValueTable headers={['Theme Key', 'Value']} keyValObj={radii} />

@@ -1,0 +1,87 @@
+---
+// import { theme } from '@richardblondet.com/ui';
+import { theme } from '@richardblondet.com/ui';
+import ThemeKeyValueTable from './ThemeKeyValueTable.astro';
+const { colors } = theme;
+
+type colorsTypes = typeof colors;
+
+const generalKeys = [
+  'current',
+  'black',
+  'white',
+  'hiContrast',
+  'loContrast',
+  'canvas',
+  'panel',
+  'shadowLight',
+  'shadowDark',
+  'transparentExtreme',
+];
+
+const tailwindsKeys = Object.keys(colors)
+  .filter(key => key.startsWith('tw'));
+
+const otherColors = Object.keys(colors)
+  .filter(key => !generalKeys.includes(key) 
+    && !tailwindsKeys.includes(key)
+    && !['inherit', 'transparent'].includes(key));
+
+const content = [
+  ['General', generalKeys],
+  ['Tailwinds Default Theme Colors', tailwindsKeys],
+  ['Mode Colors', otherColors],
+];
+---
+
+<div class="flex flex-col mb-4">
+  <div class="shrink-0">
+    <div class="h-10 flex flex-col justify-center">
+       <div class="text-sm font-semibold text-slate-900 dark:text-slate-200">Acount For Hierarchy</div>
+    </div>
+ </div>
+ <div class="">
+    <ThemeKeyValueTable headers={['', '']} keyValObj={{'transparent': colors['transparent'], 'inherit': colors['inherit']}}  />
+  </div>
+</div>
+{content.map(([title, tokens]) => (
+  <div class="flex flex-col mb-4">
+    <div class="shrink-0">
+      <div class="h-10 flex flex-col justify-center">
+         <div class="text-sm font-semibold text-slate-900 dark:text-slate-200">{title}</div>
+      </div>
+   </div>
+   <div class="grid grid-cols-5 gap-4 flex-wrap max-h-72 border-y overflow-auto">
+      {(tokens as [keyof colorsTypes]).map((key: keyof colorsTypes) => (
+        <div class="relative grow text-xs">
+          <div class="space-y-1.5 cursor-pointer" data-color={key}>
+             <div class="h-10 w-full rounded dark:ring-1 dark:ring-inset dark:ring-white/10" style={`background-color: ${colors[key]}`}></div>
+             <div class="px-0.5 flex justify-between space-x-2 flex-col overflow-hidden">
+                <code class="font-medium bg-transparent text-slate-900 2xl:w-full dark:text-white">{key}</code>
+                <div class="text-slate-500 font-mono lowercase dark:text-slate-400">{colors[key]}</div>
+             </div>
+          </div>
+       </div>
+      ))} 
+    </div>
+  </div>
+))}
+<script>
+  const colors = document.querySelectorAll('[data-color]');
+
+  function copyToClipboard(text:string) {
+    navigator.clipboard.writeText(text)
+      .then(() => {
+        console.log('Text copied to clipboard');
+      })
+      .catch((error) => {
+        console.error('Error copying text: ', error);
+      });
+  }
+
+  colors.forEach(el => {
+    el.addEventListener('click', () => {
+      copyToClipboard(el.getAttribute('data-color') as string);
+    });
+  })
+</script>

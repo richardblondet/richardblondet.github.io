@@ -1,0 +1,127 @@
+---
+import { Avatar } from '@richardblondet.com/ui';
+import Card from '../partials/Card.astro';
+
+const categories = [
+  'coded',
+  'documented',
+  'reviewed',
+  'launched',
+  'been-recruited',
+];
+
+---
+<Card>
+  <!-- Cover image -->
+  <!-- <div class="cover-img"></div> -->
+    <!-- Avatar -->
+    <div class="avatar-container text-center">
+      <a href="#!">
+        <Avatar size={'md'} border={3} />
+      </a>
+    </div>
+    <!-- Info -->
+    <div class="persona-profile text-center">
+      <h5 class="persona-name text-slate-900 font-medium"><a href="#!">Software Engineer</a></h5>
+      <div class="persona-legend">Persona</div>
+      <p class="persona-description">I'd love to change the world, but they won’t give me the source code.</p>
+    </div>
+    <!-- Divider -->
+    <hr>
+    <!-- Persona Currently START -->
+    <div class="text-center persona-now">
+      <p class="fw-bold">Currently</p>
+      <ul class="d-block list-unstyled">
+        <li>Open for work</li>
+        <li>Building personas</li>
+        <li>Learning astro</li>
+      </ul>
+    </div>
+    <!-- Persona Currently END -->
+    <!-- Divider -->
+    <hr>
+    <!-- Persona Tags START -->
+    <div class="text-center persona-actions">
+      <!-- <p class="fw-bold">See what I've</p> -->
+      { categories.map(cat => (
+        <span class="inline-block bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-gray-700 dark:text-gray-300">
+          <a href="#" class="action-link ">#{cat}</a>
+        </span>
+        ))}
+    </div>
+    <!-- Persona Tags END -->
+
+    <!-- Card body END -->
+</Card>
+<style>
+  p {
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
+  }
+  .list-unstyled {
+    margin-bottom: 1.25em;
+  }
+  hr {
+    margin: 0 !important;
+  }
+  .persona-legend {
+    text-transform: uppercase;
+    font-size: 70%;
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: #979797;
+  }
+  .cover-img {
+    height: 55px !important;
+    background-color: #0070f3;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .fw-bold {
+    font-weight: 700!important;
+  }
+  .list-unstyled {
+    padding-left: 0;
+    list-style: none;
+  }
+  .list-unstyled > li {
+    margin: 0;
+  }
+  .persona-actions {
+    margin: 1.25em 0;
+  }
+  .persona-actions a {
+    text-decoration: none;
+  }
+  .avatar-container {
+    display: flex;
+    justify-content: center;
+    /* margin-top: -5.5rem!important; */
+  }
+  .avatar-container img {
+    margin: 0 !important;
+  }
+  .avatar-container > a {
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
+  .persona-name > a {
+    font-size: 1.171875rem;
+    font-weight: 500;
+    line-height: 1.25;
+    color: #14191e;
+    text-decoration: none;
+    font-family: 'Inter';
+  }
+</style>
+<style>
+    .some-div {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      --tw-bg-opacity: 1;
+      background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+
+    }
+</style>

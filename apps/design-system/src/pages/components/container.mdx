@@ -1,0 +1,45 @@
+---
+title: Containers
+description: Container components
+section: components
+status: ready
+layout: ../../layouts/Layout.astro
+---
+
+import PreviewComponent from "../../components/PreviewComponent.astro";
+
+## Root Layout
+
+Main layout structure.
+
+```tsx
+import { 
+  RootContainer, 
+  Aside, 
+  Main, 
+  Container 
+} from '@richardblondet.com/ui';
+
+<RootContainer>
+  <Aside>
+    Sidebar
+  </Aside>
+  <Main>
+    Content
+  </Main>
+</RootContainer>
+```
+
+## Post List
+
+Applies the correct wrapper width and margins for Posts listing.
+
+```tsx
+import { 
+  PostList
+} from '@richardblondet.com/ui';
+
+const posts = getPosts('some-source'); 
+
+<PostList posts={posts} />
+```

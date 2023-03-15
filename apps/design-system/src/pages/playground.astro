@@ -1,0 +1,50 @@
+---
+
+import { StyleSheet, Container } from '@richardblondet.com/ui';
+
+// https://docs.astro.build/en/core-concepts/layouts/#markdownmdx-layouts
+// when switching to mdx use MDXLayoutProps
+// Snap scroll https://codesandbox.io/s/n2ynjj8lj?file=/src/index.js:66-82
+const title = "~/Playground";
+const currentPage = new URL(Astro.url.pathname, Astro.site).pathname;
+
+---
+<!DOCTYPE html>
+<html lang="en" class="initial">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="generator" content={Astro.generator} />
+        <link rel="canonical" href={currentPage}>
+
+        <title>{title}</title>
+        
+        <!-- Load assests -->
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <!-- Preload Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital@0;1&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700;900&display=swap" rel="stylesheet">
+        <!-- Scrollable a11y code helper -->
+        <script src="/make-scrollable-code-focusable.js" is:inline></script>
+
+        <!-- Include Globals -->
+        <StyleSheet />
+
+    </head>
+
+  <body class="p-8">
+    <!-- Tailwinds Playground -->
+    <h1>
+      Hello World
+    </h1>
+    <hr />
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique expedita id natus exercitationem culpa libero dolores illum voluptatibus voluptates quo tempore consectetur sequi amet, sed excepturi, dolor doloribus quam minus!
+    </p>
+	</body>
+</html>
+

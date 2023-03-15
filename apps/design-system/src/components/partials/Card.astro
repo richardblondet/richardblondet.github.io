@@ -1,0 +1,17 @@
+---
+import { card } from '@richardblondet.com/ui';
+export interface Props {
+  tokens?: any;
+}
+const { 
+  tokens = {
+    cardBorderTopOverride: '0'
+  }
+} = Astro.props;
+
+const { className } = card();
+---
+<div class={className}>
+  <slot />
+</div>
+<style define:vars={tokens}></style>
