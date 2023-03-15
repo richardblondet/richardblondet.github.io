@@ -11,27 +11,15 @@
   - Foundations:
     - Overview
     - Universal
-      - Brand
-        - Values
-        - Promise
-        - Personality
-      - Logos
-      - Typography
-      - Grid Layout
-      - Spacing
-      - Responsive: breakpoints
-      - Supported Platform
-      - Resources
-        - Illustrations
-    - Per-Persona:
-      - Brand
-        - Mision
-      - Typefaces
       - Colors
-      - Icons
-      - Borders
-      - Shadows
-      - Animation
+      - Spaces
+      - Sizes
+      - Font Families
+      - Font Sizes
+      - Border Radius radii
+      - Z-Index Order
+    - Per-Persona:
+      - to be defined
   - Components
     - Cards
     - Avatar
@@ -53,7 +41,6 @@
       - Dictionary/Definition
       - Dialog
       - Links
-      - Truncated text
     - Code
     - Forms
     - Navigation
@@ -68,6 +55,12 @@
 ### Consequences
 
 - Single source of truth for decision making on presentation over the frontend
+- 15-03-2023 12:36:34
+  - Helped us document right away
+  - Visual helper for the decision making
+  - Increased work payload
+  - Organized approach
+  - Good to reference design tokens values and variables
 
 ## Context, Problem Statement and Requirements
 
