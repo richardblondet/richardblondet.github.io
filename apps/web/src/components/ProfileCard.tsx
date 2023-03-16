@@ -31,9 +31,14 @@ const PersonasExampleList = [{
     theme: {}
 }];
 
-export default () => {
+export interface ProfileCardProps {
+  personas?: any[]
+}
+
+export default ({ personas }: ProfileCardProps) => {
+
   const defaultSelectedPersona = 'software-developer';
-  const personasList = PersonasExampleList;
+  const personasList = personas ? personas : PersonasExampleList;
 
   const [selectedPersona, setSelectedPersona] = useState(defaultSelectedPersona);
 

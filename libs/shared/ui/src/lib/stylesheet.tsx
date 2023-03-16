@@ -498,8 +498,8 @@ export const PostCard = (props: PostCardProps) => {
               alignItems: 'center',
               gap: '$4',
             }}>
-              {tags.map(tag => (
-                <Pill>
+              {tags.map((tag, index) => (
+                <Pill key={index}>
                   <a href="#" >{tag}</a>
                 </Pill>
               ))}
@@ -565,7 +565,7 @@ export const PostLists = (props: { posts: PostCardProps[] }) => {
         maxWidth: '$lg',
         margin: 'auto'
       }}}>
-        {posts.map(post => <PostCard {...post} />)}
+        {posts.map((post, index) => <PostCard key={index} {...post} />)}
       </Container>
   )
 };
