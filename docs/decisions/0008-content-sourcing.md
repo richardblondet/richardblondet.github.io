@@ -41,9 +41,9 @@
 - ✅ Supports generics for type parameters
 - 🚫 Long path yet to integrate with Nx
 
-- [Astro's Content Collection](https://docs.astro.build/en/guides/content-collections/#what-are-content-collections)
+### [Astro's Content Collection](https://docs.astro.build/en/guides/content-collections/#what-are-content-collections)
 
-- ✅ Has content type definitions
+- ✅ Has content type/schema definitions
 - 🚫 Doesn't seem to support changing the content directory
 
 
