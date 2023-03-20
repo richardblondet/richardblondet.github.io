@@ -1,6 +1,6 @@
 # Content Sourcing
 
-- Status: draft
+- Status: wip
 - Date: 
 - Story: https://github.com/richardblondet/richardblondet.github.io/issues/36
 
@@ -8,10 +8,12 @@
 
 - **Chosen Option:** Astro.glob API
 - **Rules:** 
+  - content lives on the root directory content.
+  - lets add a model definition in typescript for the content
 
 ### Consequences
 
--
+- Top level content visibility
 
 ## Context, Problem Statement and Requirements
 
@@ -24,6 +26,8 @@
 
 - ✅ Using custom development workflow with both nx and astro
 - ✅ Use `content` to house public content for the website
+- ✅ We envision having the content closer to the root for ease of work and future tooling
+- ✅ We can always change as the implementation of each is fairly simple
 
 
 ## Considered Options
@@ -38,13 +42,23 @@
 - ✅ Built-in API
 - ✅ Works with our file structure requirement: `await Astro.glob('../../../../../content/personas/*.md');`
 - ✅ Supports MDX
+- ✅ Content component astro element to render the file contents
 - ✅ Supports generics for type parameters
+- ✅ Supports other file types as long as a generic type exists
 - 🚫 Long path yet to integrate with Nx
+- 🚫 Support for getting the contents rendered
+- 🚫 20-03-2023 14:58:23: beacuse [`getStaticPaths` executes in own isolated scope](https://docs.astro.build/en/reference/api-reference/#getstaticpaths) I can't reuse the first astro glob call for listing purposes
 
 ### [Astro's Content Collection](https://docs.astro.build/en/guides/content-collections/#what-are-content-collections)
 
 - ✅ Has content type/schema definitions
-- 🚫 Doesn't seem to support changing the content directory
+- ✅ Advanced filter api, on collection call, as oppose to get all and then filter `getCollection()`
+- ✅ Collection schema validates file frontmatter variables
+- ✅ Supports MDX 
+- ✅ Built-in async functions to render content 
+- 🚫 Doesn't seem to support changing the content directory so no support for our requirement
+- 🚫 Weird issues with `astro:content`. Seems to be error prone and needs sync and dev server reloads
+- 🚫 Support for getting the contents rendered
 
 
 ## Links
