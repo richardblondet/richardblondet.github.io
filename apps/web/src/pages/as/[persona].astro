@@ -1,0 +1,49 @@
+---
+import { RootContainer, PersonaCard, Aside, Main } from '@richardblondet.com/ui';
+import ProfileCard from '../../components/ProfileCard';
+import StyleGuideLayout from '../../layouts/styleguide.astro';
+import type { PersonaModel } from '../../../../../content/config';
+
+const personasEntries = await Astro.glob('../../../../../content/personas/*.mdx');
+const personas = personasEntries.map(({frontmatter}) => ({ ...frontmatter }));
+
+export const getStaticPaths = async () => {
+  const personasEntries = await Astro.glob<PersonaModel>('../../../../../content/personas/*.mdx');
+  // console.log("🚀 ~ file: [persona].astro:11 ~ getStaticPaths ~ personasEntries:", personasEntries)
+
+  return personasEntries.map((per) => ({
+    params: { 
+      persona: per.frontmatter.slug 
+    },
+    props: { 
+      persona: {
+        ...per.frontmatter, 
+        Content: per.Content 
+      }
+    }
+  }));
+};
+
+const { persona:selectedPersona } = Astro.params;
+console.log("🚀 ~ file: [persona].astro:27 ~ selectedPersona:", selectedPersona)
+const { persona } = Astro.props;
+console.log("🚀 ~ file: [persona].astro:28 ~ persona:", persona)
+
+// console.log("🚀 ~ file: [persona].astro:10 ~ params:", slug)
+// console.log("🚀 ~ file: [persona].astro:20 ~ Content:", Content)
+
+---
+<StyleGuideLayout>
+  <RootContainer>
+    <Aside>
+      <ProfileCard 
+        personasList={personas as PersonaModel[]} 
+        selectedPersona={selectedPersona as string} 
+        client:load
+      />
+    </Aside>
+    <Main>
+      <!-- <PostListFor persona={persona} /> -->
+    </Main>
+  </RootContainer>
+</StyleGuideLayout>
