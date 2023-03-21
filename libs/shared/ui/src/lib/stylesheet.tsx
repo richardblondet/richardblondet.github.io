@@ -3,6 +3,7 @@ import type * as Stitches from '@stitches/core';
 import globalStyles from './globalStyles';
 import { CakeIcon, MapPinIcon } from '@heroicons/react/24/outline';
 import type { SyntheticEvent } from 'react';
+import type { PersonaModel, PostModel } from '../../../../../content/config';
 
 const applyAlobalStyle = globalCss(globalStyles);
 
@@ -303,13 +304,7 @@ export const card = css({
   }
 });
 
-export interface PersonaCardProps {
-  name?: string;
-  avatarImage?: string;
-  bannerImage?: string;
-  intro?: string;
-  actions?: string[];
-  now?: string[];
+export interface PersonaCardProps extends PersonaModel {
   theme?: string[];
 };
 
@@ -318,10 +313,12 @@ export const PersonaCard = (props: PersonaCardProps) => {
     name = 'Software Developer',
     avatarImage  = '/profile-picture.jpeg',
     intro = "I'd love to change the world, but they won't give me the source code.",
-    actions = ['#hashtag', '#hashtag', '#hashtag', '#hashtag', '#hashtag'],
-    now = [ '🧳 open for work', '🛠 building personas', '👓 learning astro'],
+    currentlyDoing = [ '🧳 open for work', '🛠 building personas', '👓 learning astro'],
     theme = []
   } = props;
+
+  const actions = ['#hashtag', '#hashtag', '#hashtag', '#hashtag', '#hashtag'];
+
   return (
     <>
       <Div className="persona-card" css={{
@@ -417,7 +414,7 @@ export const PersonaCard = (props: PersonaCardProps) => {
           <p>{intro}</p>
           <p className={css({ mt: '$4' }).toString()}><strong>Currently: </strong>
             <ul className="list-unstyled">
-              {now.map((now, index) => (
+              {currentlyDoing.map((now:string, index:number) => (
                 <li key={index}><a href="#">{now}</a></li>
               ))}
             </ul>
@@ -444,7 +441,7 @@ export const PersonaCard = (props: PersonaCardProps) => {
             borderBottomRightRadius: '$md'
           }
         }}>
-          {actions.map((hashtag, index) => (
+          {actions.map((hashtag:string, index:number) => (
             <Pill key={index}>
               <a href="#">{hashtag}</a>
             </Pill>
@@ -456,14 +453,7 @@ export const PersonaCard = (props: PersonaCardProps) => {
   );
 };
 
-export interface PostCardProps {
-  title?: string;
-  tags?: string[];
-  excerpt?: string;
-  coverImage?: string;
-  date?: string;
-  slug?: string;
-};
+export interface PostCardProps extends PostModel {};
 
 export const PostCard = (props: PostCardProps) => {
   const {
@@ -472,7 +462,7 @@ export const PostCard = (props: PostCardProps) => {
     excerpt = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima illo necessitatibus voluptatum...",
     slug = "",
     coverImage = "",
-    date = new Date().toDateString(),
+    createdAt = 'new Date()',
   } = props;
   return (
     <>
@@ -511,7 +501,7 @@ export const PostCard = (props: PostCardProps) => {
               fontFamily: '$mono',
               fontSize: '$xs'
             }}>
-              {date}
+              {eval(createdAt as string)?.toDateString()}
             </Div>
           </Div>
           {/* <!-- Cover image --> */}
@@ -558,7 +548,7 @@ export const PostCard = (props: PostCardProps) => {
   );
 };
 
-export const PostLists = (props: { posts: PostCardProps[] }) => {
+export const PostCardList = (props: { posts: PostCardProps[] }) => {
   const { posts } = props;
   return (
     <Container css={{
@@ -570,18 +560,9 @@ export const PostLists = (props: { posts: PostCardProps[] }) => {
       </Container>
   )
 };
-type PersonaType = {
-  slug: string;
-  name: string;
-  avatarImage?: string;
-  bannerImage?: string;
-  intro: string;
-}
-export type PersonaMapType = {
-  [slug: string]: PersonaType;
-};
+
 export interface ProfileCardProps {
-  personasList?: PersonaType[];
+  personasList?: PersonaModel[];
   selectedPersona?: string;
   onPersonaItemClick?: (persona?: string) => void;
   path?: string;
@@ -662,7 +643,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
     </div>
   ));
 
-  const displayingPersona: PersonaType | undefined = personasList.find(
+  const displayingPersona: PersonaModel | undefined = personasList.find(
     persona => persona.slug === selectedPersona
   );
 

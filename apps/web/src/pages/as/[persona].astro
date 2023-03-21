@@ -2,10 +2,13 @@
 import { RootContainer, PersonaCard, Aside, Main } from '@richardblondet.com/ui';
 import ProfileCard from '../../components/ProfileCard';
 import StyleGuideLayout from '../../layouts/styleguide.astro';
-import type { PersonaModel } from '../../../../../content/config';
+import type { PersonaModel, PostModel } from '../../../../../content/config';
+import PostListFormat from '../../components/PostListFormat';
 
 const personasEntries = await Astro.glob('../../../../../content/personas/*.mdx');
 const personas = personasEntries.map(({frontmatter}) => ({ ...frontmatter }));
+
+const postsEntries = await Astro.glob('../../../../../content/posts/**/*.mdx');
 
 export const getStaticPaths = async () => {
   const personasEntries = await Astro.glob<PersonaModel>('../../../../../content/personas/*.mdx');
@@ -24,13 +27,28 @@ export const getStaticPaths = async () => {
   }));
 };
 
-const { persona:selectedPersona } = Astro.params;
-console.log("🚀 ~ file: [persona].astro:27 ~ selectedPersona:", selectedPersona)
-const { persona } = Astro.props;
-console.log("🚀 ~ file: [persona].astro:28 ~ persona:", persona)
+type PostSourceFunctions = {
+  [key in PersonaModel['contentSource']]: (selectedPersona: string) => Promise<PostModel[]>;
+};
 
-// console.log("🚀 ~ file: [persona].astro:10 ~ params:", slug)
-// console.log("🚀 ~ file: [persona].astro:20 ~ Content:", Content)
+const getPersonaPosts: PostSourceFunctions = {
+  'astro.glob': async (selectedPersona) => {
+    return [] as PostModel[];
+  },
+  'astro.collection': async () => {
+    return [] as PostModel[];
+    // throw new Error('Astro Collection Source Function Not Implemented');
+  },
+};
+
+const { persona:selectedPersona } = Astro.params;
+// console.log("🚀 ~ file: [persona].astro:27 ~ selectedPersona:", selectedPersona)
+
+const { persona } = Astro.props;
+const posts = postsEntries
+  .filter(({ frontmatter }) => selectedPersona === frontmatter.persona)
+  .map(({ frontmatter }) => ({ ...frontmatter }));
+console.log("🚀 ~ file: [persona].astro:49 ~ posts:", postsEntries)
 
 ---
 <StyleGuideLayout>
@@ -43,7 +61,7 @@ console.log("🚀 ~ file: [persona].astro:28 ~ persona:", persona)
       />
     </Aside>
     <Main>
-      <!-- <PostListFor persona={persona} /> -->
+      <PostListFormat {...persona} posts={posts} />
     </Main>
   </RootContainer>
 </StyleGuideLayout>

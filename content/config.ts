@@ -9,12 +9,51 @@ export interface PersonaModel {
   postListFormat: 'cards' | 'timeline' | 'grid';
   type: 'actor' | 'abstract' | 'proxy';
   isPrimary: boolean;
-  currentlyDoing?: string;
-  higherPersona?: string;
+  currentlyDoing?: string | string[];
+  parent?: string;
   themeId?: string;
-  createdAt: string;
-  updatedAt: string;
+  createdAt: Date;
+  updatedAt: Date;
 };
 
 export const newPersona = (args:PersonaModel) => ({...args});
 
+export interface PostModel {
+  uid: string;
+  persona?: string;
+  title: string;
+  slug?: string;
+  coverImage?: string;
+  body?: string;
+  tags?: string[];
+  excerpt?: string;
+  status: PostStatus;
+  type: PostType;
+  keywords?: string;
+  parent?: number;
+  commentCount?: number;
+  likesCount?: number;
+  wordCount?: number;
+  isPinned?: boolean;
+  isCommentOpened?: boolean;
+  timelineDate?: Date;
+  timelineRanged?: Date;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+};
+enum PostStatus {
+  Published = "published",
+  Draft = "draft",
+  Archived = "archived",
+  Deprecated = "deprecated",
+}
+enum PostType {
+  Article = "article",
+  Essay = "essay",
+  Blog = "blog",
+  Media = "media",
+  Thought = "thought",
+  Event = "event",
+}
+
+export const newPost = (args:PostModel) => ({...args});
