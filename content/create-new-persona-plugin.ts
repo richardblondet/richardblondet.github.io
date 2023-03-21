@@ -1,4 +1,5 @@
 /**
+ * Idea to create a persona from Nx
  * @see {@link https://nx.dev/recipes/generators/creating-files}
  */
 import slugify from 'slugify';
