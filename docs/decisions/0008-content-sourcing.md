@@ -1,7 +1,7 @@
 # Content Sourcing
 
-- Status: wip
-- Date: 
+- Status: draft
+- Date: 21-03-2023 15:23:48
 - Story: https://github.com/richardblondet/richardblondet.github.io/issues/36
 
 ## Decision Outcome
@@ -9,11 +9,16 @@
 - **Chosen Option:** Astro.glob API
 - **Rules:** 
   - content lives on the root directory content.
-  - lets add a model definition in typescript for the content
+  - lets add a model definition in typescript for the content. Decision: [0009–content-modeling](0009-content-modeling.md).
+  - templating:
+    - stage 1: static template with manual variables
+    - stage 2: internal CLI tool using generators
+    - stage 3: interface
 
 ### Consequences
 
 - Top level content visibility
+- DX not as compeling as content:collection alternative
 
 ## Context, Problem Statement and Requirements
 

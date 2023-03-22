@@ -506,7 +506,7 @@ export const PostCard = (props: PostCardProps) => {
           </Div>
           {/* <!-- Cover image --> */}
           {coverImage ? 
-            <a href={`#${slug}`}>
+            <a href={`/p/${slug}`}>
               <Div className="cover-img" css={{
                  marginBottom: '$4',
                  mx: '$4',
@@ -525,7 +525,7 @@ export const PostCard = (props: PostCardProps) => {
             padding: '$4',
             paddingTop: '$0',
           }}>
-            <a href={`#${slug}`}>
+            <a href={`/p/${slug}`}>
               <Div as="h3" className="post-title" css={{
                   ...textStylesMap.h3,
                   mb: '$4',
