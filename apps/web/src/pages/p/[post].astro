@@ -1,0 +1,42 @@
+---
+import { RootContainer, PostCard, Div, Main, textStyles } from '@richardblondet.com/ui';
+import ProfileCard from '../../components/ProfileCard';
+import StyleGuideLayout from '../../layouts/styleguide.astro';
+import type { PersonaModel, PostModel } from '../../../../../content/config';
+
+
+export const getStaticPaths = async () => {
+  const postsEntries = await Astro.glob('../../../../../content/posts/**/*.mdx');
+
+  return postsEntries.map((p) => ({
+    params: { 
+      post: p.frontmatter.slug 
+    },
+    props: { 
+      post: {
+        ...p.frontmatter, 
+        Content: p.Content 
+      }
+    }
+  }));
+};
+
+const { post:slug } = Astro.params;
+const { post } = Astro.props;
+const { Content } = post;
+
+---
+<StyleGuideLayout>
+  <RootContainer>
+    <Main css={{
+      '@lg': {
+        maxWidth: '$lg'
+      }
+    }}>
+      <Div className={textStyles.toString()}>
+        <PostCard {...post } />
+        <Content />
+      </Div>
+    </Main>
+  </RootContainer>
+</StyleGuideLayout>

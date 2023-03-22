@@ -11,14 +11,13 @@ export {
   card,
   PersonaCard,
   PostCard, 
-  PostLists,
+  PostCardList,
   textStyles,
   Button,
   ProfileCard,
 } from './lib/stylesheet';
 export type {
   CssAvatarVariants,
-  PersonaMapType
 } from './lib/stylesheet';
 export {
   theme,

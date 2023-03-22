@@ -1,0 +1,65 @@
+---
+import { RootContainer, PersonaCard, Aside, Main } from '@richardblondet.com/ui';
+import ProfileCard from '../../components/ProfileCard';
+import StyleGuideLayout from '../../layouts/styleguide.astro';
+import type { PersonaModel, PostModel } from '../../../../../content/config';
+import PostListFormat from '../../components/PostListFormat';
+
+const personasEntries = await Astro.glob('../../../../../content/personas/*.mdx');
+const personas = personasEntries.map(({frontmatter}) => ({ ...frontmatter }));
+
+const postsEntries = await Astro.glob('../../../../../content/posts/**/*.mdx');
+
+export const getStaticPaths = async () => {
+  const personasEntries = await Astro.glob<PersonaModel>('../../../../../content/personas/*.mdx');
+
+  return personasEntries.map((per) => ({
+    params: { 
+      persona: per.frontmatter.slug 
+    },
+    props: { 
+      persona: {
+        ...per.frontmatter, 
+        Content: per.Content 
+      }
+    }
+  }));
+};
+
+type PostSourceFunctions = {
+  [key in PersonaModel['contentSource']]: (selectedPersona: string) => Promise<PostModel[]>;
+};
+
+// TODO
+const getPersonaPosts: PostSourceFunctions = {
+  'astro.glob': async (selectedPersona) => {
+    return [] as PostModel[];
+  },
+  'astro.collection': async () => {
+    return [] as PostModel[];
+  },
+};
+
+const { persona:selectedPersona } = Astro.params;
+
+const { persona } = Astro.props;
+const posts = postsEntries
+  .filter(({ frontmatter }) => selectedPersona === frontmatter.persona)
+  .map(({ frontmatter }) => ({ ...frontmatter }));
+
+
+---
+<StyleGuideLayout>
+  <RootContainer>
+    <Aside>
+      <ProfileCard 
+        personasList={personas as PersonaModel[]} 
+        selectedPersona={selectedPersona as string} 
+        client:load
+      />
+    </Aside>
+    <Main>
+      <PostListFormat {...persona} posts={posts} />
+    </Main>
+  </RootContainer>
+</StyleGuideLayout>

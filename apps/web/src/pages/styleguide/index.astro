@@ -8,13 +8,19 @@ import { RootContainer, PersonaCard, PostLists, Aside, Main } from '@richardblon
 import ProfileCard from '../../components/ProfileCard';
 import StyleGuideLayout from '../../layouts/styleguide.astro';
 
+const personasEntries = await Astro.glob('../../../../../content/personas/*.mdx');
+const personas = personasEntries.map(({frontmatter}) => ({ ...frontmatter }));
+
 const posts = [{}, {coverImage: "/post-place-holder-cover.jpeg"}, {}];
 ---
 <StyleGuideLayout>
   <RootContainer>
     <Aside>
-      <ProfileCard client:load />
-      <!-- <PersonaCard /> -->
+      <ProfileCard 
+        personasList={personas as any} client:load
+        selectedPersona={'software-developer'} 
+         />
+      <PersonaCard />
     </Aside>
     <Main>
       <PostLists posts={posts} />

@@ -2,6 +2,8 @@ import { css, getCssText, styled, globalCss } from './theme';
 import type * as Stitches from '@stitches/core';
 import globalStyles from './globalStyles';
 import { CakeIcon, MapPinIcon } from '@heroicons/react/24/outline';
+import type { SyntheticEvent } from 'react';
+import type { PersonaModel, PostModel } from '../../../../../content/config';
 
 const applyAlobalStyle = globalCss(globalStyles);
 
@@ -302,13 +304,7 @@ export const card = css({
   }
 });
 
-export interface PersonaCardProps {
-  name?: string;
-  avatarImage?: string;
-  bannerImage?: string;
-  description?: string;
-  actions?: string[];
-  now?: string[];
+export interface PersonaCardProps extends PersonaModel {
   theme?: string[];
 };
 
@@ -316,11 +312,13 @@ export const PersonaCard = (props: PersonaCardProps) => {
   const {
     name = 'Software Developer',
     avatarImage  = '/profile-picture.jpeg',
-    description = "I'd love to change the world, but they won't give me the source code.",
-    actions = ['#hashtag', '#hashtag', '#hashtag', '#hashtag', '#hashtag'],
-    now = [ '🧳 open for work', '🛠 building personas', '👓 learning astro'],
+    intro = "I'd love to change the world, but they won't give me the source code.",
+    currentlyDoing = [ '🧳 open for work', '🛠 building personas', '👓 learning astro'],
     theme = []
   } = props;
+
+  const actions = ['#hashtag', '#hashtag', '#hashtag', '#hashtag', '#hashtag'];
+
   return (
     <>
       <Div className="persona-card" css={{
@@ -395,7 +393,7 @@ export const PersonaCard = (props: PersonaCardProps) => {
                   {name}
                 </Div>
                 <ButtonIcon>
-                  <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                  <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z" fill="currentColor" fillRule="evenodd" clipRule="evenodd"></path></svg>
                 </ButtonIcon>
               </Div>
             </Div>
@@ -413,11 +411,11 @@ export const PersonaCard = (props: PersonaCardProps) => {
             pt: '0'
           }
         }}>
-          <p>{description}</p>
+          <p>{intro}</p>
           <p className={css({ mt: '$4' }).toString()}><strong>Currently: </strong>
             <ul className="list-unstyled">
-              {now.map((now) => (
-                <li><a href="#">{now}</a></li>
+              {currentlyDoing.map((now:string, index:number) => (
+                <li key={index}><a href="#">{now}</a></li>
               ))}
             </ul>
           </p>
@@ -443,8 +441,8 @@ export const PersonaCard = (props: PersonaCardProps) => {
             borderBottomRightRadius: '$md'
           }
         }}>
-          {actions.map((hashtag) => (
-            <Pill>
+          {actions.map((hashtag:string, index:number) => (
+            <Pill key={index}>
               <a href="#">{hashtag}</a>
             </Pill>
           ))}
@@ -455,14 +453,7 @@ export const PersonaCard = (props: PersonaCardProps) => {
   );
 };
 
-export interface PostCardProps {
-  title?: string;
-  tags?: string[];
-  excerpt?: string;
-  coverImage?: string;
-  date?: string;
-  slug?: string;
-};
+export interface PostCardProps extends PostModel {};
 
 export const PostCard = (props: PostCardProps) => {
   const {
@@ -471,7 +462,7 @@ export const PostCard = (props: PostCardProps) => {
     excerpt = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima illo necessitatibus voluptatum...",
     slug = "",
     coverImage = "",
-    date = new Date().toDateString(),
+    createdAt = 'new Date()',
   } = props;
   return (
     <>
@@ -498,8 +489,8 @@ export const PostCard = (props: PostCardProps) => {
               alignItems: 'center',
               gap: '$4',
             }}>
-              {tags.map(tag => (
-                <Pill>
+              {tags.map((tag, index) => (
+                <Pill key={index}>
                   <a href="#" >{tag}</a>
                 </Pill>
               ))}
@@ -510,12 +501,12 @@ export const PostCard = (props: PostCardProps) => {
               fontFamily: '$mono',
               fontSize: '$xs'
             }}>
-              {date}
+              {eval(createdAt as string)?.toDateString()}
             </Div>
           </Div>
           {/* <!-- Cover image --> */}
           {coverImage ? 
-            <a href={`#${slug}`}>
+            <a href={`/p/${slug}`}>
               <Div className="cover-img" css={{
                  marginBottom: '$4',
                  mx: '$4',
@@ -534,7 +525,7 @@ export const PostCard = (props: PostCardProps) => {
             padding: '$4',
             paddingTop: '$0',
           }}>
-            <a href={`#${slug}`}>
+            <a href={`/p/${slug}`}>
               <Div as="h3" className="post-title" css={{
                   ...textStylesMap.h3,
                   mb: '$4',
@@ -557,7 +548,7 @@ export const PostCard = (props: PostCardProps) => {
   );
 };
 
-export const PostLists = (props: { posts: PostCardProps[] }) => {
+export const PostCardList = (props: { posts: PostCardProps[] }) => {
   const { posts } = props;
   return (
     <Container css={{
@@ -565,26 +556,16 @@ export const PostLists = (props: { posts: PostCardProps[] }) => {
         maxWidth: '$lg',
         margin: 'auto'
       }}}>
-        {posts.map(post => <PostCard {...post} />)}
+        {posts.map((post, index) => <PostCard key={index} {...post} />)}
       </Container>
   )
 };
-type PersonaType = {
-  name: string;
-  avatarImage?: string;
-  bannerImage?: string;
-  description?: string;
-  actions?: string[];
-  now?: string[];
-  slug?: string;
-}
-export type PersonaMapType = {
-  [slug: string]: PersonaType;
-};
+
 export interface ProfileCardProps {
-  personasList?: PersonaType[];
+  personasList?: PersonaModel[];
   selectedPersona?: string;
   onPersonaItemClick?: (persona?: string) => void;
+  path?: string;
 };
 
 const smallIcon = css({ 
@@ -599,6 +580,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
     personasList = [],
     selectedPersona = '',
     onPersonaItemClick = () => void 0,
+    // path = 'as'
   } = props;
 
   const staticContent = [
@@ -618,8 +600,11 @@ export const ProfileCard = (props: ProfileCardProps) => {
 
   const personaListItems = personasList.map((persona) => (
     <div key={persona.slug} className="button-persona" 
-      onClick={() => onPersonaItemClick(persona.slug)}>
-      <Div as={'button'} 
+      onClick={(e: SyntheticEvent) => {
+        e.preventDefault(); onPersonaItemClick(persona.slug)
+      }}>
+      <Div as={'a'} 
+        // href={`${path}/${persona.slug}`} // weird, it appears 'as/' twice
         css={{
           // button
           backgroundColor: '$white',
@@ -658,7 +643,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
     </div>
   ));
 
-  const displayingPersona: PersonaType | undefined = personasList.find(
+  const displayingPersona: PersonaModel | undefined = personasList.find(
     persona => persona.slug === selectedPersona
   );
 
@@ -667,12 +652,10 @@ export const ProfileCard = (props: ProfileCardProps) => {
   }
 
   const {
+    name,
+    intro,
     bannerImage,
     avatarImage,
-    name,
-    actions,
-    now,
-    description,
   } = displayingPersona;
 
   return (
@@ -682,6 +665,8 @@ export const ProfileCard = (props: ProfileCardProps) => {
         flexDirection: 'column',
         backgroundColor: '$white',
         overflow: 'hidden',
+        borderBottom: 'solid $twslate200',
+        borderBottomWidth: '$base',
         mb: `$4`,
         '@lg': {
           b: 'base',
@@ -745,7 +730,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
           <Div css={{
             ...flex,
             p: '$4',
-            flexDirection: 'column'
+            flexDirection: 'column',
           }}>
             <Div css={{
                 color: '$twslate900',
@@ -779,40 +764,16 @@ export const ProfileCard = (props: ProfileCardProps) => {
               }}>
                 {personaListItems}
               </Div>
-              <Div css={{ paddingTop: '$4', color: '$twslate600' }}>
-                <p>{description}</p>
+              <Div css={{ 
+                paddingTop: '$4', 
+                color: '$twslate600',
+              }}>
+                <p>{intro}</p>
               </Div>
             </Div>
           </Div>
-          {/* <!-- Hashtags --> */}
-          <Div css={{
-            ...flex,
-            flexWrap: 'nowrap',
-            justifyContent: 'left',
-            overflow: 'auto',
-            gap: '$2',
-            padding: '$4',
-            by: 'base',
-            '@sm': {
-              flexWrap: 'wrap',
-              textAlign: 'center',
-              justifyContent: 'center',
-            },
-            '@lg': {
-              borderBottomLeftRadius: '$md',
-              borderBottomRightRadius: '$md'
-            }
-          }}>
-            {actions?.map((hashtag, i) => (
-              <Pill key={i}>
-                <a href="#">{hashtag}</a>
-              </Pill>
-            ))}
-          </Div>
-          {/* <!-- END Hashtags --> */}
+          
       </Div> 
     </>
   );
 };
-
-export const CardRefactor = () => {}
