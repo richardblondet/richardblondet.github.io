@@ -1,0 +1,43 @@
+---
+import type { PersonaModel } from 'content/config';
+
+export interface Props {
+  persona: PersonaModel
+};
+
+const { persona } = Astro.props;
+const socialImageURL = new URL(persona.avatarImage, Astro.url);
+---
+<!-- General -->
+<meta name="description" content={persona.intro} />
+<meta name="keywords" content="web development, frontend development, TypeScript, NodeJS, ReactJS, PHP, Laravel, WordPress, MySQL, Postgres, MongoDB, Docker, Redis" />
+<!-- Open Graph -->
+<meta property="og:title" content={persona.name} />
+<meta property="og:description" content={persona.intro} />
+<meta property="og:image" content="image_url">
+<meta property="og:url" content={socialImageURL} />
+<meta property="og:type" content="website">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content={persona.name}>
+<meta name="twitter:description" content={persona.intro} />
+<meta name="twitter:image" content={socialImageURL} />
+
+{/*
+<!-- General -->
+<meta name="description" content="Experienced web developer with over 8 years of experience in frontend development using TypeScript, NodeJS, and ReactJS technologies. Also proficient in PHP, Laravel, WordPress, MySQL, Postgres, MongoDB, Docker, Redis, etc. Worked on large-scale projects with distributed teams for companies in the USA, Europe, and South America.">
+<meta name="keywords" content="web development, frontend development, TypeScript, NodeJS, ReactJS, PHP, Laravel, WordPress, MySQL, Postgres, MongoDB, Docker, Redis">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Experienced Web Developer">
+<meta property="og:description" content="Experienced web developer with over 8 years of experience in frontend development using TypeScript, NodeJS, and ReactJS technologies. Also proficient in PHP, Laravel, WordPress, MySQL, Postgres, MongoDB, Docker, Redis, etc.">
+<meta property="og:image" content="image_url">
+<meta property="og:url" content="https://richardblondet.com/as/software-developer">
+<meta property="og:type" content="website">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Experienced Web Developer">
+<meta name="twitter:description" content="Experienced web developer with over 8 years of experience in frontend development using TypeScript, NodeJS, and ReactJS technologies. Also proficient in PHP, Laravel, WordPress, MySQL, Postgres, MongoDB, Docker, Redis, etc.">
+<meta name="twitter:image" content="image_url">
+*/}
