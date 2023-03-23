@@ -462,7 +462,7 @@ export const PostCard = (props: PostCardProps) => {
     excerpt = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima illo necessitatibus voluptatum...",
     slug = "",
     featuredImage = "",
-    createdAt = 'new Date()',
+    createdAt = '2023-03-23T05:13:22.695Z',
   } = props;
 
   const PostLink = ({...props}) => <a href={`/p/${slug}`} target="_blank" {...props} />
@@ -504,7 +504,7 @@ export const PostCard = (props: PostCardProps) => {
               fontFamily: '$mono',
               fontSize: '$xs'
             }}>
-              {eval(createdAt as string)?.toDateString()}
+              {new Date(createdAt).toDateString()}
             </Div>
           </Div>
           {/* <!-- Cover image --> */}
