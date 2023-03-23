@@ -1,9 +1,7 @@
 ---
-import { RootContainer, PostCard, Div, Main, textStyles } from '@richardblondet.com/ui';
-import ProfileCard from '../../components/ProfileCard';
-import StyleGuideLayout from '../../layouts/styleguide.astro';
-import type { PersonaModel, PostModel } from '../../../../../content/config';
-
+import { TagIcon } from '@heroicons/react/24/outline';
+import { Div,smallIconStyle,textStyles } from '@richardblondet.com/ui';
+import Layout from '../../layouts/default.astro';
 
 export const getStaticPaths = async () => {
   const postsEntries = await Astro.glob('../../../../../content/posts/**/*.mdx');
@@ -16,27 +14,100 @@ export const getStaticPaths = async () => {
       post: {
         ...p.frontmatter, 
         Content: p.Content 
-      }
+      },
+      headings: [
+        ...p.getHeadings()
+      ]
     }
   }));
 };
 
-const { post:slug } = Astro.params;
-const { post } = Astro.props;
+// const { post:slug } = Astro.params;
+const { post, headings } = Astro.props;
 const { Content } = post;
 
 ---
-<StyleGuideLayout>
-  <RootContainer>
-    <Main css={{
+<Layout title={`Post ${post.title} • Richard's`} themeTokens={{
+  bodyBackgroundColor: 'var(--colors-twgray100)'
+}}>
+  {/* Feature Image */}
+  {post.featuredImage ? <Div css={{
+    padding: '$8',
+    ['> figure']: {
+      maxWidthScreen: 'sm',
+      boxShadow: '0 .5rem 1rem rgba(0,0,0,.15)',
+      width: '100%',
+      margin: '0 auto',
+      borderRadius: '$lg',
+      position: 'relative',
+      overflow: 'hidden',
+    },
+    ['> figure > figcaption']: {
+      p: '$2',
+      backgroundColor: 'rgba(255, 255, 255, 0.35)',
+      boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+      backdropFilter: 'blur(10px)',
+      border: '1px solid rgba(255, 255, 255, 0.3)',
+      position: 'absolute',
+      bottom: '0',
+      width: '100%',
+      color: '$twgray800',
+      textAlign: 'center',
+      textSize: '$xs',
+    }
+  }}>
+    <figure>
+      <img src={post.featuredImage} alt={post.title} /> 
+      {post.featuredImageCaption ? <figcaption set:html={post.featuredImageCaption} /> : null }
+    </figure>
+  </Div> : null }
+  <Div css={{ backgroundColor: '$white' }}>
+    <Div as="article" css={{
+      display: 'block',
+      padding: '$8',
       '@lg': {
-        maxWidth: '$lg'
-      }
+        },
     }}>
-      <Div className={textStyles.toString()}>
-        <PostCard {...post } />
+      <Div as="header" css={{
+        maxWidthScreen: 'sm',
+        margin: '0 auto',
+      }}>
+        <Div className={textStyles.toString()}>
+          <h1>{post.title}</h1>
+        </Div>
+        <Div css={{
+          py: '$4',
+          by: 'base',
+          fontFamily: '$mono',
+          color: '$gray900',
+          display: 'flex',
+          justifyContent: 'space-between',
+        }}>
+          <div>{new Date(post.createdAt).toDateString()}</div>
+          <Div css={{ display: 'flex', alignItems: 'center', gap: '$2' }}>
+            <TagIcon className={smallIconStyle.toString()} /> {post.tags.map((tag:string) => (
+              <span>{tag}</span>
+            ))}
+          </Div>
+        </Div>
+        {headings.length > 0 ? 
+          <Div css={{
+            pt: '$4',
+          }} className={textStyles.toString()}>
+            <p><strong>Contents</strong></p>
+            {headings.map((heading:{slug:string; text:string;}) => (
+              <li><a href={`#${heading.slug}`}>{heading.text}</a></li>
+            ))}
+          </Div>
+        : null }
+      </Div>
+      <Div as="section" css={{
+        maxWidthScreen: 'sm',
+        margin: '0 auto',
+        pt: '$4',
+      }} className={textStyles.toString()}>
         <Content />
       </Div>
-    </Main>
-  </RootContainer>
-</StyleGuideLayout>
+    </Div>
+  </Div>
+</Layout>

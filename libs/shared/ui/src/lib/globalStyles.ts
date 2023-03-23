@@ -14,7 +14,12 @@ export default {
     fontFamily: 'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
     fontFeatureSettings: "normal"
   },
-  body: { margin: "0", lineHeight: "inherit", backgroundColor: 'var(--pageBgColor, #fff)' },
+  body: { 
+    margin: "0", 
+    lineHeight: "inherit", 
+    backgroundColor: 'var(--bodyBackgroundColor, #fff)',
+    transition: 'background-color 1000ms linear',
+  },
   hr: { height: "0", color: "inherit", borderTopWidth: "1px" },
   "abbr:where([title])": {
     WebkitTextDecoration: "underline dotted",

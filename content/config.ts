@@ -23,7 +23,8 @@ export interface PostModel {
   persona?: string;
   title: string;
   slug?: string;
-  coverImage?: string;
+  featuredImage?: string;
+  featuredImageCaption?: string;
   body?: string;
   tags?: string[];
   excerpt?: string;

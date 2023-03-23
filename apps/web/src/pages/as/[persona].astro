@@ -1,14 +1,22 @@
 ---
-import { RootContainer, PersonaCard, Aside, Main } from '@richardblondet.com/ui';
+import { RootContainer, Aside, Main, theme } from '@richardblondet.com/ui';
+
 import ProfileCard from '../../components/ProfileCard';
-import StyleGuideLayout from '../../layouts/styleguide.astro';
+import Layout from '../../layouts/default.astro';
 import type { PersonaModel, PostModel } from '../../../../../content/config';
 import PostListFormat from '../../components/PostListFormat';
+import MetaTagsOpenGraph from '../../components/MetaTagsOpenGraph.astro';
+import ThemeTokens from '../../components/GlobalThemeTokens.astro';
+
+const { persona:selectedPersona } = Astro.params;
+const { persona } = Astro.props;
 
 const personasEntries = await Astro.glob('../../../../../content/personas/*.mdx');
 const personas = personasEntries.map(({frontmatter}) => ({ ...frontmatter }));
 
-const postsEntries = await Astro.glob('../../../../../content/posts/**/*.mdx');
+const postsEntries = await Astro.glob<PostModel>('../../../../../content/posts/**/*.mdx');
+const posts = postsEntries.filter(({ frontmatter }) => selectedPersona === frontmatter.persona)
+  .map(({ frontmatter }) => ({ ...frontmatter }));
 
 export const getStaticPaths = async () => {
   const personasEntries = await Astro.glob<PersonaModel>('../../../../../content/personas/*.mdx');
@@ -26,30 +34,28 @@ export const getStaticPaths = async () => {
   }));
 };
 
-type PostSourceFunctions = {
-  [key in PersonaModel['contentSource']]: (selectedPersona: string) => Promise<PostModel[]>;
-};
-
-// TODO
-const getPersonaPosts: PostSourceFunctions = {
-  'astro.glob': async (selectedPersona) => {
-    return [] as PostModel[];
+// Basic Theming Idea
+type ThemeMap = {
+  [k: string]: {[i: string]: string}
+}
+const themes: ThemeMap = {
+  'software-developer': {
+    bodyBackgroundColor:  theme.colors['twslate100']
   },
-  'astro.collection': async () => {
-    return [] as PostModel[];
+  'blogger': {
+    bodyBackgroundColor: theme.colors['twgray100']
   },
 };
-
-const { persona:selectedPersona } = Astro.params;
-
-const { persona } = Astro.props;
-const posts = postsEntries
-  .filter(({ frontmatter }) => selectedPersona === frontmatter.persona)
-  .map(({ frontmatter }) => ({ ...frontmatter }));
-
+const getPersonaTokens = (themeId: string) => {
+  if (themeId in themes) {
+    return themes[themeId];
+  } 
+  return themes['software-developer'];
+}
 
 ---
-<StyleGuideLayout>
+<Layout title={`Richard as a ${persona.name}`} themeTokens={getPersonaTokens(selectedPersona || '')} />
+  <MetaTagsOpenGraph persona={persona} slot="head" />
   <RootContainer>
     <Aside>
       <ProfileCard 
@@ -62,4 +68,4 @@ const posts = postsEntries
       <PostListFormat {...persona} posts={posts} />
     </Main>
   </RootContainer>
-</StyleGuideLayout>
+</Layout>

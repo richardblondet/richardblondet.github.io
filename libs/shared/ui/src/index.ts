@@ -15,6 +15,7 @@ export {
   textStyles,
   Button,
   ProfileCard,
+  smallIconStyle,
 } from './lib/stylesheet';
 export type {
   CssAvatarVariants,
