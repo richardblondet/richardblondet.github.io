@@ -461,9 +461,12 @@ export const PostCard = (props: PostCardProps) => {
     tags = ['Action', 'Another', 'Test'],
     excerpt = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima illo necessitatibus voluptatum...",
     slug = "",
-    coverImage = "",
+    featuredImage = "",
     createdAt = 'new Date()',
   } = props;
+
+  const PostLink = ({...props}) => <a href={`/p/${slug}`} target="_blank" {...props} />
+
   return (
     <>
       <Div className="post-card" css={{
@@ -505,8 +508,8 @@ export const PostCard = (props: PostCardProps) => {
             </Div>
           </Div>
           {/* <!-- Cover image --> */}
-          {coverImage ? 
-            <a href={`/p/${slug}`}>
+          {featuredImage ? 
+            <PostLink>
               <Div className="cover-img" css={{
                  marginBottom: '$4',
                  mx: '$4',
@@ -518,14 +521,14 @@ export const PostCard = (props: PostCardProps) => {
                 //  boxShadow: '0 0.5rem 1rem rgb(0 0 0 / 15%)',
                  borderRadius: 'var(--radii-xl)',
                  border: 'solid 1px #e5e7eb',
-                backgroundImage: `url(${coverImage})`
+                backgroundImage: `url(${featuredImage})`
               }} />
-            </a> : null}
+            </PostLink> : null}
           <Div className='post-content' css={{
             padding: '$4',
             paddingTop: '$0',
           }}>
-            <a href={`/p/${slug}`}>
+            <PostLink>
               <Div as="h3" className="post-title" css={{
                   ...textStylesMap.h3,
                   mb: '$4',
@@ -536,7 +539,7 @@ export const PostCard = (props: PostCardProps) => {
                 }}>
                 {title}
               </Div>
-            </a>
+            </PostLink>
             <Div as="p" css={{
               color: '$twslate600'
             }}>
@@ -553,7 +556,8 @@ export const PostCardList = (props: { posts: PostCardProps[] }) => {
   return (
     <Container css={{
       '@sm': {
-        maxWidth: '$lg',
+        // maxWidth: '$lg',
+        maxWidthScreen: 'xs',
         margin: 'auto'
       }}}>
         {posts.map((post, index) => <PostCard key={index} {...post} />)}
@@ -568,7 +572,7 @@ export interface ProfileCardProps {
   path?: string;
 };
 
-const smallIcon = css({ 
+export const smallIconStyle = css({ 
   width: '$4',
   height: '$4',
 });
@@ -586,13 +590,13 @@ export const ProfileCard = (props: ProfileCardProps) => {
   const staticContent = [
     <>
       <span>
-        <MapPinIcon className={smallIcon.toString()} />
+        <MapPinIcon className={smallIconStyle.toString()} />
       </span>
       <span>Santo Domingo</span>
     </>,
     <>
       <span>
-        <CakeIcon className={smallIcon.toString()} />
+        <CakeIcon className={smallIconStyle.toString()} />
       </span>
       <span>22 Feb</span>
     </>
@@ -654,7 +658,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
   const {
     name,
     intro,
-    bannerImage,
+    coverImage,
     avatarImage,
   } = displayingPersona;
 
@@ -680,7 +684,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
           ...flex,
           maxWidth: '$full',
           alignContent: 'center',
-          backgroundImage: `url(${bannerImage})`,
+          backgroundImage: `url(${coverImage})`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
           height: '$16',
