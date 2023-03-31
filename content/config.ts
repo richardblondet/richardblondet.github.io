@@ -37,10 +37,10 @@ export interface PostModel {
   wordCount?: number;
   isPinned?: boolean;
   isCommentOpened?: boolean;
-  timelineDate?: Date;
-  timelineRanged?: Date;
-  createdAt?: Date | string;
-  updatedAt?: Date | string;
+  startDate?: string;
+  endDate?: string;
+  createdAt?: string;
+  updatedAt?: string;
 };
 enum PostStatus {
   Published = "published",

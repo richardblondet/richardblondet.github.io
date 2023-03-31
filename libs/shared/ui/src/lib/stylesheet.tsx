@@ -558,7 +558,7 @@ export const PostCardList = (props: { posts: PostCardProps[] }) => {
       '@sm': {
         // maxWidth: '$lg',
         maxWidthScreen: 'xs',
-        margin: 'auto'
+        margin: '0 auto'
       }}}>
         {posts.map((post, index) => <PostCard key={index} {...post} />)}
       </Container>
