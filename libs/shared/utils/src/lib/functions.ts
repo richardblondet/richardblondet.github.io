@@ -5,6 +5,7 @@ export function formatIsoDateString(dateString: string) {
   const monthYearFormatter = new Intl.DateTimeFormat('en-US', {
     year: 'numeric',
     month: 'short',
+    timeZone: 'America/Santo_Domingo'
   });
   
   return monthYearFormatter.format(date);
