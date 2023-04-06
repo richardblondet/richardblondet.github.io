@@ -465,7 +465,7 @@ export const PostCard = (props: PostCardProps) => {
     createdAt = '2023-03-23T05:13:22.695Z',
   } = props;
 
-  const PostLink = ({...props}) => <a href={`/p/${slug}`} target="_blank" {...props} />
+  const PostLink = ({...props}: any) => <a href={`/p/${slug}`} target="_blank" {...props} />
 
   return (
     <>

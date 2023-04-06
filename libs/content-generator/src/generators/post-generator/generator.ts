@@ -54,7 +54,7 @@ function addFiles(tree: Tree, options: NormalizedSchema) {
     tmpl: ''
   };
   const srcFolder = path.join(__dirname, 'files');
-  const target = joinPathFragments(POSTS_TARGET_DIRECTORY, options.directory);
+  const target = joinPathFragments(POSTS_TARGET_DIRECTORY, options.directory ?? '');
 
   generateFiles(
     tree, 
