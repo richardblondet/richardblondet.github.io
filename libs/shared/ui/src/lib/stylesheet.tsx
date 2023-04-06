@@ -414,7 +414,7 @@ export const PersonaCard = (props: PersonaCardProps) => {
           <p>{intro}</p>
           <p className={css({ mt: '$4' }).toString()}><strong>Currently: </strong>
             <ul className="list-unstyled">
-              {currentlyDoing.map((now:string, index:number) => (
+              {Array.isArray(currentlyDoing) && currentlyDoing.map((now:string, index:number) => (
                 <li key={index}><a href="#">{now}</a></li>
               ))}
             </ul>

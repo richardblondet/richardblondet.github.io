@@ -1,4 +1,3 @@
-export { default as Ui } from './lib/Ui.astro';
 export { 
   default as StyleSheet,
   RootContainer,

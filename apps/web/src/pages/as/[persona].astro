@@ -6,7 +6,7 @@ import Layout from '../../layouts/default.astro';
 import type { PersonaModel, PostModel } from '../../../../../content/config';
 import PostListFormat from '../../components/PostListFormat';
 import MetaTagsOpenGraph from '../../components/MetaTagsOpenGraph.astro';
-import ThemeTokens from '../../components/GlobalThemeTokens.astro';
+// import ThemeTokens from '../../components/GlobalThemeTokens.astro';
 
 const { persona:selectedPersona } = Astro.params;
 const { persona } = Astro.props;
@@ -54,7 +54,8 @@ const getPersonaTokens = (themeId: string) => {
 }
 
 ---
-<Layout title={`Richard as a ${persona.name}`} themeTokens={getPersonaTokens(selectedPersona || '')} />
+
+<Layout title={`Richard as a ${persona.name}`} themeTokens={getPersonaTokens(selectedPersona || '')}>
   <MetaTagsOpenGraph persona={persona} slot="head" />
   <RootContainer>
     <Aside>
