@@ -39,7 +39,7 @@ type ThemeMap = {
   [k: string]: {[i: string]: string}
 }
 const themes: ThemeMap = {
-  'software-developer': {
+  'software-engineer': {
     bodyBackgroundColor:  theme.colors['twslate100']
   },
   'blogger': {
@@ -50,7 +50,7 @@ const getPersonaTokens = (themeId: string) => {
   if (themeId in themes) {
     return themes[themeId];
   } 
-  return themes['software-developer'];
+  return themes['software-engineer'];
 }
 
 ---

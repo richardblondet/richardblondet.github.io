@@ -7,7 +7,7 @@ export interface ProfileCardProps {
   selectedPersona: string;
 }
 
-export default ({ personasList, selectedPersona = 'software-developer' }: ProfileCardProps) => {
+export default ({ personasList, selectedPersona = 'software-engineer' }: ProfileCardProps) => {
 
   const onPersonaItemClick = (p?: string) => {
     window.location.href = `/as/${p}`;

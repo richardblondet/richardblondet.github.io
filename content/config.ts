@@ -19,7 +19,7 @@ export interface PersonaModel {
 export const newPersona = (args:PersonaModel) => ({...args});
 
 export interface PostModel {
-  uid: string;
+  uid?: string;
   persona?: string;
   title: string;
   slug?: string;

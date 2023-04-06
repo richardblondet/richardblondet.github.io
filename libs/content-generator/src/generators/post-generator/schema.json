@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "$id": "PostGenerator",
+  "title": "New Post",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Post title",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "Insert Post Title"
+    },
+    "persona": {
+      "type": "string",
+      "description": "The persona this posts belongs to",
+      "x-prompt": {
+        "message": "Which persona this post belongs to?",
+        "type": "list",
+        "items": [
+          {
+            "value": "software-engineer",
+            "label": "Software Engineer"
+          },
+          {
+            "value": "blogger",
+            "label": "Blogger"
+          }
+        ]
+      }
+    }, 
+    "directory": {
+      "type": "string",
+      "description": "Save this posts inside a directory in 'content/posts'"
+    },
+    "tags": {
+      "type": "string",
+      "description": "Add comma separated tags for post"
+    }
+  },
+  "required": ["title", "persona"]
+}

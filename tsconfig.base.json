@@ -15,6 +15,9 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
+            "@richardblondet.com/content-generator": [
+                "libs/content-generator/src/index.ts"
+            ],
             "@richardblondet.com/ui": ["libs/shared/ui/src/index.js"]
         }
     },
