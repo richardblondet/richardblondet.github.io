@@ -18,7 +18,8 @@
             "@richardblondet.com/content-generator": [
                 "libs/content-generator/src/index.ts"
             ],
-            "@richardblondet.com/ui": ["libs/shared/ui/src/index.js"]
+            "@richardblondet.com/ui": ["libs/shared/ui/src/index.js"],
+            "@richardblondet.com/utils": ["libs/shared/utils/src/index.js"]
         }
     },
     "exclude": ["node_modules", "tmp"]
