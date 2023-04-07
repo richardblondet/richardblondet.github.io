@@ -39,6 +39,14 @@
     "tags": {
       "type": "string",
       "description": "Add comma separated tags for post"
+    },
+    "startDate": {
+      "type": "string",
+      "description": "Timeline startDate"
+    },
+    "endDate": {
+      "type": "string",
+      "description": "Timeline endDate"
     }
   },
   "required": ["title", "persona"]

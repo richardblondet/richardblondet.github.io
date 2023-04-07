@@ -3,4 +3,6 @@ export interface PostGeneratorGeneratorSchema {
     persona: string;
     directory?: string;
     tags?: string;
+    startDate?: string;
+    endDate?: string;
 }

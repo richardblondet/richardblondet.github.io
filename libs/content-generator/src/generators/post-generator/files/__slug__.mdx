@@ -1,14 +1,13 @@
 ---
-persona:  <%= persona %>
+persona: <%= persona %>
 title: <%= title %>
 slug: <%= slug %>
-featuredImage: /post-place-holder-cover.jpeg
 tags: <%- JSON.stringify(parsedTags) %>
 excerpt: excerpt here
 status: draft
 type: blog
-startDate: undefined
-endDate: undefined
+<% if (startDate) { %>startDate: <%= startDate %> <% } %>
+<% if (endDate) { %>endDate: <%= endDate %> <% } %>
 createdAt: <%= createdAt %>
 updatedAt: <%= createdAt %>
 ---

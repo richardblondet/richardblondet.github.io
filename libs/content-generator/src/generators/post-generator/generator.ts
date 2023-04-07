@@ -7,7 +7,7 @@ import {
 } from '@nrwl/devkit';
 import * as path from 'path';
 import { PostGeneratorGeneratorSchema } from './schema';
-
+import slugify from 'slugify';
 // const POSTS_TEMPLATES_DIRECTORY = 'content/templates/posts';
 const POSTS_TARGET_DIRECTORY = 'content/posts';
 
@@ -31,20 +31,26 @@ function capitalizeTitle(titleSentence: string) {
 function normalizeOptions(tree: Tree, options: PostGeneratorGeneratorSchema): NormalizedSchema {
   const { fileName } = names(options.title);
   const title = capitalizeTitle(options.title);
+  const slug = slugify(options.title).toLowerCase();
   const createdAt = new Date().toISOString();
   const directory = options.directory ? `${names(options.directory).fileName}` : '';
   const parsedTags = options.tags
     ? options.tags.split(',').map((s) => s.trim())
     : [];
 
+  const startDate = options.startDate ? new Date(options.startDate).toISOString() : '';
+  const endDate = options.endDate ? new Date(options.endDate).toISOString() : '';
+
   return {
     ...options,
     title,
     fileName,
     directory,
-    slug: fileName,
+    slug,
     createdAt,
-    parsedTags
+    parsedTags,
+    startDate,
+    endDate,
   };
 }
 
