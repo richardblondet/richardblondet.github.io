@@ -6,17 +6,33 @@ import Layout from '../../layouts/default.astro';
 import type { PersonaModel, PostModel } from '../../../../../content/config';
 import PostListFormat from '../../components/PostListFormat';
 import MetaTagsOpenGraph from '../../components/MetaTagsOpenGraph.astro';
-// import ThemeTokens from '../../components/GlobalThemeTokens.astro';
 
 const { persona:selectedPersona } = Astro.params;
 const { persona } = Astro.props;
 
+/**
+ * Get personas for the user card 
+ */
 const personasEntries = await Astro.glob('../../../../../content/personas/*.mdx');
 const personas = personasEntries.map(({frontmatter}) => ({ ...frontmatter }));
 
+/**
+ * Posts
+ * - [ ] prioritize `isPinned` attribute on posts
+ */
 const postsEntries = await Astro.glob<PostModel>('../../../../../content/posts/**/*.mdx');
 const posts = postsEntries.filter(({ frontmatter }) => selectedPersona === frontmatter.persona)
   .map(({ frontmatter }) => ({ ...frontmatter }));
+
+posts.sort((one, another) => {
+  if (one.isPinned && !another.isPinned) {
+    return -1; // one with isPinned should come before another
+  }
+  if (!one.isPinned && another.isPinned) {
+    return 1; // another should come before one if isPinned
+  }
+  return 0; // don't change anything with one or another
+});
 
 export const getStaticPaths = async () => {
   const personasEntries = await Astro.glob<PersonaModel>('../../../../../content/personas/*.mdx');
