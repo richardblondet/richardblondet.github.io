@@ -8,9 +8,8 @@ import {
 import * as path from 'path';
 import { PostGeneratorGeneratorSchema } from './schema';
 import slugify from 'slugify';
-// const POSTS_TEMPLATES_DIRECTORY = 'content/templates/posts';
-const POSTS_TARGET_DIRECTORY = 'content/posts';
 
+const POSTS_TARGET_DIRECTORY = 'content/posts';
 interface NormalizedSchema extends PostGeneratorGeneratorSchema {
   fileName: string;
   slug: string;
