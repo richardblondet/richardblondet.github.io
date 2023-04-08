@@ -483,7 +483,6 @@ export const PostCard = (props: PostCardProps) => {
           borderRadius: '$lg',
         },
       }}>
-         
           <Div className="post-heading" css={{
             display: 'flex',
             justifyContent: 'space-between',
@@ -632,7 +631,6 @@ export const ProfileCard = (props: ProfileCardProps) => {
           borderRadius: '$lg',
           fontSize: '$xs',
           b: 'base',
-          borderColor: persona.slug === selectedPersona ? '$blue800' : 'inherit',
           color: '$twslate600',
           px: '$3',
           py: '$1',
@@ -644,7 +642,9 @@ export const ProfileCard = (props: ProfileCardProps) => {
           '&:hover': {
             textDecoration: 'underline',
           },
+          borderColor: 'inherit',
           ...(persona.slug === selectedPersona ? {
+            borderColor: '$blue800',
             fontWeight: '$semibold',
             cursor: 'initial',
             '&:hover': {
@@ -798,3 +798,29 @@ export const ProfileCard = (props: ProfileCardProps) => {
     </>
   );
 };
+
+interface EmptyPostsProps {
+  message: string;
+}
+export const EmptyPosts = (props: EmptyPostsProps) => {
+  const { message } = props;
+  return (
+    <Div css={{
+      maxWidthScreen: 'xs',
+      margin: '0 auto',
+    }}>
+      <Div css={{
+        p: '$4',
+        color: '$twslate400',
+        minWidth: '$md',
+        // b: 'base',
+        // borderRadius: '$lg',
+        // borderColor: '$twslate400',
+        fontWeight: '$bold',
+        textAlign: 'center',
+      }}>
+        {message}
+      </Div>
+    </Div>
+  );
+}
