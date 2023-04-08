@@ -1,4 +1,3 @@
-// import { useState } from "react";
 import { ProfileCard } from "@richardblondet.com/ui";
 import type { PersonaModel } from "../../../../content/config";
 
