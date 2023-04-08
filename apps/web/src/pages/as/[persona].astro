@@ -1,11 +1,11 @@
 ---
-import { RootContainer, Aside, Main, theme } from '@richardblondet.com/ui';
+import { Aside, Main, RootContainer, theme } from '@richardblondet.com/ui';
 
+import type { PersonaModel,PostModel } from '../../../../../content/config';
+import MetaTagsOpenGraph from '../../components/MetaTagsOpenGraph.astro';
+import PostListFormat from '../../components/PostListFormat';
 import ProfileCard from '../../components/ProfileCard';
 import Layout from '../../layouts/default.astro';
-import type { PersonaModel, PostModel } from '../../../../../content/config';
-import PostListFormat from '../../components/PostListFormat';
-import MetaTagsOpenGraph from '../../components/MetaTagsOpenGraph.astro';
 
 const { persona:selectedPersona } = Astro.params;
 const { persona } = Astro.props;
@@ -18,7 +18,7 @@ const personas = personasEntries.map(({frontmatter}) => ({ ...frontmatter }));
 
 /**
  * Posts
- * - [ ] prioritize `isPinned` attribute on posts
+ * - [x] prioritize `isPinned` attribute on posts
  */
 const postsEntries = await Astro.glob<PostModel>('../../../../../content/posts/**/*.mdx');
 const posts = postsEntries.filter(({ frontmatter }) => selectedPersona === frontmatter.persona)
