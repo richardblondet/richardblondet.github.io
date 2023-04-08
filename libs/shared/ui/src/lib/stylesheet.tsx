@@ -823,4 +823,48 @@ export const EmptyPosts = (props: EmptyPostsProps) => {
       </Div>
     </Div>
   );
+};
+
+interface ErrorPageProps {
+  code: string;
+  message: string;
+}
+export const ErrorPage = (props: ErrorPageProps) => {
+  const {
+    code,
+    message
+  } = props;
+
+  return (
+    <Div css={{
+      maxWidthScreen: 'md',
+      margin: '0 auto',
+    }}>
+      <Div css={{
+        ...flex,
+        flexDirection: 'column',
+        p: '$16',
+        minWidth: '$sm',
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center',
+      }}>
+        <Div as="h1" css={{
+          fontWeight: '$black',
+          lineHeight: '$normal',
+          fontSize: '$xl5',
+          marginBottom: '$1'
+        }}>
+          {code}
+        </Div>
+        <Div as="p" css={{
+          fontSize: '$xl',
+          fontWeight: '$extralight',
+          color: '$gray800'
+        }}>
+          {message}
+        </Div>
+      </Div>
+    </Div>
+  );
 }

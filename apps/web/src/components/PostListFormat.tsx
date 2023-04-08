@@ -19,5 +19,6 @@ export default ({ posts, postListFormat }: PostListFormatProps) => {
   if (!posts.length) {
     return <EmptyPosts message="No posts yet"  /> ;
   }
+
   return <Component posts={posts} />;
 };

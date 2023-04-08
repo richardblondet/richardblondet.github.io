@@ -16,6 +16,7 @@ export {
   ProfileCard,
   smallIconStyle,
   EmptyPosts,
+  ErrorPage,
 } from './lib/stylesheet';
 export type {
   CssAvatarVariants,
