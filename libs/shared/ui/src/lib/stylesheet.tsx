@@ -120,6 +120,9 @@ export const textStylesMap = {
     color: '$twslate600',
     fontWeight: '$semibold',
     textDecoration: 'underline',
+  },
+  hr: {
+    marginBottom: '$4',
   }
 };
 
@@ -481,6 +484,7 @@ export const PostCard = (props: PostCardProps) => {
         '@sm': {
           b: 'base',
           borderRadius: '$lg',
+          minWidth: '$md'
         },
       }}>
           <Div className="post-heading" css={{
