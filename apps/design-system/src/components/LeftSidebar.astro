@@ -1,0 +1,51 @@
+---
+import navLinks from '../navLinks';
+import type { Item } from '../navLinks';
+
+const { currentPage } = Astro.props;
+const currentPageMatch = currentPage.slice(1);
+
+const isCurrentPage = (item: Item) => {
+	if (item.link) {
+		return item.link.includes(currentPageMatch) && currentPageMatch != "";
+	}
+	return false;
+};
+
+const getLinkClasses = (link: Item) => {
+	const baseClasses = "block py-2 px-6  my-1 transition-colors border-l hover:border-slate-400 text-slate-500 hover:text-slate-900"
+
+	if (isCurrentPage(link)) {
+		return baseClasses + " border-slate-500 text-slate-900";
+	} else {
+		return baseClasses;
+	}
+}
+---
+<section id="sidebar-navigation"  class="overflow-auto w-64 p-4 border-r ml-auto">
+	<nav>
+		<ul>
+			{navLinks.map(item => (item.header ? 
+				<h2 class="mt-4 font-semibold text-slate-700">{item.text}</h2> : 
+				<li class={getLinkClasses(item)}>
+					<a href={item.link}>{item.text}</a>
+				</li>))}
+		</ul>
+	</nav>
+</section>
+
+<script is:inline>
+	(function(w) {
+		const sidebar = document.getElementById('sidebar-navigation');
+		w.addEventListener('scroll', () => {
+			const isSidebarEqOrGtWindow = sidebar.offsetHeight >= (w.innerHeight - 100) ? true:false;
+			const isWindowScrolled100Px = w.scrollY > 100 ? true:false;
+			if (isSidebarEqOrGtWindow && isWindowScrolled100Px) {
+				sidebar.classList.add("overflow-auto");
+			} else {
+				sidebar.classList.remove("overflow-auto");
+			}
+		});
+	}(window))
+
+</script>

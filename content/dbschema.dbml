@@ -1,0 +1,271 @@
+// https://dbdiagram.io/d/63bda9876afaa541e5d19706
+// example table for visually understanding https://docs.google.com/spreadsheets/d/12i6fyMa3HjQoVXU52eUf7oVrARH4bi7IBVutQGGY0zk/edit#gid=0
+// created: jan 10 2023
+// author: developer@richardblondet.com
+Project {
+  database_type: 'MySQL'
+  Note: 'Data model draft'
+}
+
+
+// —— System
+Table countries {
+  code int [pk]
+  name varchar
+  continent_name varchar
+}
+Table themes {
+  id int [pk]
+  name varchar
+  design_tokens text 
+  posts_layout themes.posts_layouts
+}
+Enum themes.posts_layouts {
+  card_list [note: 'card list layout']
+  text_list [note: 'simple monospace fonts']
+  timeline [note: 'inspired in polywork']
+  media_grid [note: 'inspired in instagram']
+}
+
+// —— Identity
+Table self {
+  id int [pk, unique, increment]
+  first_name varchar
+  last_name varchar
+  birth_date varchar
+  sex varchar
+  temperament varchar [note: 'Introvert']
+  country_code int [ref: > countries.code]
+  current_location int [ref: > countries.code]
+}
+Table self.personas {
+  id int [pk, increment]
+  self_id int [ref: > self.id]
+  name varchar
+  slug varchar [unique, note: 'will be used as path']
+  intro text [note: 'initial description']
+  description text
+  avatar varchar
+  // color varchar // deprecated, we can use the primary_color in the theme tokens
+  cover_image varchar
+  content_source content_sources
+  domain varchar
+  higher_persona int [ref: > self.personas.id]
+  hierarchy_value int [note: 'value to order personas']
+  type persona_types
+  is_primary boolean
+  is_private boolean
+  currently_doing text 
+  theme_id int [ref: > themes.id, note: 'layout and everything']
+  created_at timestamp
+  updated_at timestamp
+}
+Enum content_sources {
+  custom [note: 'starting indexing our mdx']
+  strapi [note: 'just an idea']
+}
+Enum persona_types {
+  actor // if actors are the personas we play in society
+  proxy // a proxy could be a digital entity that acts in our behalve, like bots or systems?
+}
+Table personas.aliases {
+  id int [pk, increment]
+  name varchar
+  description varchar [note: 'should be optional']
+  slug varchar
+  persona_id int [ref: > self.personas.id]
+}
+
+// —— Content
+Table posts {
+  id int [increment]
+  persona_id int [ref: > self.personas.id]
+  post_cover text [note: 'use for featured image']
+  title varchar
+  body text [note: 'full html static output eg. processed mdx']
+  content text [note: 'optional possibly for only text readers considering we are going to have mdx components']
+  excerpt text
+  status post_status // for build options
+  type post_type
+  keywords text
+  post_parent int [ref: > posts.id]
+  comment_count int
+  likes_count int
+  word_count int
+  is_pinned boolean
+  is_comment_opened boolean
+  start_date timestamp [note: 'used timeline feature']
+  end_date timestamp [note: 'used in conjunction with the date as second date to create a range']
+  created_at timestamp
+  updated_at timestamp
+}
+Enum post_status {
+  published
+  draft
+  archived
+  deprecated
+}
+Enum post_type {
+  article
+  essay
+  blog
+  media // posted image, eg, instagram
+  thought // similar to twitter
+  event // events in the future with potential to be social
+}
+// Actions, Categories, Groups, ETC
+Table posts.tags {
+  id int [pk, increment]
+  name varchar
+  slug varchar 
+  color varchar
+  icon varchar 
+  persona_id int [ref: > self.personas.id, note: 'relating to the persona in tags']
+  description varchar
+}
+Table posts_tags_relationship {
+  id int [unique, pk, increment]
+  post_id int [ref: > posts.id]
+  tag_id int [ref: > posts.tags.id]
+}
+
+// —— Community Ideas
+// Visitors/Users
+Table users {
+  id int [pk, increment, unique]
+  // user personal information
+  name varchar [note: 'name for me']
+  email varchar
+  pass varchar
+  display_name varchar [note: 'name for others in case desired anon']
+  phone_number varchar [note: 'future idea for sms auth']
+  // system generated information
+  avatar varchar [note: 'auto-generated based on name for starters']
+  created_at timestamp [note: 'system registered time']
+  updated_at timestamp
+  last_signin_ip varchar
+  sing_in_count int
+  sign_in_provider varchar [note: 'under observation for picking strategy']
+  remember_token varchar
+  audiences_id int [ref: <> users.audiences.id]
+  is_accountable boolean
+  comment_status user_comment_status
+}
+Enum user_comment_status {
+  open
+  closed
+}
+
+// Audiences are like broadcast channels for my circles
+// when you post something, you send it to everyone in a channel
+// people who access to a post are accessing to a channel
+// users in the same audience are in the same chat
+Table users.audiences {
+  id int [pk, unique, increment]
+  name varchar
+  color varchar [note: 'Internal. I will define which colors']
+  icon varchar 
+  description text
+  is_active boolean
+  permission_matrix int [ref: > permissions.id]
+  created_at timestamp
+  updated_at timestamp
+}
+Table users.audience_invitation {
+  id int [increment, pk]
+  audience_id int [ref: > users.audiences.id]
+  user_id int [ref: > users.id]
+  expiration_date timestamp 
+  post_id int [ref: > posts.id]
+}
+
+// —— Social Interactions
+Table users.comments { 
+  // user comments are like chat messages
+  id int [increment, unique, pk]
+  post_id int [ref: > posts.id] // the post id is important to the chat room
+  author_id int [ref: > users.id]
+  comment_text text
+  audiences int
+  ip varchar
+  comment_status comment_statuses
+  comment_parent int [ref: > users.comments.id]
+  created_at timestamp
+  updated_at timestamp
+}
+Enum comment_statuses {
+  approved
+  pending
+  rejected
+}
+Table users.comments_audiences {
+  id int [pk, increment, ref: < users.comments.audiences]
+  audience_id int [ref: > users.audiences.id]
+}
+Table users.comments_mentions {
+  id int [pk]
+  comment_id int [ref: > users.comments.id]
+  user_id int [ref: <> users.id]
+}
+Table users.reactions {
+  id int [pk, increment]
+  reaction text [note: 'let it be a gif link or image or whatever']
+  resource_id int [ref: > posts.id, ref: > users.comments.id, note: 'is this possible? for post and comments']
+  created_at timestamp
+}
+// –– IAM & Access Control 
+Table permissions {
+  id int [pk, unique]
+  name varchar [note: 'optional, perhaps we can create templates']
+  resource resources
+  capability capabilities
+  attributes resources_attributes
+  comparison enforcement_comparison
+}
+Enum resources {
+  persona
+  post
+  comment
+  audience
+  post_chat 
+}
+Enum capabilities {
+  can_view
+  can_read
+  can_write
+  can_edit
+  can_delete
+}
+Enum resources_attributes {
+  all
+  id
+// We need to list the resources attrs
+// based on the resource selected
+}
+Enum enforcement_comparison {
+// Numeric
+  isGreaterThan // (>)
+  isGreaterThanEqualTo // (>=)
+  isLesserThan // (<)
+  isLesserThanEqualTo // (<=)
+  // String
+  isStrictlyEqual // (===)
+  isEqual // (==)
+  isStrictlyNotEqual // (!==)
+  isNotEqual // (!=)
+  // Datetime
+  isMoreRecentThan //
+  isLessRecentThan //
+  // Array
+  isIn //
+  isNotIn //
+  intersect //
+  doesNotIntersect //
+  // Boolean
+  boolAnd // (&&)
+  boolIsEqual // (===)
+  boolOr // (||)
+  // Bitwise
+  bitwiseAnd // (&)
+  bitwiseXor // (^)
+}

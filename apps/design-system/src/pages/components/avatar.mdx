@@ -1,0 +1,23 @@
+---
+title: Avatar
+description: Avatar components
+section: components
+status: ready
+layout: ../../layouts/Layout.astro
+---
+
+import PreviewComponent from "../../components/PreviewComponent.astro";
+import { Avatar } from "@richardblondet.com/ui";
+export const avatarImage = "/profile-picture.jpeg";
+
+
+<PreviewComponent padding="1em" flexDir="row">
+  <Avatar src={avatarImage} />
+  <Avatar src={avatarImage} type="full" />
+  <Avatar src={avatarImage} withShadow border={1} />
+</PreviewComponent>
+```jsx
+  <Avatar src={avatarImage} />
+  <Avatar src={avatarImage} type="full" />
+  <Avatar src={avatarImage} withShadow border={1} />
+```

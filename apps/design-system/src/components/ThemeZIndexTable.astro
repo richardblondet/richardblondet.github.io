@@ -1,0 +1,7 @@
+---
+import { theme } from '@richardblondet.com/ui';
+import ThemeKeyValueTable from './ThemeKeyValueTable.astro';
+
+const { zIndices } = theme;
+---
+<ThemeKeyValueTable headers={['Theme Key', 'Value']} keyValObj={zIndices} />

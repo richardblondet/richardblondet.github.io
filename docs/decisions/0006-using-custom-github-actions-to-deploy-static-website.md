@@ -23,6 +23,7 @@
 - Instroducing possible complex workflow to maintain
 - 🚫 Possibility to use `public_html` on master as represantation of production from master. Requires to checkout from `gh-pages`
   - To use public_html automatically we will have to allow pushes to master without pull-requests, disrupting our process. (Decision - [0002](0002-branch-naming-strategy.md) – Branch naming strategy))
+- 🚫 We might have made a cumbersome process to manage our repository. Before we had `gh-pages` branch "push"s protected by PRs, that gave us a sense of approval-before-publish. We still can create these PRs manually, but not enforce them. 
 
 ## Context, Problem Statement and Requirements
 

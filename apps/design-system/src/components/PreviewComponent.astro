@@ -1,0 +1,43 @@
+---
+import { theme } from '@richardblondet.com/ui';
+export interface Props {
+  padding?: string;
+  noProse?: boolean;
+  flexDir?: string;
+}
+
+const { 
+  padding = "4em", 
+  noProse = false,
+  flexDir = 'row',
+} = Astro.props;
+
+const classList = [
+  'component-preview',
+  {'not-prose': noProse}
+]
+---
+<div class:list={classList}>
+  <slot />
+</div>
+<style define:vars={{ 
+  'componentPreviewPadding': padding, 
+  'canvasColor': theme.colors['gray100'],
+  'componentPreviewFlexDir': flexDir
+}}>
+  .component-preview {
+    padding: var(--componentPreviewPadding);
+    display: flex;
+    flex-direction: var(--componentPreviewFlexDir, 'row');
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--canvasColor);
+    background-repeat: repeat;
+    background-size: 16px 16px;
+    border-radius: 0.75em;
+    border: 1px solid theme("colors.slate.200");
+    box-shadow: 0 2px 2px rgba(0,0,0,.06);
+    resize: both;
+  }
+</style>

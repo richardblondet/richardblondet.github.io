@@ -1,0 +1,30 @@
+---
+/**
+* Styleguide: 
+* a type of template file consisting of font and layout settings 
+* to give a standardized look to documents.
+*/
+import { RootContainer, PersonaCard, PostCardList, Aside, Main } from '@richardblondet.com/ui';
+import ProfileCard from '../../components/ProfileCard';
+import StyleGuideLayout from '../../layouts/styleguide.astro';
+import type { PostModel } from 'content/config';
+
+const personasEntries = await Astro.glob('../../../../../content/personas/*.mdx');
+const postsEntries = await Astro.glob<PostModel>('../../../../../content/posts/**/*.mdx');
+const personas = personasEntries.map(({frontmatter}) => ({ ...frontmatter }));
+const posts = postsEntries.map(({frontmatter}) => ({ ...frontmatter }));
+
+---
+<StyleGuideLayout>
+  <RootContainer>
+    <Aside>
+      <ProfileCard 
+        personasList={personas as any} client:load
+        selectedPersona={'software-engineer'} 
+         />
+    </Aside>
+    <Main>
+      <PostCardList posts={posts} />
+    </Main>
+  </RootContainer>
+</StyleGuideLayout>

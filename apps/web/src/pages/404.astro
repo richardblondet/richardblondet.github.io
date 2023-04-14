@@ -1,0 +1,10 @@
+---
+import Layout from '../layouts/default.astro';
+import { theme, ErrorPage } from '@richardblondet.com/ui';
+---
+
+<Layout title={`Page not found`} themeTokens={{
+  bodyBackgroundColor: theme.colors['white']
+}}>
+  <ErrorPage code="404" message="The page you were looking for is not found. Are you perhaps, like myself, lost?" />
+</Layout>

@@ -1,0 +1,18 @@
+---
+persona: <%= persona %>
+title: <%= title %>
+slug: <%= slug %>
+tags: <%- JSON.stringify(parsedTags) %>
+excerpt: excerpt here
+status: draft
+type: blog
+<% if (startDate) { %>startDate: <%= startDate %> <% } %>
+<% if (endDate) { %>endDate: <%= endDate %> <% } %>
+createdAt: <%= createdAt %>
+updatedAt: <%= createdAt %>
+---
+
+## Hello world
+
+Lorem Ipsum.
+

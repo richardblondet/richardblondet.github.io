@@ -1,0 +1,87 @@
+---
+import { Aside, Main, RootContainer, theme } from '@richardblondet.com/ui';
+import type { PersonaModel,PostModel } from '../../../../../content/config';
+import MetaTagsOpenGraph from '../../components/MetaTagsOpenGraph.astro';
+import PostListFormat from '../../components/PostListFormat';
+import ProfileCard from '../../components/ProfileCard';
+import Layout from '../../layouts/default.astro';
+
+const { persona:selectedPersona } = Astro.params;
+const { persona } = Astro.props;
+
+/**
+ * Get personas for the user card 
+ */
+const personasEntries = await Astro.glob('../../../../../content/personas/*.mdx');
+const personas = personasEntries.map(({frontmatter}) => ({ ...frontmatter }));
+
+/**
+ * Posts
+ * - [x] prioritize `isPinned` attribute on posts
+ */
+const postsEntries = await Astro.glob<PostModel>('../../../../../content/posts/**/*.mdx');
+const posts = postsEntries.filter(({ frontmatter }) => selectedPersona === frontmatter.persona)
+  .map(({ frontmatter }) => ({ ...frontmatter }));
+
+posts.sort((one, another) => {
+  if (one.isPinned && !another.isPinned) {
+    return -1; // one with isPinned should come before another
+  }
+  if (!one.isPinned && another.isPinned) {
+    return 1; // another should come before one if isPinned
+  }
+  return 0; // don't change anything with one or another
+});
+
+export const getStaticPaths = async () => {
+  const personasEntries = await Astro.glob<PersonaModel>('../../../../../content/personas/*.mdx');
+
+  return personasEntries.map((per) => ({
+    params: { 
+      persona: per.frontmatter.slug 
+    },
+    props: { 
+      persona: {
+        ...per.frontmatter, 
+        Content: per.Content 
+      }
+    }
+  }));
+};
+
+// Basic Theming Idea
+type ThemeMap = {
+  [k: string]: {[i: string]: string}
+}
+const themes: ThemeMap = {
+  'software-engineer': {
+    bodyBackgroundColor:  theme.colors['twslate100']
+  },
+  'blogger': {
+    bodyBackgroundColor: theme.colors['twgray100']
+  },
+};
+const getPersonaTokens = (themeId: string) => {
+  if (themeId in themes) {
+    return themes[themeId];
+  } 
+  return themes['software-engineer'];
+}
+
+---
+
+<Layout title={`Richard as a ${persona.name}`} themeTokens={getPersonaTokens(selectedPersona || '')}>
+  <MetaTagsOpenGraph persona={persona} slot="head" />
+  <RootContainer>
+    <Aside>
+      <ProfileCard 
+        personasList={personas as PersonaModel[]} 
+        selectedPersona={selectedPersona as string} 
+        client:load
+      />
+    </Aside>
+    <Main>
+      <PostListFormat {...persona} posts={posts} />
+    </Main>
+  </RootContainer>
+</Layout>

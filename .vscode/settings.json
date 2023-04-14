@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.mdx": "mdx"
+    },
+    "css.customData": [".vscode/tailwindcss.json"],
+    "eslint.validate": ["json"]
+}
