@@ -1,4 +1,3 @@
-export { default as Ui } from './lib/Ui.astro';
 export { 
   default as StyleSheet,
   RootContainer,
@@ -16,6 +15,8 @@ export {
   Button,
   ProfileCard,
   smallIconStyle,
+  EmptyPosts,
+  ErrorPage,
 } from './lib/stylesheet';
 export type {
   CssAvatarVariants,

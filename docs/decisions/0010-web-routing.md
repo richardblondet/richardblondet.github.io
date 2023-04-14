@@ -1,6 +1,6 @@
 # Web Routing
 
-- Status: draft
+- Status: ready
 - Date: 21-03-2023 16:14:42
 - Story: https://github.com/richardblondet/richardblondet.github.io/issues/36
 
@@ -12,11 +12,11 @@
 - **Rules:** 
   - Static
   - Astro Level: data fetching
-  - React Level: dynamic functions
+  - React Level: static navigation
 
 ### Consequences
 
-- Wip
+- 07-04-2023 01:34:58 css breaks when re-accesing the website but can't pin point real reason
 
 ## Context, Problem Statement and Requirements
 

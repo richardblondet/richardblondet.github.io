@@ -12,14 +12,14 @@ export interface PersonaModel {
   currentlyDoing?: string | string[];
   parent?: string;
   themeId?: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
 };
 
 export const newPersona = (args:PersonaModel) => ({...args});
 
 export interface PostModel {
-  uid: string;
+  uid?: string;
   persona?: string;
   title: string;
   slug?: string;
@@ -37,10 +37,10 @@ export interface PostModel {
   wordCount?: number;
   isPinned?: boolean;
   isCommentOpened?: boolean;
-  timelineDate?: Date;
-  timelineRanged?: Date;
-  createdAt?: Date | string;
-  updatedAt?: Date | string;
+  startDate?: string;
+  endDate?: string;
+  createdAt?: string;
+  updatedAt?: string;
 };
 enum PostStatus {
   Published = "published",

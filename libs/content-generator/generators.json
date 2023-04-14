@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "name": "content-generator",
+  "version": "0.0.1",
+  "generators": {
+    "content-generator": {
+      "factory": "./src/generators/content-generator/generator",
+      "schema": "./src/generators/content-generator/schema.json",
+      "description": "content-generator generator"
+    },
+    "post-generator": {
+      "factory": "./src/generators/post-generator/generator",
+      "schema": "./src/generators/post-generator/schema.json",
+      "description": "helper tool for creating posts"
+    }
+  }
+}

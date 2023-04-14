@@ -4,26 +4,27 @@
 * a type of template file consisting of font and layout settings 
 * to give a standardized look to documents.
 */
-import { RootContainer, PersonaCard, PostLists, Aside, Main } from '@richardblondet.com/ui';
+import { RootContainer, PersonaCard, PostCardList, Aside, Main } from '@richardblondet.com/ui';
 import ProfileCard from '../../components/ProfileCard';
 import StyleGuideLayout from '../../layouts/styleguide.astro';
+import type { PostModel } from 'content/config';
 
 const personasEntries = await Astro.glob('../../../../../content/personas/*.mdx');
+const postsEntries = await Astro.glob<PostModel>('../../../../../content/posts/**/*.mdx');
 const personas = personasEntries.map(({frontmatter}) => ({ ...frontmatter }));
+const posts = postsEntries.map(({frontmatter}) => ({ ...frontmatter }));
 
-const posts = [{}, {coverImage: "/post-place-holder-cover.jpeg"}, {}];
 ---
 <StyleGuideLayout>
   <RootContainer>
     <Aside>
       <ProfileCard 
         personasList={personas as any} client:load
-        selectedPersona={'software-developer'} 
+        selectedPersona={'software-engineer'} 
          />
-      <PersonaCard />
     </Aside>
     <Main>
-      <PostLists posts={posts} />
+      <PostCardList posts={posts} />
     </Main>
   </RootContainer>
 </StyleGuideLayout>
