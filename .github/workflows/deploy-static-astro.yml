@@ -58,7 +58,7 @@ jobs:
         run: npm install
 
       - name: Build web app
-        run: npx nx run web:build
+        run: npx nx build web 
 
       - name: Add domain cname file
         run: echo "$CNAME" >> $BUILD_ARTIFACT_LOCATION/CNAME
