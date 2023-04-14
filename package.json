@@ -60,6 +60,7 @@
         "jest-environment-jsdom": "28.1.1",
         "jsonc-eslint-parser": "^2.1.0",
         "nx": "15.6.3",
+        "openai": "^3.2.1",
         "prettier": "^2.6.2",
         "react": "^17.0.2 || ^18.0.0",
         "react-dom": "^17.0.2 || ^18.0.0",

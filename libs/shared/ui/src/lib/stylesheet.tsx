@@ -531,17 +531,24 @@ export const PostCard = (props: PostCardProps) => {
             <PostLink>
               <Div className="cover-img" css={{
                  marginBottom: '$4',
-                 mx: '$4',
-                 minHeight: '300px',
-                 backgroundColor: '$blue600',
+                 p: '$4',
+                //  minHeight: '300px',
+                 width: '100%',
+                //  backgroundColor: '$black',
                  backgroundPosition: 'center',
-                 backgroundSize: 'cover',
+                 backgroundSize: 'contain',
                  backgroundRepeat: 'no-repeat',
                 //  boxShadow: '0 0.5rem 1rem rgb(0 0 0 / 15%)',
-                 borderRadius: 'var(--radii-xl)',
-                 border: 'solid 1px #e5e7eb',
-                backgroundImage: `url(${featuredImage})`
-              }} />
+                //  border: 'solid 1px #e5e7eb',
+                // backgroundImage: `url(${featuredImage})`
+                '> img': {
+                   borderRadius: 'var(--radii-xl)',
+                  maxHeight: '100%',
+                  maxWidth: '100%',
+                }
+              }}>
+                <img src={featuredImage} alt={`${title}'s Image`} />
+              </Div>
             </PostLink> : null}
           <Div className='post-content' css={{
             padding: '$4',
