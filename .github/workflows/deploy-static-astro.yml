@@ -71,16 +71,16 @@ jobs:
         with:
           path: "${{ env.DESTINATION_PATH }}/"
 
-      # - name: Update public_html with built artifact
-      #   if: github.event_name == 'push'
-      #   run: |
-      #     git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
-      #     git config --global user.email "${{ env.CI_GIT_USERNAME }}@users.noreply.github.com"
-      #     git pull && git checkout gh-pages
-      #     git checkout master -- ${{ env.DESTINATION_PATH }}
-      #     git add ${{ env.DESTINATION_PATH }}
-      #     git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
-      #     git push
+      - name: Update public_html with built artifact
+        if: github.event_name == 'push'
+        run: |
+          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
+          git config --global user.email "${{ env.CI_GIT_USERNAME }}@users.noreply.github.com"
+          git pull && git checkout gh-pages
+          git checkout master -- ${{ env.DESTINATION_PATH }}
+          git add ${{ env.DESTINATION_PATH }}
+          git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
+          git push
   deploy:
     needs: build
     permissions:
