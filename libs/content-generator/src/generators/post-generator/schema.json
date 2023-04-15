@@ -42,11 +42,11 @@
     },
     "startDate": {
       "type": "string",
-      "description": "Timeline startDate"
+      "description": "Timeline startDate format: YYYY-MM-DD"
     },
     "endDate": {
       "type": "string",
-      "description": "Timeline endDate"
+      "description": "Timeline endDate format: YYYY-MM-DD"
     }
   },
   "required": ["title", "persona"]
