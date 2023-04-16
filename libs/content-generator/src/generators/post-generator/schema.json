@@ -16,7 +16,7 @@
     },
     "persona": {
       "type": "string",
-      "description": "The persona this posts belongs to",
+      "description": "Select the persona this posts belongs to",
       "x-prompt": {
         "message": "Which persona this post belongs to?",
         "type": "list",
@@ -34,19 +34,41 @@
     }, 
     "directory": {
       "type": "string",
-      "description": "Save this posts inside a directory in 'content/posts'"
+      "description": "Target directory name. Creates the directory if it doesn't exists"
     },
     "tags": {
       "type": "string",
-      "description": "Add comma separated tags for post"
+      "description": "Add comma separated tags for this post. Tags represent our actions"
     },
     "startDate": {
       "type": "string",
-      "description": "Timeline startDate"
+      "description": "Insert for Timeline. Format: YYYY-MM-DD"
     },
     "endDate": {
       "type": "string",
-      "description": "Timeline endDate"
+      "description": "Insert for Timeline. Format: YYYY-MM-DD"
+    },
+    "template": {
+      "type": "string",
+      "description": "Template to use",
+      "x-prompt": {
+        "message": "What template from the existing ones to use?",
+        "type": "list",
+        "items": [
+          {
+            "value": "default",
+            "label": "Default MDX File"
+          },
+          {
+            "value": "experience",
+            "label": "Recruited Experience"
+          },
+          {
+            "value": "project",
+            "label": "Project Delivery"
+          }
+        ]
+      }
     }
   },
   "required": ["title", "persona"]

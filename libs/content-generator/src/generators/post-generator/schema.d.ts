@@ -5,4 +5,5 @@ export interface PostGeneratorGeneratorSchema {
     tags?: string;
     startDate?: string;
     endDate?: string;
+    template?: string;
 }

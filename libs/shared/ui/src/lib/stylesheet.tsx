@@ -123,6 +123,26 @@ export const textStylesMap = {
   },
   hr: {
     marginBottom: '$4',
+  },
+  ['code']: {
+    fontSize: '$sm',
+  },
+  ['h2 code']: {
+    fontSize: '$lg',
+  },
+  ['h3 code']: {
+    fontSize: '$base',
+  },
+  ['pre']: {
+    fontSize: '$sm',
+    lineHeight: '$7',
+    marginTop: '$4',
+    marginBottom: '$4',
+    borderRadius: '$lg',
+    paddingTop: '$4',
+    paddingRight: '$4',
+    paddingBottom: '$4',
+    paddingLeft: '$4',
   }
 };
 
@@ -156,7 +176,11 @@ export const textStyles = css({
   ['& dl']: textStylesMap['dl'],
   ['& dt']: textStylesMap['dt'],
   ['& dd']: textStylesMap['dd'],
-  ['& a']: textStylesMap['a']
+  ['& a']: textStylesMap['a'],
+  ['& code']: textStylesMap['code'],
+  ['& h2 code']: textStylesMap['h2 code'],
+  ['& h3 code']: textStylesMap['h3 code'],
+  ['& pre']: textStylesMap['pre']
 });
 
 export const Div = styled('div', {});
