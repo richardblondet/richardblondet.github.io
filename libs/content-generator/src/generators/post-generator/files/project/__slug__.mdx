@@ -1,0 +1,38 @@
+---
+persona: <%= persona %>
+title: <%= title %>
+slug: <%= slug %>
+tags: <%- JSON.stringify(parsedTags) %>
+excerpt: excerpt here
+status: draft
+type: blog
+<% if (startDate) { %>startDate: <%= startDate %> <% } %>
+<% if (endDate) { %>endDate: <%= endDate %> <% } %>
+createdAt: <%= createdAt %>
+updatedAt: <%= createdAt %>
+---
+
+import { formatIsoDateString } from '@richardblondet.com/utils';
+export const { startDate, endDate } = frontmatter;
+
+**{formatIsoDateString(startDate)}** - **{formatIsoDateString(endDate)}**
+
+### About The Project
+
+The project, problems and solutions
+
+### Responsibilities
+
+What I did or my participation
+
+### Deliverables
+
+Links, code, etc
+
+### Tools, Tech & Skills
+
+The tools used at the time were: 
+- Enumerate
+
+Some of the skills I learnt and/or flexed during this time were:
+- Enumerate

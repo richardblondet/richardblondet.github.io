@@ -39,6 +39,7 @@ function normalizeOptions(tree: Tree, options: PostGeneratorGeneratorSchema): No
 
   const startDate = options.startDate ? new Date(options.startDate).toISOString() : '';
   const endDate = options.endDate ? new Date(options.endDate).toISOString() : '';
+  const template = options.template ?? '';
 
   return {
     ...options,
@@ -50,6 +51,7 @@ function normalizeOptions(tree: Tree, options: PostGeneratorGeneratorSchema): No
     parsedTags,
     startDate,
     endDate,
+    template,
   };
 }
 
@@ -58,7 +60,8 @@ function addFiles(tree: Tree, options: NormalizedSchema) {
     ...options,
     tmpl: ''
   };
-  const srcFolder = path.join(__dirname, 'files');
+  // const srcFolder = path.join(__dirname, 'files');
+  const srcFolder = path.join(__dirname, joinPathFragments('files', options.template));
   const target = joinPathFragments(POSTS_TARGET_DIRECTORY, options.directory ?? '');
 
   generateFiles(

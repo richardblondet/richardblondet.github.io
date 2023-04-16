@@ -1,0 +1,38 @@
+---
+persona: <%= persona %>
+title: <%= title %>
+slug: <%= slug %>
+tags: <%- JSON.stringify(parsedTags) %>
+excerpt: excerpt here
+status: draft
+type: blog
+<% if (startDate) { %>startDate: <%= startDate %> <% } %>
+<% if (endDate) { %>endDate: <%= endDate %> <% } %>
+createdAt: <%= createdAt %>
+updatedAt: <%= createdAt %>
+---
+
+import { formatIsoDateString } from '@richardblondet.com/utils';
+export const { startDate, endDate } = frontmatter;
+
+**{formatIsoDateString(startDate)}** - **{formatIsoDateString(endDate)}**
+
+### About The Company
+
+Guarantee our clients innovative advertising management, creating comprehensive solutions in communication, marketing and advertising; that generate a better positioning and the increase of its sales; through the professionalism, creativity and experience of our staff.
+
+### Responsibilities
+
+In my role at B&D, I was responsible for designing products, components, tools, and workflows for various projects. Additionally, I evaluated and selected appropriate technologies and tools to build websites.
+
+### Tools, Tech & Skills
+
+The tools used at the time were: 
+- PHP
+- HTML and CSS, along with Bootstrap 3. 
+- Other tools included Photoshop to extract assets from design files
+- Sublime Text 2 as the main text editor
+
+Some of the skills I learnt and/or flexed during this time were:
+- Responsive Web Design
+- PHP development
