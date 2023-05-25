@@ -1,0 +1,33 @@
+---
+/**
+ * Layout Navbar Component
+ */
+---
+<nav class="px-4 lg:px-8 py-4 border-b flex justify-between">
+  <div id="project-richardblondet" class="flex items-center">
+    <div class="bg-slate-700 p-1 rounded-md text-white">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z" />
+      </svg>
+    </div>
+    <div class="ml-3">
+      <div class="text-base font-bold">Documentation</div>
+      <div class="text-sm	font-medium items-center justify-center">
+        <a href="https://richardblondet.com" target="_blank">
+          <span class="text-slate-600 hover:text-slate-900">richardblondet.com</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <button id="showSidebarBtn" class="lg:hidden">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z" />
+    </svg>    
+  </button>
+</nav>
+<script is:inline>
+  document.getElementById("showSidebarBtn").addEventListener("click", function() {
+    var sidebar = document.getElementById("sidebar-navigation");
+    sidebar.classList.toggle("hidden");
+  });
+</script>

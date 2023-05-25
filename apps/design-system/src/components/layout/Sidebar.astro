@@ -1,0 +1,122 @@
+---
+const sidebarLinks = [{
+  section: "Overview",
+  pages: [{
+    title: "Introduction",
+    status: "wip",
+    href: "/documentation/introduction",
+    active: true,
+  },{
+    title: "Philosophy",
+    status: "planned",
+    href: "/documentation/philosophy"
+  },{
+    title: "Requirements",
+    status: "planned",
+    href: "/documentation/requirements"
+  },{
+    title: "Architecture",
+    status: "planned",
+    href: "/documentation/architecture"
+  }]
+},{
+  section: "Journey",
+  pages: [{
+    title: "The Environment",
+    status: "wip",
+    href: "/journey/the-journal"
+  },{
+    title: "The Journal",
+    status: "wip",
+    href: "/journey/the-journal"
+  },{
+    title: "The Hero",
+    status: "planned",
+    href: "/journey/the-hero"
+  },{
+    title: "The Alt Source",
+    status: "planned",
+    href: "/journey/the-alt-source"
+  },{
+    title: "The Multidimensional",
+    status: "planned",
+    href: "/journey/the-multidimensional"
+  },{
+    title: "The Messenger",
+    status: "planned",
+    href: "/journey/the-messenger"
+  }]
+},{
+  section: "Design System",
+  pages: [{
+    title: "Foundations",
+    status: "wip",
+    href: "/design-system/introduction"
+  },{
+    title: "Components",
+    status: "planned",
+    href: "/design-system/components"
+  },{
+    title: "Guidelines",
+    status: "planned",
+    href: "/design-system/guidelines"
+  }]
+}];
+const classes = {
+  'aside': [
+    'bg-white hidden lg:block fixed z-20 inset-0 lg:top-[77px] w-[100%] lg:w-auto right-auto pb-10 lg:pt-4 pt-8 px-8 overflow-y-auto lg:border-r border-0'
+  ],
+  'button': [
+    'mb-4 lg:hidden'
+  ],
+  'nav': [
+    'lg:text-sm leading-8 lg:leading-8 relative'
+  ],
+  'h5': [
+    'section-title mb-2 font-semibold text-slate-900 dark:text-slate-200'
+  ],
+  'ul': [
+    'menu',
+    'border-slate-100 dark:border-slate-800'
+  ],
+  'ahref': [
+    'block border-l pl-4 -ml-px border-transparent hover:border-slate-400 text-slate-700 hover:text-slate-900',
+    'dark:hover:border-slate-500 dark:text-slate-400 dark:hover:text-slate-300'
+  ],
+  'ul-submenu': [
+    'border-l mb-2'
+  ]
+};
+
+---
+<aside id="sidebar-navigation" class:list={classes['aside']}>
+  <button id="closeSidebarBtn" class:list={classes['button']}>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+  <nav class:list={classes['nav']}>
+    <ul class:list={classes['ul']}>
+      {sidebarLinks.map((link, index) => (
+        <li data-key={index}>
+          <h5 class:list={classes['h5']}>{link.section}</h5>
+          <ul class:list={classes['ul-submenu']}>
+            {link.pages.map((page, index) => (
+              <li data-key={index}>
+                <a href={page.href} class:list={[...classes['ahref'], {'text-blue-600 border-blue-600': page?.active}]}>
+                  {page.title} {page.status ? <span class="bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-gray-300">{page.status}</span> : null }
+                </a>
+              </li>
+            ))}
+          </ul>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</aside>
+<script is:inline>
+  document.getElementById("closeSidebarBtn").addEventListener("click", function() {
+    var sidebar = document.getElementById("sidebar-navigation");
+    sidebar.classList.add("hidden");
+  });
+</script>

@@ -1,0 +1,27 @@
+---
+ import Document from '../components/layout/Document.astro';
+ import Navbar from '../components/layout/Navbar.astro';
+ import Sidebar from '../components/layout/Sidebar.astro';
+
+/**
+ * Playground
+ */
+const currentPage = new URL(Astro.url.pathname, Astro.site).pathname;
+
+const classes = {
+  'main': [
+    'max-w-8xl mx-auto px-4 sm:px-6 md:px-8'
+  ]
+};
+---
+<Document>
+  <title slot="document-head">Project Documentation</title>
+  <body>
+    <Navbar />
+    <main class:list={classes['main']}>
+      <Sidebar />
+      
+    </main>
+  </body>
+</Document>
+
