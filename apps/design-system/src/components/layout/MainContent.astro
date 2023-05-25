@@ -1,0 +1,19 @@
+---
+import Sidebar from './Sidebar.astro';
+const classes = {
+  'main': [
+    'max-w-8xl'
+  ],
+  'section': [
+    'lg:pl-96 p-8'
+  ]
+};
+---
+<main class:list={classes['main']}>
+  <Sidebar />
+  <section class:list={classes['section']}>
+    <article>
+      <slot />
+    </article>
+  </section>
+</main>

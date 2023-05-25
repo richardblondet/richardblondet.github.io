@@ -1,0 +1,11 @@
+---
+import { getCollection } from 'astro:content';
+const docPagesCollection = await getCollection('docs');
+// console.log("🚀 ~ file: index.astro:4 ~ docPagesCollection:", docPagesCollection)
+---
+
+<ul>
+  {docPagesCollection.map(p => (
+    <li><a href={`/documentation/${p.slug}`}>{p.data.title}</a></li>
+  ))}
+</ul>

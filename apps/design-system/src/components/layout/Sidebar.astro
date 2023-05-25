@@ -1,24 +1,17 @@
 ---
+import { getCollection } from 'astro:content';
+
+const docPagesCollection = await getCollection('docs');
+const linksBySection = (section:string) => docPagesCollection
+  .filter(page => page.data.section === section)
+  .map(page => ({ title: page.data.title, status: page.data.progress, href: `/${page.data.section}/${page.slug}` }))
+  
+
 const sidebarLinks = [{
   section: "Overview",
-  pages: [{
-    title: "Introduction",
-    status: "wip",
-    href: "/documentation/introduction",
-    active: true,
-  },{
-    title: "Philosophy",
-    status: "planned",
-    href: "/documentation/philosophy"
-  },{
-    title: "Requirements",
-    status: "planned",
-    href: "/documentation/requirements"
-  },{
-    title: "Architecture",
-    status: "planned",
-    href: "/documentation/architecture"
-  }]
+  pages: [
+    ...linksBySection('overview')
+  ]
 },{
   section: "Journey",
   pages: [{
@@ -64,7 +57,7 @@ const sidebarLinks = [{
 }];
 const classes = {
   'aside': [
-    'bg-white hidden lg:block fixed z-20 inset-0 lg:top-[77px] w-[100%] lg:w-auto right-auto pb-10 lg:pt-4 pt-8 px-8 overflow-y-auto lg:border-r border-0'
+    'bg-white hidden lg:block fixed z-20 inset-0 lg:top-[77px] w-[100%] lg:w-auto right-auto p-10 overflow-y-auto lg:border-r border-0'
   ],
   'button': [
     'mb-4 lg:hidden'

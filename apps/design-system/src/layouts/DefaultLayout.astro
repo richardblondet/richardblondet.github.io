@@ -1,14 +1,8 @@
 ---
- import Document from '../components/layout/Document.astro';
- import Navbar from '../components/layout/Navbar.astro';
- import Sidebar from '../components/layout/Sidebar.astro';
+import Document from '../components/layout/Document.astro';
+import Navbar from '../components/layout/Navbar.astro';
+import MainContent from '../components/layout/MainContent.astro';
 
-/**
- * The Default Layout
- * 
- * This astro component provides with a full-width layout
- * with maximum flexibility
- */
 
 const currentPage = new URL(Astro.url.pathname, Astro.site).pathname;
 
@@ -18,21 +12,8 @@ const currentPage = new URL(Astro.url.pathname, Astro.site).pathname;
   <title slot="document-head">Documentation for richardblondet.com</title>
   <body>
     <Navbar />
-    <Sidebar />
-			<!-- <main class="p-8 pb-72 md:pb-32 col-span-6 overflow-auto">
-        <PageContent content={content}>
-            <slot />
-        </PageContent>
-			</main>
-			<aside class="col-span-3 sticky top-0 h-screen flex">
-				<RightSidebar headings={headings} />
-			</aside> -->
-		</div>
-    <!-- 
-      <PageContent>
-        <slot />
-      </PageContent>
-     -->
-    <slot />
+    <MainContent>
+      <slot />
+    </MainContent>
   </body>
 </Document>
