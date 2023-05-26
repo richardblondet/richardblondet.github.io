@@ -7,7 +7,7 @@ const currentPage = new URL(Astro.url.pathname, Astro.site).pathname;
 
 const classes = {
   'main': [
-    'flex'
+    'flex relative'
   ],
   'section': [
     'p-4 lg:p-8 w-[100%]'
@@ -39,3 +39,11 @@ const { headings = [], isHeadingsVisible, ...rest } = Astro.props;
     </main>
   </body>
 </Document>
+<script is:inline>
+  function sidebarToggleHandler() {
+    var sidebar = document.getElementById("sidebar-navigation");
+    sidebar.classList.toggle("open");
+  }
+
+  document.querySelectorAll('.sidebar-toggler').forEach((el) => el?.addEventListener("click", sidebarToggleHandler));
+</script>
