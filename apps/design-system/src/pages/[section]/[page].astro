@@ -15,16 +15,13 @@ export const getStaticPaths = async () => {
     }
   }))
 };
-const { page:slug, section } = Astro.params;
+// const { page:slug, section } = Astro.params;
 const { page } = Astro.props;
+const { Content, headings } = await page.render();
 ---
-<DefaultLayout>
-  <span>
-    {section}
-  </span>
-  <a href="#">{slug}</a>
-  <hr />
-  <code>
-    {JSON.stringify({page})}
-  </code>
+<DefaultLayout {...page.data} headings={headings}>
+  <Content />
+  <!-- <pre class="astro-code">
+    {JSON.stringify(page)}
+  </pre> -->
 </DefaultLayout>

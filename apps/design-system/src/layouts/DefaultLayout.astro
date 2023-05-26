@@ -2,18 +2,40 @@
 import Document from '../app/Document.astro';
 import Navbar from '../app/Navbar.astro';
 import MainContent from '../app/MainContent.astro';
-
-
+import Sidebar from '../app/Sidebar.astro';
 const currentPage = new URL(Astro.url.pathname, Astro.site).pathname;
 
+const classes = {
+  'main': [
+    'max-w-8xl'
+  ],
+  'section': [
+    'lg:pl-72 p-8'
+  ]
+};
+
+export interface Props {
+  headings?: any[],
+  title: string;
+  section: string;
+  progress: string;
+  isHeadingsVisible?: boolean;
+}
+
+const { headings = [], isHeadingsVisible, ...rest } = Astro.props;
 ---
 
 <Document>
   <title slot="document-head">Documentation for richardblondet.com</title>
   <body>
     <Navbar />
-    <MainContent>
-      <slot />
-    </MainContent>
+    <main class:list={classes['main']}>
+      <Sidebar activePage={currentPage} />
+      <section class:list={classes['section']}>
+        <MainContent {...rest}>
+          <slot />
+        </MainContent>
+      </section>
+    </main>
   </body>
 </Document>

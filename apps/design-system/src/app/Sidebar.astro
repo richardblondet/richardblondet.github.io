@@ -19,13 +19,23 @@ const classes = {
     'border-slate-100 dark:border-slate-800'
   ],
   'ahref': [
-    'block border-l pl-4 -ml-px border-transparent hover:border-slate-400 text-slate-700 hover:text-slate-900',
+    'block relative border-l pl-4 -ml-px border-transparent hover:border-slate-400 text-slate-700 hover:text-slate-900',
     'dark:hover:border-slate-500 dark:text-slate-400 dark:hover:text-slate-300'
   ],
   'ul-submenu': [
     'border-l mb-2'
+  ],
+  'badge': [
+    'absolute right-0 bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-gray-300'
   ]
 };
+
+export interface Props {
+  activePage?: string;
+}
+
+const { activePage } = Astro.props;
+
 
 ---
 <aside id="sidebar-navigation" class:list={classes['aside']}>
@@ -40,13 +50,16 @@ const classes = {
         <li data-key={index}>
           <h5 class:list={classes['h5']}>{link.section}</h5>
           <ul class:list={classes['ul-submenu']}>
-            {link.pages.map((page, index) => (
-              <li data-key={index}>
-                <a href={page.href} class:list={[...classes['ahref'], {'text-blue-600 border-blue-600': page?.active}]}>
-                  {page.title} {page.status ? <span class="bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-gray-300">{page.status}</span> : null }
-                </a>
-              </li>
-            ))}
+            {link.pages.map((page, index) => {
+              console.log('page page', page.href === activePage);
+              return (
+                <li data-key={index}>
+                  <a href={page.href} class:list={[...classes['ahref'], {'text-blue-600 border-blue-600': (String(activePage) === String(page.href))}]}>
+                    {page.title} <!-- {page.status ? <span class:list={classes['badge']}>{page.status}</span> : null } -->
+                  </a>
+                </li>
+              )
+            })}
           </ul>
         </li>
       ))}

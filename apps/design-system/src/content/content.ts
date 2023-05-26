@@ -9,7 +9,8 @@ const docsCollection = defineCollection({
     title: z.string(),
     section: z.string(),
     active: z.boolean().optional(),
-    progress: z.enum(['wip', 'draft', 'planned', 'ready'])
+    progress: z.enum(['wip', 'draft', 'planned', 'ready']),
+    isHeadingsVisible: z.boolean().optional()
   })
 });
 

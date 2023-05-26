@@ -24,7 +24,7 @@ export const sidebar = [{
   pages: [{
     title: "Foundations",
     status: "wip",
-    href: "/design-system/introduction"
+    href: "/design-system/foundations"
   },{
     title: "Components",
     status: "planned",
