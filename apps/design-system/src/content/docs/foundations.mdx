@@ -3,7 +3,76 @@ title: "Foundations"
 progress: "wip"
 section: "design-system"
 ---
+import ThemeColorsTable from '../../components/ThemeColorsTable.astro';
+import ThemeSpacesTable from '../../components/ThemeSpacesTable.astro';
+import ThemeSizesTable from '../../components/ThemeSizesTable.astro';
+import ThemeFontSizesTable from '../../components/ThemeFontSizesTable.astro';
+import ThemeFontFamiliesTable from '../../components/ThemeFontFamiliesTable.astro';
+import ThemeBorderRadiusTable from '../../components/ThemeBorderRadiusTable.astro';
+import ThemeZIndexTable from '../../components/ThemeZIndexTable.astro';
 
 
-body here
-    
+
+Foundations are the values needed to create compeling digital experiences. The interface in the most basic form is a set of graphic elements like shapes, text, illustrations and images. They are spreadout throughout the system.
+
+## Design Tokens
+
+Design tokens are a limited set of values that are applied to every component. They allow consistency and customization. These include color values, typography, iconography, spacing and layout properties. They are referenced directly in the interface unversally, and some of these values can be modified per persona.
+
+## Universal Foundations 
+
+Design Tokens applied and spread universally across components. Also known as globals. Where personas inherit from.
+
+
+### Colors
+
+```
+theme['colors']
+```
+
+<ThemeColorsTable />
+
+### Spaces 
+```
+theme['space']
+```
+
+<ThemeSpacesTable />
+
+### Sizes
+```
+theme['sizes']
+```
+
+<ThemeSizesTable />
+
+### Font Families
+```
+theme['fonts']
+```
+
+<ThemeFontFamiliesTable />
+
+### Font Sizes
+```
+theme['fontSizes']
+```
+
+<ThemeFontSizesTable />
+
+### Border Radius
+```
+theme['radii']
+```
+
+
+<ThemeBorderRadiusTable />
+
+### Z-Index Order
+```
+theme['zIndices']
+```
+
+<ThemeZIndexTable />
+
+## User Foundations
