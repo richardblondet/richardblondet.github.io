@@ -24,19 +24,30 @@ const currentPage = new URL(Astro.url.pathname, Astro.site).pathname;
         </style>
         <script is:inline>
           /* This is intentionally inlined to avoid FOUC */
-          const root = document.documentElement;
-          const theme = localStorage.getItem('theme');
-          if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-              root.classList.add('dark');
-          } else {
-              root.classList.remove('dark');
-          }
+          (function() {
+            if (localStorage.getItem("theme") === "dark" || window.matchMedia('(prefers-color-scheme: dark)').matches) {
+              document.documentElement.classList.add("dark");
+            }
+          }());
+          document.addEventListener("DOMContentLoaded", function() {
+            const root = document.documentElement;
+            document.querySelectorAll(".dark-toggler").forEach(function(toggler) {
+              toggler.addEventListener("click", toggleDarkModeHandler);
+            });
+            function toggleDarkModeHandler() {
+              const isDark = root.classList.contains("dark");
+              isDark ? root.classList.remove("dark") : root.classList.add("dark");
+              localStorage.setItem("theme", isDark ? "" : "dark");
+            }
+          });
         </script>
 
         <!--  children with the `slot="document-head"` attribute will go here -->
         <slot name="document-head" />
     </head>
 
-    <slot />      
+    <body class="bg-white dark:bg-gray-900 ease-in-out duration-100">
+      <slot />      
+    </body>
 </html>
 

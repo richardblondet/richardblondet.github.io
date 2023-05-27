@@ -3,9 +3,12 @@ import Document from '../app/Document.astro';
 import Navbar from '../app/Navbar.astro';
 import MainContent from '../app/MainContent.astro';
 import Sidebar from '../app/Sidebar.astro';
-const currentPage = new URL(Astro.url.pathname, Astro.site).pathname;
 
+const currentPage = new URL(Astro.url.pathname, Astro.site).pathname;
 const classes = {
+  'body': [
+    'dark:bg-gray-900',
+  ],
   'main': [
     'flex relative'
   ],
@@ -26,18 +29,16 @@ const { headings = [], isHeadingsVisible, ...rest } = Astro.props;
 ---
 
 <Document>
-  <title slot="document-head">Documentation for richardblondet.com</title>
-  <body>
-    <Navbar />
-    <main class:list={classes['main']}>
-      <Sidebar activePage={currentPage} />
-      <section class:list={classes['section']}>
-        <MainContent {...rest}>
-          <slot />
-        </MainContent>
-      </section>
-    </main>
-  </body>
+  <title slot="document-head">Page: {rest.title}</title>
+  <Navbar />
+  <main class:list={classes['main']}>
+    <Sidebar activePage={currentPage} />
+    <section class:list={classes['section']}>
+      <MainContent {...rest}>
+        <slot />
+      </MainContent>
+    </section>
+  </main>
 </Document>
 <style is:inline>
   #sidebar-navigation {

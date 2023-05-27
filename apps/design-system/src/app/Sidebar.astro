@@ -3,13 +3,14 @@ import { sidebar as sidebarLinks } from './constants';
 
 const classes = {
   'aside': [
-    'bg-white',
+    'bg-gray-100 dark:bg-gray-800 dark:border-gray-600',
     'top-0 p-8 border-r border-0 md:sticky h-screen overflow-auto md:w-72',
-    'ease-in-out duration-300',
+    'ease-in-out duration-100',
   ],
   'button': [
     'sidebar-toggler',
-    'absolute top-[1rem] right-[1rem]  mb-4 md:hidden'
+    'absolute top-[1rem] right-[1rem] mb-4 md:hidden',
+    'dark:text-white'
   ],
   'nav': [
     'lg:text-sm leading-8 lg:leading-8 relative'
@@ -22,11 +23,11 @@ const classes = {
     'border-slate-100 dark:border-slate-800'
   ],
   'ahref': [
-    'border-l pl-4 py-2',
-    'dark:hover:border-slate-500 dark:text-slate-400 dark:hover:text-slate-300'
+    'border-l border-transparent pl-4 py-2',
+    // ' dark:hover:text-slate-300 dark:border-slate-600 dark:hover:border-slate-500 '
   ],
   'ul-submenu': [
-    'border-l mb-2'
+    'border-l mb-2 dark:border-slate-600'
   ],
   'badge': [
     'absolute right-0 bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-gray-300'
@@ -45,11 +46,14 @@ const getActivePageClass = (pageLink:string) => {
     ...(activePage === pageLink ? [
       'text-blue-600',
       'border-blue-600',
+      'dark:text-blue-400',
+      'dark:border-blue-400'
       ] : [
       'text-slate-600',
       'border-transparent',
       'hover:text-slate-900',
-      'hover:border-slate-400'
+      'hover:border-slate-400',
+      'dark:text-slate-400'
       ]
     )
   ];

@@ -1,5 +1,6 @@
 const proseDefaultClasses = [
 	'prose',
+	'dark:prose-invert',
 ];
 const proseH1Classes = [
 	'text-2xl',
@@ -9,9 +10,12 @@ const proseH1Classes = [
 	'tracking-tight',
 	'dark:text-slate-200'
 ];
+const proseParagraph = [
+	'dark:text-slate-200'
+];
 const proseCodeClasses = [
 	'bg-red-100',
-	'font-bold'
+	'font-bold',
 ];
 export const proseContentClases = [
 	...(proseDefaultClasses),
