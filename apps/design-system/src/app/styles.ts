@@ -1,4 +1,5 @@
 const proseDefaultClasses = [
+	'max-w-none',
 	'prose',
 	'dark:prose-invert',
 ];
