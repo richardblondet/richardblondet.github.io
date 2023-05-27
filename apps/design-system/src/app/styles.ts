@@ -16,6 +16,7 @@ const proseParagraph = [
 const proseCodeClasses = [
 	'bg-red-100',
 	'font-bold',
+	'dark:bg-slate-800'
 ];
 export const proseContentClases = [
 	...(proseDefaultClasses),

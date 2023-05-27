@@ -3,6 +3,7 @@ import Document from '../app/Document.astro';
 import Navbar from '../app/Navbar.astro';
 import MainContent from '../app/MainContent.astro';
 import Sidebar from '../app/Sidebar.astro';
+import HeadingsSidebar from '../app/HeadingsSidebar.astro';
 
 const currentPage = new URL(Astro.url.pathname, Astro.site).pathname;
 const classes = {
@@ -22,10 +23,11 @@ export interface Props {
   title: string;
   section: string;
   progress: string;
-  isHeadingsVisible?: boolean;
+  isHeadingsDisabled?: boolean;
 }
 
-const { headings = [], isHeadingsVisible, ...rest } = Astro.props;
+const { headings = [], isHeadingsDisabled, ...rest } = Astro.props;
+console.log('headings', headings);
 ---
 
 <Document>
@@ -38,6 +40,9 @@ const { headings = [], isHeadingsVisible, ...rest } = Astro.props;
         <slot />
       </MainContent>
     </section>
+    {isHeadingsDisabled ? null 
+      : headings.length <= 0 ? null 
+        : <HeadingsSidebar headings={headings} />}
   </main>
 </Document>
 <style is:inline>
@@ -57,10 +62,11 @@ const { headings = [], isHeadingsVisible, ...rest } = Astro.props;
   }
 </style>
 <script is:inline>
-  function sidebarToggleHandler() {
-    var sidebar = document.getElementById("sidebar-navigation");
-    sidebar.classList.toggle("open");
-  }
-
-  document.querySelectorAll('.sidebar-toggler').forEach((el) => el?.addEventListener("click", sidebarToggleHandler));
+  document.addEventListener("DOMContentLoaded", function() {
+    function sidebarToggleHandler() {
+      var sidebar = document.getElementById("sidebar-navigation");
+      sidebar.classList.toggle("open");
+    }
+    document.querySelectorAll('.sidebar-toggler').forEach((el) => el?.addEventListener("click", sidebarToggleHandler));
+  });
 </script>
