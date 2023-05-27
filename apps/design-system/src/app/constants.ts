@@ -1,3 +1,8 @@
+export const site = {
+  title: "Documentation",
+  description: "Project documentation for",
+  project_url: "https://richardblondet.com",
+};
 
 export const sidebar = [{
   section: "Overview",
