@@ -12,3 +12,9 @@ For new ADRs, please use template.md as basis. More information on MADR is avail
 - [0004](0004-nx.md) – Nx
 - [0005](0005-using-astro-as-web-framework.md) – Using astro as web framework
 - [0006](0006-using-custom-github-actions-to-deploy-static-website) – Using custom git hub actions to deploy static website
+- [0007](0007-using-a-styleguide) – Using A Style Guide
+- [0008](0008-content-sourcing) – Content Sourcing
+- [0009](0009-content-modeling) – Content Modeling
+- [0010](0010-web-routing) – Web Routing
+- [0011](0011-posts-content-generation-helper) – Posts Content Generation Helper
+
