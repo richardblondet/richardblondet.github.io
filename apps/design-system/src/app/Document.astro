@@ -1,0 +1,55 @@
+---
+export interface Props {
+  bodyClassNames?: string;
+};
+const currentPage = new URL(Astro.url.pathname, Astro.site).pathname;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="initial">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="generator" content={Astro.generator} />
+        <link rel="canonical" href={currentPage}>
+
+        <!-- App Wide Assets & Globals -->
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <style is:global> 
+          @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&family=Inter:wght@200;400;700;900&display=swap');
+
+          .astro-code {
+            box-shadow: 0 2px 2px rgba(0,0,0,.06);
+            max-width: 100%;
+            overflow: auto;
+          }
+        </style>
+        <script is:inline>
+          /* This is intentionally inlined to avoid FOUC */
+          (function() {
+            if (localStorage.getItem("theme") === "dark" || window.matchMedia('(prefers-color-scheme: dark)').matches) {
+              document.documentElement.classList.add("dark");
+            }
+          }());
+          document.addEventListener("DOMContentLoaded", function() {
+            const root = document.documentElement;
+            document.querySelectorAll(".dark-toggler").forEach(function(toggler) {
+              toggler.addEventListener("click", toggleDarkModeHandler);
+            });
+            function toggleDarkModeHandler() {
+              const isDark = root.classList.contains("dark");
+              isDark ? root.classList.remove("dark") : root.classList.add("dark");
+              localStorage.setItem("theme", isDark ? "" : "dark");
+            }
+          });
+        </script>
+
+        <!--  children with the `slot="document-head"` attribute will go here -->
+        <slot name="document-head" />
+    </head>
+
+    <body class="bg-white dark:bg-gray-900 ease-in-out duration-100">
+      <slot />      
+    </body>
+</html>
+

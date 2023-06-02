@@ -16,7 +16,7 @@ const { headers = ['Key', 'Values'], keyValObj = {} } = Astro.props;
   {Object.keys(keyValObj).map((vKey: unknown) => (
     <div class="flex p-1 border-b">
       <div id={`var-${vKey}`} class="basis-1/2">
-        <code>${vKey}</code>
+        <code class="dark:bg-gray-800">${vKey}</code>
       </div>
       <div>{keyValObj[vKey as any]}</div>
     </div>

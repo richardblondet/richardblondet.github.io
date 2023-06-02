@@ -5,13 +5,11 @@ export interface Props {
   noProse?: boolean;
   flexDir?: string;
 }
-
 const { 
   padding = "4em", 
   noProse = false,
   flexDir = 'row',
 } = Astro.props;
-
 const classList = [
   'component-preview',
   {'not-prose': noProse}
@@ -35,7 +33,7 @@ const classList = [
     background-color: var(--canvasColor);
     background-repeat: repeat;
     background-size: 16px 16px;
-    border-radius: 0.75em;
+    border-radius: 0.35em;
     border: 1px solid theme("colors.slate.200");
     box-shadow: 0 2px 2px rgba(0,0,0,.06);
     resize: both;

@@ -1,0 +1,379 @@
+---
+title: "Components"
+progress: "wip"
+section: "design-system"
+---
+
+import PreviewComponent from "../../components/PreviewComponent.astro";
+import { 
+  StyleSheet, 
+  Avatar, 
+  Button,
+  textStyles,
+  PersonaCard, 
+  PostCard, 
+  ProfileCard
+} from "@richardblondet.com/ui";
+
+<StyleSheet />
+
+## Button
+
+<PreviewComponent noProse>
+  <Button>Contact Me</Button>
+</PreviewComponent>
+```jsx
+import { Button, textStyles } from '@richardblondet.com/ui';
+
+<Button>Contact Me</Button>
+```
+
+## Link 
+
+WIP
+
+<PreviewComponent noProse>
+<div class={textStyles.toString()}>
+  <a href="#">Link</a>
+</div>
+</PreviewComponent>
+```jsx
+<a href="#">Link</a>
+```
+
+## Avatar
+
+export const avatarImage = "/profile-picture.jpeg";
+
+<PreviewComponent padding="1em" flexDir="row">
+  <Avatar src={avatarImage} />
+  <Avatar src={avatarImage} type="full" />
+  <Avatar src={avatarImage} withShadow border={1} />
+</PreviewComponent>
+```jsx
+  <Avatar src={avatarImage} />
+  <Avatar src={avatarImage} type="full" />
+  <Avatar src={avatarImage} withShadow border={1} />
+```
+
+
+## Persona Card
+
+<PreviewComponent>
+  <div class="not-prose" style="max-width: 18rem;">
+    <PersonaCard />
+  </div>
+</PreviewComponent>
+
+Interface 
+
+```ts
+export interface PersonaCardProps {
+  name?: string;
+  avatarSrc?: string;
+  description?: string;
+  actions?: string[];
+  now?: string[];
+  theme?: string[];
+}
+
+```
+
+Usage
+
+```jsx
+const persona = const {
+  name = 'Software Developer',
+  avatarImage  = '/profile-picture.jpeg',
+  description = "I'd love to change the world, but they won't give me the source code.",
+  actions = ['#hashtag', '#hashtag', '#hashtag', '#hashtag', '#hashtag'],
+  now = [ '🧳 open for work', '🛠 building personas', '👓 learning astro'],
+  theme = []
+};
+
+<PersonaCard {...persona} />
+```
+
+## Profile Card
+
+<PreviewComponent noProse>
+    <ProfileCard />
+</PreviewComponent>
+
+## Post Card
+
+<PreviewComponent>
+  <div class="not-prose">
+    <PostCard />
+    <PostCard coverImage={"/post-place-holder-cover.jpeg"} />
+  </div>
+</PreviewComponent>
+
+Photo by <a href="https://unsplash.com/@resourcedatabase?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Resource Database</a> on <a href="https://unsplash.com/photos/9CyKnLrDWgM?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+
+Interface
+
+```ts
+export interface PostCardProps {
+  title?: string;
+  tags?: string[];
+  excerpt?: string;
+  coverImage?: string;
+  actions?: string;
+  date?: string;
+}
+```
+
+Usage
+
+```jsx
+const post = {
+  title: "What is Lorem Ipsum? Where can I get some?",
+  excerpt: "Lorem ipsum dolor sit amet consectetur, adipisicing elit...",
+  coverImage: "/post-place-holder-cover.jpeg",
+  actions: ['coded', 'documented', 'reviewed', 'launched', 'been-recruited'],
+  date: new Date().toDateString(),
+};
+
+<PostCard {...post} />
+```
+
+## Layout Container
+
+
+```tsx
+import { 
+  RootContainer, 
+  Aside, 
+  Main, 
+  Container 
+} from '@richardblondet.com/ui';
+
+<RootContainer>
+  <Aside>
+    Sidebar
+  </Aside>
+  <Main>
+    Content
+  </Main>
+</RootContainer>
+```
+
+## Post List
+
+Applies the correct wrapper width and margins for Posts listing.
+
+```tsx
+import { 
+  PostList
+} from '@richardblondet.com/ui';
+
+const posts = getPosts('some-source'); 
+
+<PostList posts={posts} />
+```
+
+## Dialog
+
+Planned
+
+```jsx
+<Dialog />
+  
+```
+
+## Style Class
+
+This class will apply text styles to astro markdown content.
+
+```jsx
+import { textStyles } from '@richardblondet.com/ui';
+
+{/* or textStyles.className */}
+<div class={textStyles.toString()}>[...]</div>
+```
+
+## Headings
+
+<PreviewComponent noProse flexDir="row">
+  <div class={textStyles.toString()}>
+    <h1>H1</h1>
+    <h2>H2</h2>
+    <h3>H3</h3>
+    <h4>H4</h4>
+    <h5>H5</h5>
+    <h6>H6</h6>
+  </div>
+  
+</PreviewComponent>
+```jsx
+<div class={textStyles.toString()}>
+  <h1>H1</h1>
+  <h2>H2</h2>
+  <h3>H3</h3>
+  <h4>H4</h4>
+  <h5>H5</h5>
+  <h6>H6</h6>
+</div>
+```
+
+## Paragraph
+
+<PreviewComponent noProse>
+  <div class={textStyles.toString()}>
+    <p>Lorem ipsum dolor sit amet...</p>
+  </div>
+</PreviewComponent>
+```jsx
+<div class={textStyles.toString()}>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit....</p>
+</div>
+```
+
+
+## Lead/Intro `.lead`
+
+<PreviewComponent noProse>
+<div class={textStyles.toString()}>
+  <p class="lead">Build the web you want</p>
+</div>
+</PreviewComponent>
+```jsx
+<div class={textStyles.toString()}>
+  <p class="lead">Build the web you want</p>
+</div>
+```
+
+## Blockquote
+
+<PreviewComponent noProse>
+  <div class={textStyles.toString()}>
+    <blockquote>
+      A blockquote component
+    </blockquote>
+  </div>
+</PreviewComponent>
+```jsx
+<div class={textStyles.toString()}>
+  <blockquote>
+    A blockquote component
+  </blockquote>
+</div>
+```
+
+## Unordered list
+
+<PreviewComponent noProse>
+  <div class={textStyles.toString()}>
+    <ul>
+      <li>List item</li>
+      <li>List item</li>
+      <li>
+        List item
+        <ul>
+          <li>Nested item</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</PreviewComponent>
+```jsx
+<div class={textStyles.toString()}>
+  <ul>
+    <li>List item</li>
+    <li>List item</li>
+    <li>
+      List item
+      <ul>
+        <li>Nested item</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+```
+
+## Unstyled list
+
+<PreviewComponent noProse>
+<div class={textStyles.toString()}>
+  <ul class="list-none">
+    <li>List item</li>
+    <li>List item</li>
+    <li>
+      List item
+      <ul>
+        <li>Nested item</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</PreviewComponent>
+```jsx
+<div class={textStyles.toString()}>
+  <ul class="list-none">
+    <li>List item</li>
+    <li>List item</li>
+    <li>
+      List item
+      <ul>
+        <li>Nested item</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+```
+
+## Ordered list
+
+<PreviewComponent noProse>
+<div class={textStyles.toString()}>
+  <ol>
+    <li>List item</li>
+    <li>List item</li>
+    <li>
+      List item
+      <ol>
+        <li>Nested item</li>
+      </ol>
+    </li>
+  </ol>
+</div>
+</PreviewComponent>
+```jsx
+<div class={textStyles.toString()}>
+  <ol>
+    <li>List item</li>
+    <li>List item</li>
+    <li>
+      List item
+      <ol>
+        <li>Nested item</li>
+      </ol>
+    </li>
+  </ol>
+</div>
+```
+
+## Dictionary/Definition
+
+<PreviewComponent>
+<div class={textStyles.toString()}>
+  <dl>
+    <dt>Carl Jungs Persona</dt>
+    <dd>Persona is the public image of someone.</dd>
+    <dt>The Self</dt>
+    <dd>The Self is the archetype of the psychical totality or the
+     wholeness.</dd>
+  </dl>
+</div>
+</PreviewComponent>
+```jsx
+<div class={textStyles.toString()}>
+  <dl>
+    <dt>Carl Jungs Persona</dt>
+    <dd>Persona is the public image of someone.</dd>
+    <dt>The Self</dt>
+    <dd>The Self is the archetype of the psychical totality or the wholeness.</dd>
+  </dl>
+</div>
+```

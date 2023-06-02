@@ -1,0 +1,38 @@
+---
+export interface Props {
+  headings: any[]
+}
+const { headings } = Astro.props;
+const contentTitleClasses = [
+	'mt-8',
+	'text-slate-500',
+	'font-semibold',
+	'mb-4',
+	'text-sm',
+	'leading-6',
+  'text-uppercase',
+	'dark:text-slate-100',
+];
+const itemClasses = [
+  'text-xs',
+	'font-medium',
+	'text-slate-400',
+	'hover:text-slate-800',
+	'hover:text-slate-900',
+  'dark:hover:text-slate-300'
+];
+---
+<aside class="md:sticky h-screen overflow-auto md:w-72 border-l top-0 dark:border-gray-600">
+  <nav class="px-8">
+    <h5 class:list={contentTitleClasses}>On this page</h5>	
+    <ul class="flex flex-col gap-2">
+      {headings.map(({ slug, text }: any) => {
+        return (
+          <li class:list={itemClasses}>
+            <a href={`#${slug}`}>{text}</a>
+          </li>
+        ) 
+      }) }
+    </ul>
+  </nav>
+</aside>

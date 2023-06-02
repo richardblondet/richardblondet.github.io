@@ -1,0 +1,72 @@
+---
+import Document from '../app/Document.astro';
+import Navbar from '../app/Navbar.astro';
+import MainContent from '../app/MainContent.astro';
+import Sidebar from '../app/Sidebar.astro';
+import HeadingsSidebar from '../app/HeadingsSidebar.astro';
+
+const currentPage = new URL(Astro.url.pathname, Astro.site).pathname;
+const classes = {
+  'body': [
+    'dark:bg-gray-900',
+  ],
+  'main': [
+    'flex relative'
+  ],
+  'section': [
+    'p-4 lg:p-8 w-[100%]'
+  ]
+};
+
+export interface Props {
+  headings?: any[],
+  title: string;
+  section: string;
+  progress: string;
+  isHeadingsDisabled?: boolean;
+}
+
+const { headings = [], isHeadingsDisabled, ...rest } = Astro.props;
+
+---
+
+<Document>
+  <title slot="document-head">Page: {rest.title}</title>
+  <Navbar />
+  <main class:list={classes['main']}>
+    <Sidebar activePage={currentPage} />
+    <section class:list={classes['section']}>
+      <MainContent {...rest}>
+        <slot />
+      </MainContent>
+    </section>
+    {isHeadingsDisabled ? null 
+      : headings.length <= 0 ? null 
+        : <HeadingsSidebar headings={headings} />}
+  </main>
+</Document>
+<style is:inline>
+  #sidebar-navigation {
+    /* @apply fixed bg-white -left-72; */
+    position: fixed;
+    left: -18rem;
+  }
+  #sidebar-navigation.open {
+    left: 0;
+  }
+  @media (min-width: 768px) {
+    #sidebar-navigation {
+      position: sticky;
+      left: 0;
+    }
+  }
+</style>
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", function() {
+    function sidebarToggleHandler() {
+      var sidebar = document.getElementById("sidebar-navigation");
+      sidebar.classList.toggle("open");
+    }
+    document.querySelectorAll('.sidebar-toggler').forEach((el) => el?.addEventListener("click", sidebarToggleHandler));
+  });
+</script>

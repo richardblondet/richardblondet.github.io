@@ -10,12 +10,12 @@ import { StyleSheet } from '@richardblondet.com/ui';
 
 // https://docs.astro.build/en/core-concepts/layouts/#markdownmdx-layouts
 // when switching to mdx use MDXLayoutProps
-type Props = MarkdownLayoutProps<{
-    title: string;
-    description: string;
-    section: string
-    status: string
-}>;
+// export type Props = MarkdownLayoutProps<{
+//     title: string;
+//     description: string;
+//     section: string
+//     status: string
+// }>;
 
 const { title, frontmatter:content = {}, headings = [], url  } = Astro.props;
 const currentPage = new URL(Astro.url.pathname, Astro.site).pathname;

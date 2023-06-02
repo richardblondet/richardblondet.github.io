@@ -1,0 +1,87 @@
+---
+import { sidebar as sidebarLinks } from './constants';
+
+const classes = {
+  'aside': [
+    'bg-gray-100 dark:bg-gray-900 dark:border-gray-600',
+    'top-0 p-8 border-r border-0 md:sticky h-screen overflow-auto md:w-72',
+    'ease-in-out duration-100',
+  ],
+  'button': [
+    'sidebar-toggler',
+    'absolute top-[1rem] right-[1rem] mb-4 md:hidden',
+    'dark:text-white'
+  ],
+  'nav': [
+    'lg:text-sm leading-8 lg:leading-8 relative'
+  ],
+  'h5': [
+    'section-title mb-2 font-semibold text-slate-900 dark:text-slate-200'
+  ],
+  'ul': [
+    'menu',
+    'border-slate-100 dark:border-slate-800'
+  ],
+  'ahref': [
+    'border-l border-transparent pl-4 py-2',
+  ],
+  'ul-submenu': [
+    'border-l mb-2 dark:border-slate-600'
+  ],
+  'badge': [
+    'absolute right-0 bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-gray-300'
+  ]
+};
+
+export interface Props {
+  activePage?: string;
+}
+
+let { activePage } = Astro.props;
+
+const getActivePageClass = (pageLink:string) => {
+  return [
+    ...classes['ahref'],
+    ...(activePage === pageLink ? [
+      'text-blue-600',
+      'border-blue-600',
+      'dark:text-blue-400',
+      'dark:border-blue-400'
+      ] : [
+      'text-slate-600',
+      'border-transparent',
+      'hover:text-slate-900',
+      'hover:border-slate-400',
+      'dark:text-slate-400'
+      ]
+    )
+  ];
+};
+---
+<aside id="sidebar-navigation" class:list={classes['aside']}>
+  <button class:list={classes['button']}>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+  <nav class:list={classes['nav']}>
+    <ul class:list={classes['ul']}>
+      {sidebarLinks.map((link) => (
+        <li>
+          <h5 class:list={classes['h5']}>{link.section}</h5>
+          <ul class:list={classes['ul-submenu']}>
+            {link.pages.map((page) => (
+                <li>
+                  <a href={page.href} class:list={getActivePageClass(page.href)}>
+                    {page.title} 
+                    <!-- {page.status ? <span class:list={classes['badge']}>{page.status}</span> : null } -->
+                  </a>
+                </li>
+              ))}
+          </ul>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</aside>
+

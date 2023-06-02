@@ -1,0 +1,21 @@
+---
+import Document from '../app/Document.astro';
+import Navbar from '../app/Navbar.astro';
+import MainContent from '../app/MainContent.astro';
+/**
+ * Playground
+ */
+const currentPage = new URL(Astro.url.pathname, Astro.site).pathname;
+
+
+---
+<Document>
+  <title slot="document-head">Project Documentation</title>
+  <body>
+    <Navbar />
+    <MainContent>
+      hello world
+    </MainContent>
+  </body>
+</Document>
+
