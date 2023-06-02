@@ -44,7 +44,7 @@ export const sidebar = [{
   pages: [{
     title: "The Environment",
     status: "wip",
-    href: "/journey/the-journal"
+    href: "/journey/the-environment"
   },{
     title: "The Journal",
     status: "wip",
