@@ -1,0 +1,15 @@
+---
+import type { PostModel } from '../../../../../content/config';
+/**
+ * Posts
+ * - [x] prioritize `isPinned` attribute on posts
+ */
+const postsEntries = await Astro.glob<PostModel>('../../../../../content/posts/**/*.mdx');
+const posts = postsEntries.map((post) => ({
+  ...post.frontmatter,
+  body: JSON.stringify(post.Content)
+}));
+console.log(postsEntries);
+const json  = JSON.stringify(posts);
+---
+{json}
